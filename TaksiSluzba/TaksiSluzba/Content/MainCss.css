@@ -1,0 +1,28 @@
+﻿.Naslov {
+    font-size:xx-large;
+    text-align: center;
+    background-color:blue;
+    font-weight:bold;
+    color:white;
+    position: fixed;
+    top: 0;
+    width: 100%
+}
+
+.Meni {
+    background-color:blue;
+    color:white;
+    font-weight:bold;
+    position: fixed;
+    top: 30px;
+    width:100%
+}
+
+.Red {
+    color:red
+}
+
+.Centar {
+    text-align: center;
+    font-size: large
+}
