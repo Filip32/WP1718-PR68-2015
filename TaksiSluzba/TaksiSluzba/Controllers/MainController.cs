@@ -93,6 +93,41 @@ namespace TaksiSluzba.Controllers
             return Ok("Vozac je dodat.");
         }
 
+        [HttpPost]
+        [Route("api/main/updateprofile")]
+        public IHttpActionResult UpdateProfile(Vozac osoba)
+        {
+            if (osoba.Uloga == Enums.Uloga.Vozac)
+            {
+                Vozac v = vozaclist.Find(i => i.KorisnickoIme == osoba.KorisnickoIme);
+                vozaclist.Remove(v);
+                vozaclist.Add(osoba);
+                WriteToXMl(Enums.Uloga.Vozac);
+
+                return Ok("Uspesno azuriran profil.");
+            }
+            else
+            {
+                string name = osoba.KorisnickoIme;
+                Korisnik k = new Korisnik() { KorisnickoIme = osoba.KorisnickoIme, Lozinka = osoba.Lozinka, Ime = osoba.Ime, Prezime = osoba.Prezime, Pol = osoba.Pol, Email = osoba.Email, JMBG = osoba.JMBG, Telefon = osoba.Telefon, Uloga = osoba.Uloga, Voznje = osoba.Voznje };
+                if (k.Uloga == Enums.Uloga.Dispecer)
+                {
+                    Korisnik v = adminlist.Find(i => i.KorisnickoIme == name);
+                    adminlist.Remove(v);
+                    adminlist.Add(k);
+                    WriteToXMl(Enums.Uloga.Dispecer);
+                }
+                else
+                {
+                    Korisnik v = korisniklist.Find(i => i.KorisnickoIme == name);
+                    korisniklist.Remove(v);
+                    korisniklist.Add(k);
+                    WriteToXMl(Enums.Uloga.Musterija);
+                }
+                return Ok("Uspesno azuriran profil.");
+            }
+        }
+
         private void WriteToXMl(Enums.Uloga uloga)
         {
             string path = @"C:\Users\filip\Desktop\Projects\Web\Projekat\WP1718-PR68-2015\TaksiSluzba\" + uloga.ToString() + ".xml";

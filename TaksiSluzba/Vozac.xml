@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfVozac xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Vozac>
+    <KorisnickoIme>vozac1</KorisnickoIme>
+    <Lozinka>vozac1</Lozinka>
+    <Ime>Sale</Ime>
+    <Prezime>Stanic</Prezime>
+    <Pol>Musko</Pol>
+    <JMBG>1710996800083</JMBG>
+    <Telefon>064/2547543</Telefon>
+    <Email>sale@gmail.com</Email>
+    <Uloga>Vozac</Uloga>
+    <Voznje />
+    <Lokacija>
+      <XKordinata>19.801678819228698</XKordinata>
+      <YKordinata>45.54499876035848</YKordinata>
+      <Adresa>
+        <Ulica>Petra Bigina</Ulica>
+        <Broj>16</Broj>
+        <Mesto>Srbobran</Mesto>
+        <PozivNaBroj>21450</PozivNaBroj>
+      </Adresa>
+    </Lokacija>
+    <Automobil>
+      <GodisteAutomobila>2011</GodisteAutomobila>
+      <RegistarskaTablica>NS434-WL</RegistarskaTablica>
+      <TipVozila>Putnicko_Vozilo</TipVozila>
+    </Automobil>
+  </Vozac>
+</ArrayOfVozac>

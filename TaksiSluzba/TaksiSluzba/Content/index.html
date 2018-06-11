@@ -212,6 +212,206 @@
                     });
                 }
             });
+
+            $(document).on("click", "#home", function ()
+            {
+                var table = "<p style=\"font-size:large; font-weight:bold\">Lista voznji<p><div>";
+                table += "<table border=\"1\"><tr><th>Polazna tacka</th><th>Odrediste</th><th>Musterija</th><th>Vozac</th><th>Dispecer</th><th>Status voznje</th><th>&nbsp;</th><th>&nbsp;</th></tr>";
+                for (t in login_user.Voznje) {
+                    table += "<tr><td>" + login_user.Voznje[t].PolaznaTacka + "</td><td>" + login_user.Voznje[t].Odrediste + "</td><td>" + login_user.Voznje[t].Musterija + "</td><td>" + login_user.Voznje[t].Vozac + "</td><td>" + login_user.Voznje[t].Dispecer + "</td><td>" + login_user.Voznje[t].StatusVoznje + "</td><td><input type=\"submit\" id=\"obrada_voznje\" value=\"Obrada voznje\" /></td><td><input type=\"submit\" id=\"detalji_voznje\" value=\"Detalji voznje\" /></td></tr>";
+                }
+                table += "</table><br />";
+
+                if (login_user.Uloga == "1") {
+                    table += "<input type=\"submit\" id=\"sve_voznje_sis\" value=\"Sve voznje u sistemu\" /><br /><br />";
+                } else if (login_user.Uloga == "2") {
+                    table += "<input type=\"submit\" id=\"sve_voznje_cekanje\" value=\"Sve voznje na cekanju\" /><br /><br />";
+                }
+
+                table += pocetnastr;
+
+                if (login_user.Uloga == "1") {
+                    table += "<br />";
+                    table += "Pretraga po imenu i prezimenu musterije:<br />";
+                    table += "Ime:&nbsp; <input type=\"text\" id=\"imemus\">&nbsp; Prezime:&nbsp;<input type=\"text\" id=\"prezimemus\">&nbsp;&nbsp;<input type=\"submit\" id=\"po_mus\" value=\"Pretrazi\" /><br />";
+                    table += "<br />";
+                    table += "Pretraga po imenu i prezimenu vozaca:<br />"
+                    table += "Ime:&nbsp; <input type=\"text\" id=\"imevoz\">&nbsp; Prezime:&nbsp;<input type=\"text\" id=\"prezimevoz\">&nbsp;&nbsp;<input type=\"submit\" id=\"po_voz\" value=\"Pretrazi\" /><br />";
+                }
+
+                table += "</div>";
+                $("#screen").html(table);
+            });
+
+            $(document).on("click", "#profil", function ()
+            {
+                var profil = "<div><div id= \"error1\" class=\"Red\" ></div > <p style=\"font-weight:bold; font-size:x-large\">Profil<\p>";
+                profil += "<table><tr><td>Korisnicko ime:</td><td> <input type=\"text\" id=\"username\" value=\"" + login_user.KorisnickoIme + "\"/></td></tr>";
+                profil += "<tr><td>Lozinka: </td><td> <input type=\"password\" id=\"password\"value=\"" + login_user.Lozinka + "\" /> </td></tr>";
+                profil += "<tr><td>Ime:</td><td> <input type=\"text\" id=\"name\" value=\"" + login_user.Ime + "\"/> </td></tr>";
+                profil += "<tr><td>Prezime:</td><td> <input type=\"text\" id=\"lastname\" value=\"" + login_user.Prezime + "\"/> </td></tr>";
+                profil += "<tr><td>Pol:</td><td> <select id=\"pol\" >";
+                if (login_user.Pol == "Musko")
+                    profil += "<option value=\"Musko\">Musko</option><option value=\"Zensko\">Zensko</option></select></td></tr>";
+                else
+                    profil += "<option value=\"Zensko\">Zensko</option></select><option value=\"Musko\">Musko</option></td></tr>";
+
+                profil += "<tr><td>JMBG:</td><td> <input type=\"text\" id=\"jmbg\" value=\"" + login_user.JMBG + "\"/> </td></tr>";
+                profil += "<tr><td>Kontakt telefon:</td><td> <input type=\"text\" id=\"tel\" value=\"" + login_user.Telefon + "\"/> </td></tr>";
+                profil += "<tr><td>Email:</td><td> <input type=\"text\" id=\"email\" value=\"" + login_user.Email + "\"/> </td></tr>";
+
+                if (login_user.Uloga == "2") {
+                    if (login_user.Automobil.TipVozila == "0")
+                        profil += "<tr><td>Tip automobila: </td><td> <select id=\"cartipe\"><option value=\"Putnicko_Vozilo\">Putnicko vozilo</option><option value=\"Kombi_Vozilo\">Kombi vozilo</option></select></td></tr>";
+                    else
+                        profil += "<tr><td>Tip automobila: </td><td> <select id=\"cartipe\"><option value=\"Kombi_Vozilo\">Kombi vozilo</option></select><option value=\"Putnicko_Vozilo\">Putnicko vozilo</option></td></tr>";
+
+                    profil += "<tr><td>Godiste automobila: </td><td> <input type=\"text\" value=\"" + login_user.Automobil.GodisteAutomobila + "\" id=\"godiste\" /> </td></tr>";
+                    profil += "<tr><td>Broj tablica:</td><td><input type=\"text\" value=\"" + login_user.Automobil.RegistarskaTablica + "\" id=\"tablice\" /> <br /></td></tr>";
+                    profil += "<tr><td>Lokacija:<br /></td><td><p id=\"kord\">[" + login_user.Lokacija.XKordinata + "," + login_user.Lokacija.YKordinata + "]</p></td></tr></table>";
+                    profil += "<div id=\"map\" style=\"height:400px; text-align: center; width:50%\" class=\"map\"></div><script>";
+                    profil += "var xx; var yy; var map = new ol.Map({layers: [new ol.layer.Tile({";
+                    profil += "source: new ol.source.OSM()})],target: 'map',view: new ol.View({";
+                    profil += "center: [2209717.3810248757,5660306.884676355],zoom: 19})});";
+                    profil += "map.on('click', function (evt) {var coord = map.getCoordinateFromPixel(evt.pixel); coord = ol.proj.toLonLat(evt.coordinate);";
+                    profil += " xx = coord[0]; yy = coord[1]; $(\"#kord\").html(\"[\" + xx + \"  ,  \" + yy + \"]\<br />\");});";
+                    profil += "<\/script>";
+                }
+                else
+                {
+                    profil += "</table >";
+                }
+                profil += "<br /><br /><input type=\"submit\" id=\"update_profile\" value=\"Azuriraj\" /></div>";
+                $("#screen").html(profil);
+            });
+
+            $(document).on("click", "#update_profile", function () {
+                var poruka = "";
+                if (login_user.Uloga == "2") {
+                    if ($("#username").val() == "" || $("#password").val() == "" || $("#name").val() == "" ||
+                        $("#lastname").val() == "" || $("#jmbg").val() == "" || $("#tel").val() == "" ||
+                        $("#email").val() == "" || $("#godiste").val() == "" ||
+                        $("#tablice").val() == "") {
+                        poruka = "Sva polja moraju biti popunjena i lokacija izabrana. ";
+                    }
+                    if (xx == null && yy == null) {
+                        xx = login_user.Lokacija.XKordinata;
+                        yy = login_user.Lokacija.YKordinata;
+                    }
+                }
+                else {
+                    if ($("#username").val() == "" || $("#password").val() == "" || $("#name").val() == "" ||
+                        $("#lastname").val() == "" || $("#jmbg").val() == "" || $("#tel").val() == "" ||
+                        $("#email").val() == "") {
+                        poruka = "Sva polja moraju biti popunjena. ";
+                    }
+                }
+                if ($("#jmbg").val().length != 13) {
+                    poruka += "JMBG mora imati 13 brojeva.";
+                }
+
+                $("#error1").html(poruka);
+
+                if (poruka == "") {
+                    if (login_user.Uloga == "2") {
+                        login_user.KorisnickoIme = $("#username").val();
+                        login_user.Lozinka = $("#password").val();
+                        login_user.Ime = $("#name").val();
+                        login_user.Prezime = $("#lastname").val();
+                        login_user.Pol = $("#pol").val();
+                        login_user.Email = $("#email").val();
+                        login_user.JMBG = $("#jmbg").val();
+                        login_user.Telefon = $("#tel").val();
+                        login_user.Lokacija.XKordinata = xx;
+                        login_user.Lokacija.YKordinata = yy;
+                        login_user.Automobil.GodisteAutomobila = $("#godiste").val();
+                        login_user.Automobil.RegistarskaTablica = $("#tablice").val();
+                        login_user.Automobil.TipVozila = $("#cartipe").val();
+                        var sand = {
+                            KorisnickoIme: $("#username").val(),
+                            Lozinka: $("#password").val(),
+                            Ime: $("#name").val(),
+                            Prezime: $("#lastname").val(),
+                            Pol: $("#pol").val(),
+                            JMBG: $("#jmbg").val(),
+                            Telefon: $("#tel").val(),
+                            Email: $("#email").val(),
+                            Uloga: "Vozac",
+                            Lokacija:
+                            {
+                                XKordinata: xx,
+                                YKordinata: yy,
+                                Adresa:
+                                {
+                                    Ulica: "Petra Bigina",
+                                    Broj: "16",
+                                    Mesto: "Srbobran",
+                                    PozivNaBroj: "21450"
+                                }
+                            },
+                            Automobil:
+                            {
+                                GodisteAutomobila: $("#godiste").val(),
+                                RegistarskaTablica: $("#tablice").val(),
+                                TipVozila: $("#cartipe").val()
+                            }
+                        };
+                    }
+                    else {
+                        login_user.KorisnickoIme = $("#username").val();
+                        login_user.Lozinka = $("#password").val();
+                        login_user.Ime = $("#name").val();
+                        login_user.Prezime = $("#lastname").val();
+                        login_user.Pol = $("#pol").val();
+                        login_user.Email = $("#email").val();
+                        login_user.JMBG = $("#jmbg").val();
+                        login_user.Telefon = $("#tel").val();
+                        login_user.Uloga = login_user.Uloga;
+                        var sand = {
+                            KorisnickoIme: $("#username").val(),
+                            Lozinka: $("#password").val(),
+                            Ime: $("#name").val(),
+                            Prezime: $("#lastname").val(),
+                            Pol: $("#pol").val(),
+                            JMBG: $("#jmbg").val(),
+                            Telefon: $("#tel").val(),
+                            Email: $("#email").val(),
+                            Uloga: login_user.Uloga
+                        };
+                    }
+
+                    $.post("/api/main/updateprofile", sand).done(function (data, status) {
+                        if (status == "success") {
+                            var table = "<div id=\"erorrr\">" + data + "</div><br /><p style=\"font-size:large; font-weight:bold\">Lista voznji<p><div>";
+                            table += "<table border=\"1\"><tr><th>Polazna tacka</th><th>Odrediste</th><th>Musterija</th><th>Vozac</th><th>Dispecer</th><th>Status voznje</th><th>&nbsp;</th><th>&nbsp;</th></tr>";
+                            for (t in login_user.Voznje) {
+                                table += "<tr><td>" + login_user.Voznje[t].PolaznaTacka + "</td><td>" + login_user.Voznje[t].Odrediste + "</td><td>" + login_user.Voznje[t].Musterija + "</td><td>" + login_user.Voznje[t].Vozac + "</td><td>" + login_user.Voznje[t].Dispecer + "</td><td>" + login_user.Voznje[t].StatusVoznje + "</td><td><input type=\"submit\" id=\"obrada_voznje\" value=\"Obrada voznje\" /></td><td><input type=\"submit\" id=\"detalji_voznje\" value=\"Detalji voznje\" /></td></tr>";
+                            }
+                            table += "</table><br />";
+
+                            if (login_user.Uloga == "1") {
+                                table += "<input type=\"submit\" id=\"sve_voznje_sis\" value=\"Sve voznje u sistemu\" /><br /><br />";
+                            } else if (login_user.Uloga == "2") {
+                                table += "<input type=\"submit\" id=\"sve_voznje_cekanje\" value=\"Sve voznje na cekanju\" /><br /><br />";
+                            }
+
+                            table += pocetnastr;
+
+                            if (login_user.Uloga == "1") {
+                                table += "<br />";
+                                table += "Pretraga po imenu i prezimenu musterije:<br />";
+                                table += "Ime:&nbsp; <input type=\"text\" id=\"imemus\">&nbsp; Prezime:&nbsp;<input type=\"text\" id=\"prezimemus\">&nbsp;&nbsp;<input type=\"submit\" id=\"po_mus\" value=\"Pretrazi\" /><br />";
+                                table += "<br />";
+                                table += "Pretraga po imenu i prezimenu vozaca:<br />";
+                                table += "Ime:&nbsp; <input type=\"text\" id=\"imevoz\">&nbsp; Prezime:&nbsp;<input type=\"text\" id=\"prezimevoz\">&nbsp;&nbsp;<input type=\"submit\" id=\"po_voz\" value=\"Pretrazi\" /><br />";
+                            }
+
+                            table += "</div>";
+                            $("#screen").html(table);
+                        }
+                    });
+                }
+            });
         });
     </script>
 </head>
