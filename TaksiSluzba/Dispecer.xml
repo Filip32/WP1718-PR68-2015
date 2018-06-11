@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfKorisnik xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Korisnik>
+    <KorisnickoIme>admin1</KorisnickoIme>
+    <Lozinka>admin1</Lozinka>
+    <Ime>Filip</Ime>
+    <Prezime>Filipovic</Prezime>
+    <Pol>Musko</Pol>
+    <JMBG>1910996800083</JMBG>
+    <Telefon>066/1112446</Telefon>
+    <Email>filipovicf@gmail.com</Email>
+    <Uloga>Dispecer</Uloga>
+    <Voznje />
+  </Korisnik>
+  <Korisnik>
+    <KorisnickoIme>admin2</KorisnickoIme>
+    <Lozinka>admin2</Lozinka>
+    <Ime>Andjela</Ime>
+    <Prezime>Krstic</Prezime>
+    <Pol>Zensko</Pol>
+    <JMBG>1001997800183</JMBG>
+    <Telefon>063/3212546</Telefon>
+    <Email>akrstic@gmail.com</Email>
+    <Uloga>Dispecer</Uloga>
+    <Voznje />
+  </Korisnik>
+  <Korisnik>
+    <KorisnickoIme>admin3</KorisnickoIme>
+    <Lozinka>admin3</Lozinka>
+    <Ime>Stefan</Ime>
+    <Prezime>Filipovic</Prezime>
+    <Pol>Musko</Pol>
+    <JMBG>2609006800084</JMBG>
+    <Telefon>063/7667543</Telefon>
+    <Email>stefan.filipovic@gmail.com</Email>
+    <Uloga>Dispecer</Uloga>
+    <Voznje />
+  </Korisnik>
+</ArrayOfKorisnik>

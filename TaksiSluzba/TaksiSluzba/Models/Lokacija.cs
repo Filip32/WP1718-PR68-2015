@@ -7,8 +7,8 @@ namespace TaksiSluzba.Models
 {
     public class Lokacija
     {
-        public double XKordinata { get; set; }
-        public double YKordinata { get; set; }
+        public string XKordinata { get; set; }
+        public string YKordinata { get; set; }
         public Adresa Adresa { get; set; }
     }
 }

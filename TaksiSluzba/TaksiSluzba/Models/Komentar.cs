@@ -11,6 +11,6 @@ namespace TaksiSluzba.Models
         public DateTime DatumObjave { get; set; }
         public Korisnik Korisnik { get; set; }
         public Voznja Voznja { get; set; }
-        public int OcenaVoznje { get; set; }
+        public string OcenaVoznje { get; set; }
     }
 }

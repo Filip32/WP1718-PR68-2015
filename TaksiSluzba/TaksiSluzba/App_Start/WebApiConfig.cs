@@ -17,7 +17,7 @@ namespace TaksiSluzba
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
+                defaults: new { controller = "main", id = RouteParameter.Optional }
             );
         }
     }

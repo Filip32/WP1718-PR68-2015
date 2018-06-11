@@ -17,5 +17,10 @@ namespace TaksiSluzba.Models
         public string Email { get; set; }
         public Enums.Uloga Uloga { get; set; }
         public List<Voznja> Voznje { get; set; }
+
+        public Korisnik()
+        {
+            Voznje = new List<Voznja>();
+        }
     }
 }

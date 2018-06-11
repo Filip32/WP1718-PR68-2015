@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -7,6 +9,7 @@ namespace TaksiSluzba.Models
 {
     public static class Enums
     {
+        [JsonConverter(typeof(StringEnumConverter))]
         public enum Pol : int
         {
             Musko = 0,

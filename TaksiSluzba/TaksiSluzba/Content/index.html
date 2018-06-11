@@ -1,0 +1,240 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="MainCss.css">
+    <link rel="stylesheet" href="https://openlayers.org/en/v4.1.0/css/ol.css" type="text/css">
+    <meta charset="utf-8" />
+    <title>Taksi Sluzba</title>
+    <script src="https://openlayers.org/en/v4.1.0/build/ol.js"></script>
+    <script src="/Scripts/jquery-1.10.2.js"></script>
+    <script src="/Scripts/FileHelper.js"></script>
+    <script>
+        $(document).ready(function () {
+            var login_user;
+
+            $(document).on("mouseover", "[name='menu']", function () {
+                $(this).css("background-color", "#000080");
+            });
+
+            $(document).on("mouseout", "[name='menu']", function () {
+                $(this).css("background-color", "blue");
+            });
+
+            $(document).on("click", "#register_in", function () {
+                var error = "";
+                if ($("#username").val() == "" || $("#password").val() == "" || $("#name").val() == "" ||
+                    $("#lastname").val() == "" || $("#jmbg").val() == "" || $("#tel").val() == "" || $("#email").val() == "") {
+                    error += "Sva polja moraju da budu popunjena. ";
+                }
+
+                var n = $("#jmbg").val().length;
+                if (n != 13) {
+                    error += " JMBG mora da ima 13 cifara";
+                }
+
+                $("#error1").text(error);
+
+                if (error == "") {
+                    let data = {
+                        KorisnickoIme: $("#username").val(),
+                        Lozinka: $("#password").val(),
+                        Ime: $("#name").val(),
+                        Prezime: $("#lastname").val(),
+                        Pol: $("#pol").val(),
+                        JMBG: $("#jmbg").val(),
+                        Telefon: $("#tel").val(),
+                        Email: $("#email").val()
+                    }
+                    $.post("/api/main/adduser", data).done(function (data, status) {
+                        if (status == "success") {
+                            $("#screen").html(textlog);
+                            $("#error1").text(data);
+                        }
+                    });
+                }
+            });
+
+            $(document).on("click", "#log_in", function () {
+
+                if ($("#username").val() != "" && $("#password").val() != "") {
+                    let data = {
+                        username: $("#username").val(),
+                        password: $("#password").val()
+                    }
+                    $.post("/api/main/loginuser", data).done(function (data, status) {
+                        if (status == "success") {
+                            if (data.KorisnickoIme == null)
+                                $("#error1").text(data);
+                            else {
+                                login_user = data;
+                                var t = "<table><tr>"
+                                if (data.Uloga == 1) {
+                                    t += t1;
+                                }
+                                else if (data.Uloga == 0) {
+                                    t += t2;
+                                }
+                                else if (data.Uloga == 2) {
+                                    t += t3;
+                                }
+                                t += "</tr></table>";
+                                $("#mainmanu").html(t);
+
+                                var table = "<p style=\"font-size:large; font-weight:bold\">Lista voznji<p><div>";
+                                table += "<table border=\"1\"><tr><th>Polazna tacka</th><th>Odrediste</th><th>Musterija</th><th>Vozac</th><th>Dispecer</th><th>Status voznje</th><th>&nbsp;</th><th>&nbsp;</th></tr>";
+                                for (t in login_user.Voznje) {
+                                    table += "<tr><td>" + login_user.Voznje[t].PolaznaTacka + "</td><td>" + login_user.Voznje[t].Odrediste + "</td><td>" + login_user.Voznje[t].Musterija + "</td><td>" + login_user.Voznje[t].Vozac + "</td><td>" + login_user.Voznje[t].Dispecer + "</td><td>" + login_user.Voznje[t].StatusVoznje + "</td><td><input type=\"submit\" id=\"obrada_voznje\" value=\"Obrada voznje\" /></td><td><input type=\"submit\" id=\"detalji_voznje\" value=\"Detalji voznje\" /></td></tr>";
+                                }
+                                table += "</table><br />";
+
+                                if (login_user.Uloga == "1") {
+                                    table += "<input type=\"submit\" id=\"sve_voznje_sis\" value=\"Sve voznje u sistemu\" /><br /><br />";
+                                } else if (login_user.Uloga == "2") {
+                                    table += "<input type=\"submit\" id=\"sve_voznje_cekanje\" value=\"Sve voznje na cekanju\" /><br /><br />";
+                                }
+
+                                table += pocetnastr;
+
+                                if (login_user.Uloga == "1") {
+                                    table += "<br />";
+                                    table += "Pretraga po imenu i prezimenu musterije:<br />";
+                                    table += "Ime:&nbsp; <input type=\"text\" id=\"imemus\">&nbsp; Prezime:&nbsp;<input type=\"text\" id=\"prezimemus\">&nbsp;&nbsp;<input type=\"submit\" id=\"po_mus\" value=\"Pretrazi\" /><br />";
+                                    table += "<br />";
+                                    table += "Pretraga po imenu i prezimenu vozaca:<br />"
+                                    table += "Ime:&nbsp; <input type=\"text\" id=\"imevoz\">&nbsp; Prezime:&nbsp;<input type=\"text\" id=\"prezimevoz\">&nbsp;&nbsp;<input type=\"submit\" id=\"po_voz\" value=\"Pretrazi\" /><br />";
+                                }
+
+                                table += "</div>";
+                                $("#screen").html(table);
+                            }
+                        }
+                    });
+                }
+                else {
+                    $("#error1").text("Korisnicko ime ili lozinka nisu uneti.");
+                }
+
+            });
+
+            $(document).on("click", "#register", function () {
+                $("#screen").html(textreg);
+            });
+
+            $(document).on("click", "#login", function () {
+                $("#screen").html(textlog);
+            });
+
+            $(document).on("click", "#logout", function () {
+                login_user = null;
+                $("#mainmanu").html(menu);
+                $("#screen").html(textlog);
+            });
+
+            $(document).on("click", "#adddriver", function () {
+                $("#screen").html(addDriver);
+            });
+
+            $(document).on("click", "#add_driver_button", function () {
+                var poruka = "";
+                if ($("#username").val() == "" || $("#password").val() == "" || $("#name").val() == "" ||
+                    $("#lastname").val() == "" || $("#jmbg").val() == "" || $("#tel").val() == "" ||
+                    $("#email").val() == "" || $("#godiste").val() == "" || xx == null || yy == null ||
+                    $("#tablice").val() == "")
+                {
+                    poruka = "Sva polja moraju biti popunjena i lokacija izabrana. ";
+                }
+                if ($("#jmbg").val().length != 13)
+                {
+                    poruka += "JMBG mora imati 13 brojeva.";
+                }
+                $("#error1").html(poruka);
+
+                if (poruka == "")
+                {
+                    var sand = {
+                        KorisnickoIme: $("#username").val(),
+                        Lozinka: $("#password").val(),
+                        Ime: $("#name").val(),
+                        Prezime: $("#lastname").val(),
+                        Pol: $("#pol").val(),
+                        JMBG: $("#jmbg").val(),
+                        Telefon: $("#tel").val(),
+                        Email: $("#email").val(),
+                        Lokacija:
+                        {
+                            XKordinata: xx,
+                            YKordinata: yy,
+                            Adresa:
+                            {
+                                Ulica: "Petra Bigina",
+                                Broj: "16",
+                                Mesto: "Srbobran",
+                                PozivNaBroj: "21450"
+                            }
+                        },
+                        Automobil:
+                        {
+                            GodisteAutomobila: $("#godiste").val(),
+                            RegistarskaTablica: $("#tablice").val(),
+                            TipVozila: $("#cartipe").val()
+                        }
+                    };
+
+                    $.post("/api/main/adddriver", sand).done(function (data, status) {
+                        if (status == "success") {
+                            var table = "<div id=\"erorrr\">" + data + "</div><br /><p style=\"font-size:large; font-weight:bold\">Lista voznji<p><div>";
+                            table += "<table border=\"1\"><tr><th>Polazna tacka</th><th>Odrediste</th><th>Musterija</th><th>Vozac</th><th>Dispecer</th><th>Status voznje</th><th>&nbsp;</th><th>&nbsp;</th></tr>";
+                            for (t in login_user.Voznje) {
+                                table += "<tr><td>" + login_user.Voznje[t].PolaznaTacka + "</td><td>" + login_user.Voznje[t].Odrediste + "</td><td>" + login_user.Voznje[t].Musterija + "</td><td>" + login_user.Voznje[t].Vozac + "</td><td>" + login_user.Voznje[t].Dispecer + "</td><td>" + login_user.Voznje[t].StatusVoznje + "</td><td><input type=\"submit\" id=\"obrada_voznje\" value=\"Obrada voznje\" /></td><td><input type=\"submit\" id=\"detalji_voznje\" value=\"Detalji voznje\" /></td></tr>";
+                            }
+                            table += "</table><br />";
+
+                            if (login_user.Uloga == "1") {
+                                table += "<input type=\"submit\" id=\"sve_voznje_sis\" value=\"Sve voznje u sistemu\" /><br /><br />";
+                            } else if (login_user.Uloga == "2") {
+                                table += "<input type=\"submit\" id=\"sve_voznje_cekanje\" value=\"Sve voznje na cekanju\" /><br /><br />";
+                            }
+
+                            table += pocetnastr;
+
+                            if (login_user.Uloga == "1") {
+                                table += "<br />";
+                                table += "Pretraga po imenu i prezimenu musterije:<br />";
+                                table += "Ime:&nbsp; <input type=\"text\" id=\"imemus\">&nbsp; Prezime:&nbsp;<input type=\"text\" id=\"prezimemus\">&nbsp;&nbsp;<input type=\"submit\" id=\"po_mus\" value=\"Pretrazi\" /><br />";
+                                table += "<br />";
+                                table += "Pretraga po imenu i prezimenu vozaca:<br />";
+                                table += "Ime:&nbsp; <input type=\"text\" id=\"imevoz\">&nbsp; Prezime:&nbsp;<input type=\"text\" id=\"prezimevoz\">&nbsp;&nbsp;<input type=\"submit\" id=\"po_voz\" value=\"Pretrazi\" /><br />";
+                            }
+
+                            table += "</div>";
+                            $("#screen").html(table);
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="Naslov">Taksi sluzba</div>
+    <div id="mainmanu" class="Meni">
+        <table>
+            <tr>
+                <td name="menu" id="login">Uloguj se</td>
+                <td>|</td>
+                <td name="menu" id="register">Registracija</td>
+            </tr>
+        </table>
+    </div>
+      
+    <br /><br /><br />
+    <div id="screen">
+    <div class="Centar" id="screenin">
+          <div id="error1" class="Red"></div>
+          Korisnicko ime:<br /> <input type="text" id="username" /><br />
+          Lozinka:<br /> <input type="password" id="password" /><br />
+          <input type="submit" id="log_in" value="Login" />
+    </div>
+    </div>
+</body>
+</html>
