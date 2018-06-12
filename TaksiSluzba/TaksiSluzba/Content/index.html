@@ -12,6 +12,11 @@
         $(document).ready(function () {
             var login_user;
 
+                if (sessionStorage.getItem("loginuser") != null)
+                {
+                    login_user = JSON.parse(sessionStorage.getItem("loginuser"));
+                }
+
             $(document).on("mouseover", "[name='menu']", function () {
                 $(this).css("background-color", "#000080");
             });
@@ -105,6 +110,7 @@
                                 }
 
                                 table += "</div>";
+                                sessionStorage.setItem("loginuser", JSON.stringify(data));
                                 $("#screen").html(table);
                             }
                         }
@@ -126,12 +132,14 @@
 
             $(document).on("click", "#logout", function () {
                 login_user = null;
+                sessionStorage.removeItem("loginuser");
                 $("#mainmanu").html(menu);
                 $("#screen").html(textlog);
             });
 
             $(document).on("click", "#adddriver", function () {
                 $("#screen").html(addDriver);
+          //      sessionStorage.setItem("r", $("body").html());
             });
 
             $(document).on("click", "#add_driver_button", function () {
@@ -238,6 +246,9 @@
                     table += "Pretraga po imenu i prezimenu vozaca:<br />"
                     table += "Ime:&nbsp; <input type=\"text\" id=\"imevoz\">&nbsp; Prezime:&nbsp;<input type=\"text\" id=\"prezimevoz\">&nbsp;&nbsp;<input type=\"submit\" id=\"po_voz\" value=\"Pretrazi\" /><br />";
                 }
+                else if (login_user.Uloga == "2"){
+                    table += "<br /><input type=\"submit\" id=\"sortiraj_udaljenost\" value=\"Sortiraj po udaljenosti\" /><br /><br />";
+                }
 
                 table += "</div>";
                 $("#screen").html(table);
@@ -309,7 +320,7 @@
                 if ($("#jmbg").val().length != 13) {
                     poruka += "JMBG mora imati 13 brojeva.";
                 }
-
+                
                 $("#error1").html(poruka);
 
                 if (poruka == "") {
@@ -407,11 +418,62 @@
                             }
 
                             table += "</div>";
+                            sessionStorage.removeItem("loginuser");
+                            sessionStorage.setItem("loginuser", JSON.stringify(login_user));
                             $("#screen").html(table);
                         }
                     });
                 }
             });
+
+            $(document).on("click", "#adddrive", function ()
+            {
+                var addDrive = "<div><div id= \"error1\" class=\"Red\" ></div ><p style=\"font-weight:bold; font-size:x-large\">Dodaj voznju<\p>";
+                addDrive = "Polaziste:<br />";
+                addDrive += "<p id=\"kord\"></p>";
+                addDrive += "<div id=\"map\" style=\"height:400px; text-align: center; width:50%\" class=\"map\"></div><script>";
+                addDrive += "var xx; var yy; var map = new ol.Map({layers: [new ol.layer.Tile({";
+                addDrive += "source: new ol.source.OSM()})],target: 'map',view: new ol.View({";
+                addDrive += "center: [2209717.3810248757,5660306.884676355],zoom: 19})});";
+                addDrive += "map.on('click', function (evt) {var coord = map.getCoordinateFromPixel(evt.pixel); coord = ol.proj.toLonLat(evt.coordinate);";
+                addDrive += " xx = coord[0]; yy = coord[1]; $(\"#kord\").html(\"[\" + xx + \"  ,  \" + yy + \"]\<br />\");});";
+                addDrive += "<\/script>";
+                addDrive += "<br /><br />Tip automobila: &nbsp;&nbsp;";
+                addDrive += "<select id=\"cartipe\"><option value=\"Putnicko_Vozilo\">Putnicko vozilo</option><option value=\"Kombi_Vozilo\">Kombi vozilo</option></select><br /><br />";
+
+                if (login_user.Uloga == "1")
+                {
+                    addDrive += "Izabrati vozaca: &nbsp;&nbsp;";
+                    addDrive += "<select id=\"vozaci\">";
+                    addDrive += "<option value=\"Putnicko_Vozilo\">Putnicko vozilo</option>";
+                    addDrive += "</select><br /><br />";
+                }
+                addDrive += "<input type=\"submit\" id=\"add_drive_button\" value=\"Dodaj Voznju\" /></div>";
+                $("#screen").html(addDrive);
+            });
+
+            $(document).on("click", "#dodrive", function ()
+            {
+                
+                var blok = "<div><div id= \"error1\" class=\"Red\" ></div > <p style=\"font-weight:bold; font-size:x-large\">Blokirani<\p>";
+                //get metoda za listu blokiranih
+                blok += "<table border=\"1\"><tr><td>Korisnicko ime</td><td>Uloga</td><td>&nbsp;</td></tr>";
+               /* for(k in blokirani)
+                {
+                    blok += "<tr><td>" + blokirani.KorisnickoIme + "</td><td>";
+                    if (blokirani.Uloga == "2")
+                        blok += "Vozac</td>";
+                    else
+                        blok += "Musterija";
+
+                    blok += "<td><input type=\"hidden\" id=\"hiddenname\" value=\"" + blokirani.KorisnickoIme + "\"><input type=\"submit\" id=\"odblokiraj\" value=\"Odblokiraj\"></td></tr>";
+                }*/
+
+                blok += "</table><br/><br/><p style=\"font-weight:bold; font-size:large\">Blokirati unosom korisnickog imena<\p>";
+                blok += "<input type=\"text\" id=\"blokirajpoimenu\"> &nbsp;&nbsp;<input type=\"submit\" id=\"blokiraj\" value=\"Blokiraj\">";
+                $("#screen").html(blok);
+            });
+
         });
     </script>
 </head>

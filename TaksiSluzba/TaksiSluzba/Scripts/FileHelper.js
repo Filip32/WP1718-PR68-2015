@@ -20,7 +20,6 @@ t2 += "<td name=\"menu\" id=\"logout\">Izloguj se</td>";
 
 var t3 = "<td name=\"menu\" id=\"home\">Pocetna strana</td><td>|</td>";
 t3 += "<td name=\"menu\" id=\"profil\">Profil</td><td>|</td>";
-t3 += "<td name=\"menu\" id=\"changeloc\">Izmena lokacija</td><td>|</td>";
 t3 += "<td name=\"menu\" id=\"logout\">Izloguj se</td>";
 
 var textreg = "<div class=\"Centar\"><div id= \"error1\" class=\"Red\" ></div >";

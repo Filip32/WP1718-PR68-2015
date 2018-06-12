@@ -18,6 +18,7 @@ namespace TaksiSluzba.Controllers
         private static List<Korisnik> adminlist = new List<Korisnik>();
         private static List<Vozac> vozaclist = new List<Vozac>();
         private static List<Korisnik> korisniklist = new List<Korisnik>();
+        private static Dictionary<string, Enums.Uloga> ulokovani = new Dictionary<string, Enums.Uloga>();
 
         [HttpGet, Route("")]
         public RedirectResult Index()
@@ -37,21 +38,25 @@ namespace TaksiSluzba.Controllers
             if (adminlist.Exists(i => i.KorisnickoIme == user.Username && i.Lozinka == user.Password))
             {
                 korisnik = adminlist.Find(i => i.KorisnickoIme == user.Username);
+                ulokovani.Add(korisnik.KorisnickoIme, korisnik.Uloga);
                 return Ok(korisnik);
             }
             else if (vozaclist.Exists(i => i.KorisnickoIme == user.Username && i.Lozinka == user.Password))
             {
                 korisnik = vozaclist.Find(i => i.KorisnickoIme == user.Username);
+                ulokovani.Add(korisnik.KorisnickoIme, korisnik.Uloga);
                 return Ok(korisnik);
             }
             else if (korisniklist.Exists(i => i.KorisnickoIme == user.Username && i.Lozinka == user.Password))
             {
                 korisnik = korisniklist.Find(i => i.KorisnickoIme == user.Username);
+                ulokovani.Add(korisnik.KorisnickoIme, korisnik.Uloga);
                 return Ok(korisnik);
             }
 
             return Ok("Ne postoji trazeni korisnik ili je pogresna lozinka.");
         }
+
 
         [HttpPost]
         [Route("api/main/adduser")]
@@ -97,6 +102,7 @@ namespace TaksiSluzba.Controllers
         [Route("api/main/updateprofile")]
         public IHttpActionResult UpdateProfile(Vozac osoba)
         {
+            
             if (osoba.Uloga == Enums.Uloga.Vozac)
             {
                 Vozac v = vozaclist.Find(i => i.KorisnickoIme == osoba.KorisnickoIme);

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfKorisnik xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Korisnik>
+    <KorisnickoIme>musterija1</KorisnickoIme>
+    <Lozinka>musterija1</Lozinka>
+    <Ime>Stefan</Ime>
+    <Prezime>Banjac</Prezime>
+    <Pol>Musko</Pol>
+    <JMBG>2407996800045</JMBG>
+    <Telefon>062/2445432</Telefon>
+    <Email>banjac@gmail.com</Email>
+    <Uloga>Musterija</Uloga>
+    <Voznje />
+  </Korisnik>
+</ArrayOfKorisnik>
