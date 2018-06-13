@@ -17,6 +17,16 @@
                     login_user = JSON.parse(sessionStorage.getItem("loginuser"));
                 }
 
+                if (sessionStorage.getItem("manu") != null)
+                {
+                    $("#mainmanu").html(sessionStorage.getItem("manu"));
+                }
+
+                if (sessionStorage.getItem("screen") != null)
+                {
+                    $("#screen").html(sessionStorage.getItem("screen"));
+                }
+
             $(document).on("mouseover", "[name='menu']", function () {
                 $(this).css("background-color", "#000080");
             });
@@ -52,6 +62,7 @@
                     }
                     $.post("/api/main/adduser", data).done(function (data, status) {
                         if (status == "success") {
+                            sessionStorage.setItem("screen", textlog);
                             $("#screen").html(textlog);
                             $("#error1").text(data);
                         }
@@ -83,6 +94,7 @@
                                     t += t3;
                                 }
                                 t += "</tr></table>";
+                                sessionStorage.setItem("manu",t);
                                 $("#mainmanu").html(t);
 
                                 var table = "<p style=\"font-size:large; font-weight:bold\">Lista voznji<p><div>";
@@ -108,9 +120,13 @@
                                     table += "Pretraga po imenu i prezimenu vozaca:<br />"
                                     table += "Ime:&nbsp; <input type=\"text\" id=\"imevoz\">&nbsp; Prezime:&nbsp;<input type=\"text\" id=\"prezimevoz\">&nbsp;&nbsp;<input type=\"submit\" id=\"po_voz\" value=\"Pretrazi\" /><br />";
                                 }
+                                else if (login_user.Uloga == "2") {
+                                    table += "<br /><input type=\"submit\" id=\"sortiraj_udaljenost\" value=\"Sortiraj po udaljenosti\" /><br /><br />";
+                                }
 
                                 table += "</div>";
                                 sessionStorage.setItem("loginuser", JSON.stringify(data));
+                                sessionStorage.setItem("screen", table);
                                 $("#screen").html(table);
                             }
                         }
@@ -123,23 +139,30 @@
             });
 
             $(document).on("click", "#register", function () {
+                sessionStorage.setItem("screen", textreg);
                 $("#screen").html(textreg);
             });
 
             $(document).on("click", "#login", function () {
+                sessionStorage.setItem("screen", textlog);
                 $("#screen").html(textlog);
             });
 
             $(document).on("click", "#logout", function () {
+                let un = { Username: login_user.KorisnickoIme };
                 login_user = null;
+                $.post("/api/main/logoutuser", un);
+
                 sessionStorage.removeItem("loginuser");
                 $("#mainmanu").html(menu);
+                sessionStorage.setItem("screen", textlog);
+                sessionStorage.setItem("manu", $("#mainmanu").html());
                 $("#screen").html(textlog);
             });
 
             $(document).on("click", "#adddriver", function () {
                 $("#screen").html(addDriver);
-          //      sessionStorage.setItem("r", $("body").html());
+                sessionStorage.setItem("screen", addDriver);
             });
 
             $(document).on("click", "#add_driver_button", function () {
@@ -215,6 +238,7 @@
                             }
 
                             table += "</div>";
+                            sessionStorage.setItem("screen", table);
                             $("#screen").html(table);
                         }
                     });
@@ -251,6 +275,7 @@
                 }
 
                 table += "</div>";
+                sessionStorage.setItem("screen", table);
                 $("#screen").html(table);
             });
 
@@ -293,6 +318,7 @@
                     profil += "</table >";
                 }
                 profil += "<br /><br /><input type=\"submit\" id=\"update_profile\" value=\"Azuriraj\" /></div>";
+                sessionStorage.setItem("screen", profil);
                 $("#screen").html(profil);
             });
 
@@ -420,6 +446,7 @@
                             table += "</div>";
                             sessionStorage.removeItem("loginuser");
                             sessionStorage.setItem("loginuser", JSON.stringify(login_user));
+                            sessionStorage.setItem("screen", table);
                             $("#screen").html(table);
                         }
                     });
@@ -449,6 +476,7 @@
                     addDrive += "</select><br /><br />";
                 }
                 addDrive += "<input type=\"submit\" id=\"add_drive_button\" value=\"Dodaj Voznju\" /></div>";
+                sessionStorage.setItem("screen", addDrive);
                 $("#screen").html(addDrive);
             });
 
@@ -471,6 +499,7 @@
 
                 blok += "</table><br/><br/><p style=\"font-weight:bold; font-size:large\">Blokirati unosom korisnickog imena<\p>";
                 blok += "<input type=\"text\" id=\"blokirajpoimenu\"> &nbsp;&nbsp;<input type=\"submit\" id=\"blokiraj\" value=\"Blokiraj\">";
+                sessionStorage.setItem("screen", blok);
                 $("#screen").html(blok);
             });
 
@@ -495,7 +524,7 @@
           <div id="error1" class="Red"></div>
           Korisnicko ime:<br /> <input type="text" id="username" /><br />
           Lozinka:<br /> <input type="password" id="password" /><br />
-          <input type="submit" id="log_in" value="Login" />
+          <input type="submit" id="log_in" value="Uloguj se" />
     </div>
     </div>
 </body>

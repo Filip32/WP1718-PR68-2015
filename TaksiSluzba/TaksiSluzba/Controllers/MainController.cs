@@ -34,6 +34,11 @@ namespace TaksiSluzba.Controllers
         [Route("api/main/loginuser")]
         public IHttpActionResult LoginUser(LoginUserClass user)
         {
+            if (ulokovani.ContainsKey(user.Username))
+            {
+                return Ok("Dati korisnik je vec ulogovan.");
+            }
+
             Korisnik korisnik;
             if (adminlist.Exists(i => i.KorisnickoIme == user.Username && i.Lozinka == user.Password))
             {
@@ -132,6 +137,14 @@ namespace TaksiSluzba.Controllers
                 }
                 return Ok("Uspesno azuriran profil.");
             }
+        }
+
+        [HttpPost]
+        [Route("api/main/logoutuser")]
+        public IHttpActionResult LogoutUser(LoginUserClass Username)
+        {
+            ulokovani.Remove(Username.Username);
+            return Ok();
         }
 
         private void WriteToXMl(Enums.Uloga uloga)
