@@ -7,9 +7,7 @@ namespace TaksiSluzba.Models
 {
     public class Adresa
     {
-        public string Ulica { get; set; }
-        public string Broj { get; set; }
+        public string Ulica_broj { get; set; }
         public string Mesto { get; set; }
-        public string PozivNaBroj { get; set; }
     }
 }

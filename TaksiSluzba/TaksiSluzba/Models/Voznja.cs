@@ -7,6 +7,7 @@ namespace TaksiSluzba.Models
 {
     public class Voznja
     {
+        public string Id { get; set; }
         public DateTime VremePorudjbine { get; set; }
         public Lokacija PolaznaTacka { get; set; }
         public Enums.TipVozila TipVozila { get; set; }

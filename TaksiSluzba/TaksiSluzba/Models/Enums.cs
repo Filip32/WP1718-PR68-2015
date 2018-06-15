@@ -31,7 +31,8 @@ namespace TaksiSluzba.Models
             Prihvacena = 3,
             Otkazana = 4,
             Neuspesna = 5,
-            Uspesna = 6
+            Uspesna = 6,
+            U_toku = 7
         };
 
         public enum TipVozila : int

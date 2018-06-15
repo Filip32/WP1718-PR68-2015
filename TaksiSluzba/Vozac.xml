@@ -1,29 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfVozac xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Vozac>
+    <Id>3</Id>
     <KorisnickoIme>vozac1</KorisnickoIme>
     <Lozinka>vozac1</Lozinka>
-    <Ime>Sale</Ime>
-    <Prezime>Stanic</Prezime>
+    <Ime>Filip</Ime>
+    <Prezime>Filipovic</Prezime>
     <Pol>Musko</Pol>
-    <JMBG>1710996800083</JMBG>
-    <Telefon>064/2547543</Telefon>
-    <Email>sale@gmail.com</Email>
+    <JMBG>1910996800083</JMBG>
+    <Telefon>066/9022233</Telefon>
+    <Email>filipovic.filip37@gmail.com</Email>
     <Uloga>Vozac</Uloga>
     <Voznje />
     <Lokacija>
-      <XKordinata>19.850214217442478</XKordinata>
-      <YKordinata>45.24585404603471</YKordinata>
+      <XKordinata>45.54495276302757</XKordinata>
+      <YKordinata>19.80154561072277</YKordinata>
       <Adresa>
-        <Ulica>Petra Bigina</Ulica>
-        <Broj>16</Broj>
-        <Mesto>Srbobran</Mesto>
-        <PozivNaBroj>21450</PozivNaBroj>
+        <Ulica_broj>Petra Bigina 16</Ulica_broj>
+        <Mesto>Srbobran 21450</Mesto>
+      </Adresa>
+    </Lokacija>
+    <Automobil>
+      <GodisteAutomobila>2012</GodisteAutomobila>
+      <RegistarskaTablica>NS320-WL</RegistarskaTablica>
+      <BrTaksija>3_vozac1</BrTaksija>
+      <TipVozila>Putnicko_Vozilo</TipVozila>
+    </Automobil>
+  </Vozac>
+  <Vozac>
+    <Id>6</Id>
+    <KorisnickoIme>vozac2</KorisnickoIme>
+    <Lozinka>vozac2</Lozinka>
+    <Ime>Sima</Ime>
+    <Prezime>Bajic</Prezime>
+    <Pol>Musko</Pol>
+    <JMBG>1810995800083</JMBG>
+    <Telefon>064/2321223</Telefon>
+    <Email>bajic@gmail.com</Email>
+    <Uloga>Vozac</Uloga>
+    <Voznje />
+    <Lokacija>
+      <XKordinata>45.243987088127724</XKordinata>
+      <YKordinata>19.847591940756843</YKordinata>
+      <Adresa>
+        <Ulica_broj>Dr. Ilije Djuricica 15</Ulica_broj>
+        <Mesto>Novi Sad 21000</Mesto>
+      </Adresa>
+    </Lokacija>
+    <Automobil>
+      <GodisteAutomobila>2010</GodisteAutomobila>
+      <RegistarskaTablica>NS334-KL</RegistarskaTablica>
+      <BrTaksija>6_vozac2</BrTaksija>
+      <TipVozila>Putnicko_Vozilo</TipVozila>
+    </Automobil>
+  </Vozac>
+   <Vozac>
+    <Id>7</Id>
+    <KorisnickoIme>vozac3</KorisnickoIme>
+    <Lozinka>vozac3</Lozinka>
+    <Ime>Pera</Ime>
+    <Prezime>Petrovic</Prezime>
+    <Pol>Musko</Pol>
+    <JMBG>1510997800033</JMBG>
+    <Telefon>062/4224223</Telefon>
+    <Email>petrovic@gmail.com</Email>
+    <Uloga>Vozac</Uloga>
+    <Voznje />
+    <Lokacija>
+      <XKordinata>45.243987088127738</XKordinata>
+      <YKordinata>19.847591940756882</YKordinata>
+      <Adresa>
+        <Ulica_broj>Dr. Ilije Djuricica 18</Ulica_broj>
+        <Mesto>Novi Sad 21000</Mesto>
       </Adresa>
     </Lokacija>
     <Automobil>
       <GodisteAutomobila>2011</GodisteAutomobila>
-      <RegistarskaTablica>NS434-WL</RegistarskaTablica>
+      <RegistarskaTablica>NS345-WS</RegistarskaTablica>
+      <BrTaksija>7_vozac3</BrTaksija>
       <TipVozila>Putnicko_Vozilo</TipVozila>
     </Automobil>
   </Vozac>

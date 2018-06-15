@@ -7,6 +7,7 @@ namespace TaksiSluzba.Models
 {
     public class Korisnik
     {  
+        public string Id { get; set; }
         public string KorisnickoIme {get; set;}
         public string Lozinka { get; set; }
         public string Ime { get; set; }

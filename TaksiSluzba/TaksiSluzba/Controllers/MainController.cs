@@ -18,7 +18,7 @@ namespace TaksiSluzba.Controllers
         private static List<Korisnik> adminlist = new List<Korisnik>();
         private static List<Vozac> vozaclist = new List<Vozac>();
         private static List<Korisnik> korisniklist = new List<Korisnik>();
-        private static Dictionary<string, Enums.Uloga> ulokovani = new Dictionary<string, Enums.Uloga>();
+        private static Dictionary<string, string> ulokovani = new Dictionary<string, string>();
 
         [HttpGet, Route("")]
         public RedirectResult Index()
@@ -30,40 +30,38 @@ namespace TaksiSluzba.Controllers
             return Redirect(requestUri.AbsoluteUri + "Content/index.html");
         }
 
-        [HttpPost]
+        [HttpGet]
         [Route("api/main/loginuser")]
-        public IHttpActionResult LoginUser(LoginUserClass user)
+        public IHttpActionResult LoginUser([FromUri] LoginUserClass user)
         {
             if (ulokovani.ContainsKey(user.Username))
             {
-                return Ok("Dati korisnik je vec ulogovan.");
+                return Ok("Dati korisnik je već ulogovan.");
             }
 
             Korisnik korisnik;
             if (adminlist.Exists(i => i.KorisnickoIme == user.Username && i.Lozinka == user.Password))
             {
                 korisnik = adminlist.Find(i => i.KorisnickoIme == user.Username);
-                ulokovani.Add(korisnik.KorisnickoIme, korisnik.Uloga);
+                ulokovani.Add(korisnik.Id,korisnik.KorisnickoIme);
                 return Ok(korisnik);
             }
             else if (vozaclist.Exists(i => i.KorisnickoIme == user.Username && i.Lozinka == user.Password))
             {
                 korisnik = vozaclist.Find(i => i.KorisnickoIme == user.Username);
-                ulokovani.Add(korisnik.KorisnickoIme, korisnik.Uloga);
+                ulokovani.Add(korisnik.Id, korisnik.KorisnickoIme);
                 return Ok(korisnik);
             }
             else if (korisniklist.Exists(i => i.KorisnickoIme == user.Username && i.Lozinka == user.Password))
             {
                 korisnik = korisniklist.Find(i => i.KorisnickoIme == user.Username);
-                ulokovani.Add(korisnik.KorisnickoIme, korisnik.Uloga);
+                ulokovani.Add(korisnik.Id, korisnik.KorisnickoIme);
                 return Ok(korisnik);
             }
 
-            return Ok("Ne postoji trazeni korisnik ili je pogresna lozinka.");
+            return Ok("Ne postoji traženi korisnik ili je pogrešna lozinka.");
         }
 
-
-        [HttpPost]
         [Route("api/main/adduser")]
         public IHttpActionResult AddUser(Korisnik korisnik)
         { 
@@ -71,79 +69,86 @@ namespace TaksiSluzba.Controllers
                vozaclist.Exists(i => i.KorisnickoIme == korisnik.KorisnickoIme) ||
                adminlist.Exists(i => i.KorisnickoIme == korisnik.KorisnickoIme))
             {
-                return Ok("Korisnicko ime je vec zauzeto.");
+                return Ok("Korisničko ime je već zauzeto.");
             }
 
                 korisnik.Uloga = Enums.Uloga.Musterija;
+                korisnik.Id = (adminlist.Count + vozaclist.Count + korisniklist.Count + 1).ToString(); 
                 korisniklist.Add(korisnik);
                 WriteToXMl(Enums.Uloga.Musterija);
 
-            return Ok("Uspesno ste se registrovali.");
+            return Ok("Uspešno ste se registrovali.");
         }
 
-        [HttpPost]
         [Route("api/main/adddriver")]
         public IHttpActionResult AddDriver(Vozac vozac)
         {
             if (vozaclist.Exists(i => i.KorisnickoIme == vozac.KorisnickoIme))
             {
-                return Ok("Greska! Korisnicko ime vec postoji.");
+                return Ok("Greška! Korisničko ime već postoji.");
             }
             else if (korisniklist.Exists(i => i.KorisnickoIme == vozac.KorisnickoIme))
             {
-                return Ok("Greska! Korisnicko ime vec postoji.");
+                return Ok("Greška! Korisničko ime već postoji.");
             }
             else if (adminlist.Exists(i => i.KorisnickoIme == vozac.KorisnickoIme))
             {
-                return Ok("Greska! Korisnicko ime vec postoji.");
+                return Ok("Greška! Korisničko ime već postoji.");
             }
             vozac.Uloga = Enums.Uloga.Vozac;
+            vozac.Id = (adminlist.Count + vozaclist.Count + korisniklist.Count + 1).ToString();
+            vozac.Automobil.BrTaksija = vozac.Id + "_" + vozac.KorisnickoIme;
             vozaclist.Add(vozac);
             WriteToXMl(Enums.Uloga.Vozac);
-            return Ok("Vozac je dodat.");
+            return Ok("Vozač je dodat.");
         }
-
-        [HttpPost]
+        
         [Route("api/main/updateprofile")]
         public IHttpActionResult UpdateProfile(Vozac osoba)
-        {
-            
+        {   
             if (osoba.Uloga == Enums.Uloga.Vozac)
             {
-                Vozac v = vozaclist.Find(i => i.KorisnickoIme == osoba.KorisnickoIme);
+                Vozac v = vozaclist.Find(i => i.Id == osoba.Id);
                 vozaclist.Remove(v);
                 vozaclist.Add(osoba);
                 WriteToXMl(Enums.Uloga.Vozac);
 
-                return Ok("Uspesno azuriran profil.");
+                return Ok("Uspešno ažuriran profil.");
             }
             else
             {
-                string name = osoba.KorisnickoIme;
-                Korisnik k = new Korisnik() { KorisnickoIme = osoba.KorisnickoIme, Lozinka = osoba.Lozinka, Ime = osoba.Ime, Prezime = osoba.Prezime, Pol = osoba.Pol, Email = osoba.Email, JMBG = osoba.JMBG, Telefon = osoba.Telefon, Uloga = osoba.Uloga, Voznje = osoba.Voznje };
+                string ID = osoba.Id;
+                Korisnik k = new Korisnik() { Id = ID, KorisnickoIme = osoba.KorisnickoIme, Lozinka = osoba.Lozinka, Ime = osoba.Ime, Prezime = osoba.Prezime, Pol = osoba.Pol, Email = osoba.Email, JMBG = osoba.JMBG, Telefon = osoba.Telefon, Uloga = osoba.Uloga, Voznje = osoba.Voznje };
                 if (k.Uloga == Enums.Uloga.Dispecer)
                 {
-                    Korisnik v = adminlist.Find(i => i.KorisnickoIme == name);
+                    Korisnik v = adminlist.Find(i => i.Id == ID);
                     adminlist.Remove(v);
                     adminlist.Add(k);
                     WriteToXMl(Enums.Uloga.Dispecer);
                 }
                 else
                 {
-                    Korisnik v = korisniklist.Find(i => i.KorisnickoIme == name);
+                    Korisnik v = korisniklist.Find(i => i.Id == ID);
                     korisniklist.Remove(v);
                     korisniklist.Add(k);
                     WriteToXMl(Enums.Uloga.Musterija);
                 }
-                return Ok("Uspesno azuriran profil.");
+                return Ok("Uspešno ažuriran profil.");
             }
         }
 
-        [HttpPost]
-        [Route("api/main/logoutuser")]
+        [HttpDelete, Route("api/main/logoutuser")]
         public IHttpActionResult LogoutUser(LoginUserClass Username)
         {
-            ulokovani.Remove(Username.Username);
+            foreach (string key in ulokovani.Keys)
+            {
+                if (Username.Username == ulokovani[key])
+                {
+                    ulokovani.Remove(key);
+                    break;
+                }
+            }
+
             return Ok();
         }
 

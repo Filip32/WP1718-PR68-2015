@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfKorisnik xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Korisnik>
+    <Id>4</Id>
     <KorisnickoIme>musterija1</KorisnickoIme>
     <Lozinka>musterija1</Lozinka>
     <Ime>Stefan</Ime>
@@ -9,6 +10,19 @@
     <JMBG>2407996800045</JMBG>
     <Telefon>062/2445432</Telefon>
     <Email>banjac@gmail.com</Email>
+    <Uloga>Musterija</Uloga>
+    <Voznje />
+  </Korisnik>
+  <Korisnik>
+    <Id>5</Id>
+    <KorisnickoIme>musterija2</KorisnickoIme>
+    <Lozinka>musterija2</Lozinka>
+    <Ime>Miki</Ime>
+    <Prezime>Milosevic</Prezime>
+    <Pol>Musko</Pol>
+    <JMBG>1805993800034</JMBG>
+    <Telefon>065/4354443</Telefon>
+    <Email>miki@gmail.com</Email>
     <Uloga>Musterija</Uloga>
     <Voznje />
   </Korisnik>
