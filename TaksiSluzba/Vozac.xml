@@ -1,33 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfVozac xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Vozac>
-    <Id>3</Id>
-    <KorisnickoIme>vozac1</KorisnickoIme>
-    <Lozinka>vozac1</Lozinka>
-    <Ime>Filip</Ime>
-    <Prezime>Filipovic</Prezime>
-    <Pol>Musko</Pol>
-    <JMBG>1910996800083</JMBG>
-    <Telefon>066/9022233</Telefon>
-    <Email>filipovic.filip37@gmail.com</Email>
-    <Uloga>Vozac</Uloga>
-    <Voznje />
-    <Lokacija>
-      <XKordinata>45.54495276302757</XKordinata>
-      <YKordinata>19.80154561072277</YKordinata>
-      <Adresa>
-        <Ulica_broj>Petra Bigina 16</Ulica_broj>
-        <Mesto>Srbobran 21450</Mesto>
-      </Adresa>
-    </Lokacija>
-    <Automobil>
-      <GodisteAutomobila>2012</GodisteAutomobila>
-      <RegistarskaTablica>NS320-WL</RegistarskaTablica>
-      <BrTaksija>3_vozac1</BrTaksija>
-      <TipVozila>Putnicko_Vozilo</TipVozila>
-    </Automobil>
-  </Vozac>
-  <Vozac>
     <Id>6</Id>
     <KorisnickoIme>vozac2</KorisnickoIme>
     <Lozinka>vozac2</Lozinka>
@@ -54,7 +27,7 @@
       <TipVozila>Putnicko_Vozilo</TipVozila>
     </Automobil>
   </Vozac>
-   <Vozac>
+  <Vozac>
     <Id>7</Id>
     <KorisnickoIme>vozac3</KorisnickoIme>
     <Lozinka>vozac3</Lozinka>
@@ -67,8 +40,8 @@
     <Uloga>Vozac</Uloga>
     <Voznje />
     <Lokacija>
-      <XKordinata>45.243987088127738</XKordinata>
-      <YKordinata>19.847591940756882</YKordinata>
+      <XKordinata>45.243987188127738</XKordinata>
+      <YKordinata>19.847691940756882</YKordinata>
       <Adresa>
         <Ulica_broj>Dr. Ilije Djuricica 18</Ulica_broj>
         <Mesto>Novi Sad 21000</Mesto>
@@ -79,6 +52,72 @@
       <RegistarskaTablica>NS345-WS</RegistarskaTablica>
       <BrTaksija>7_vozac3</BrTaksija>
       <TipVozila>Putnicko_Vozilo</TipVozila>
+    </Automobil>
+  </Vozac>
+  <Vozac>
+    <Id>8</Id>
+    <KorisnickoIme>vozac5</KorisnickoIme>
+    <Lozinka>vozac5</Lozinka>
+    <Ime>Sima</Ime>
+    <Prezime>Simic</Prezime>
+    <Pol>Musko</Pol>
+    <JMBG>1305997800034</JMBG>
+    <Telefon>064/2322213</Telefon>
+    <Email>simic@gmail.com</Email>
+    <Uloga>Vozac</Uloga>
+    <Voznje />
+    <Lokacija>
+      <XKordinata>19.853630010622943</XKordinata>
+      <YKordinata>45.24597868376122</YKordinata>
+      <Adresa>
+        <Ulica_broj>Dr Zorana Djindjica</Ulica_broj>
+        <Mesto>Novi Sad 21101</Mesto>
+      </Adresa>
+    </Lokacija>
+    <Automobil>
+      <GodisteAutomobila>2016</GodisteAutomobila>
+      <RegistarskaTablica>BG453-MN</RegistarskaTablica>
+      <BrTaksija>8_vozac5</BrTaksija>
+      <TipVozila>Kombi_Vozilo</TipVozila>
+    </Automobil>
+  </Vozac>
+  <Vozac>
+    <Id>3</Id>
+    <KorisnickoIme>vozac1</KorisnickoIme>
+    <Lozinka>vozac1</Lozinka>
+    <Ime>Filip</Ime>
+    <Prezime>Filipovic</Prezime>
+    <Pol>Musko</Pol>
+    <JMBG>1910996800083</JMBG>
+    <Telefon>066/9022233</Telefon>
+    <Email>filipovic.filip32@gmail.com</Email>
+    <Uloga>Vozac</Uloga>
+    <Voznje>
+      <Voznja>
+        <Id>0vozac1</Id>
+        <VremePorudjbine>2018-06-17T00:11:52.695898+02:00</VremePorudjbine>
+        <PolaznaTacka>
+          <XKordinata>19.84156945778747</XKordinata>
+          <YKordinata>45.2494892007264</YKordinata>
+          <Adresa>
+            <Ulica_broj>Sremska 2</Ulica_broj>
+            <Mesto>Novi Sad 21000</Mesto>
+          </Adresa>
+        </PolaznaTacka>
+        <TipVozila>Putnicko_Vozilo</TipVozila>
+        <Dispecer>admin1</Dispecer>
+        <Vozac>vozac1</Vozac>
+        <StatusVoznje>Formirana</StatusVoznje>
+      </Voznja>
+    </Voznje>
+    <Lokacija>
+      <XKordinata>19.85090392816816</XKordinata>
+      <YKordinata>45.248240503345755</YKordinata>
+    </Lokacija>
+    <Automobil>
+      <GodisteAutomobila>2015</GodisteAutomobila>
+      <RegistarskaTablica>NS320-WL</RegistarskaTablica>
+      <TipVozila>Kombi_Vozilo</TipVozila>
     </Automobil>
   </Vozac>
 </ArrayOfVozac>

@@ -53,14 +53,15 @@ pocetnastr += "Pretraga po ceni:<br />";
 pocetnastr += "Od:&nbsp; <input type=\"text\" id=\"odcena\">&nbsp;&nbsp;&nbsp; Do:&nbsp;<input type=\"text\" id=\"docena\">&nbsp;&nbsp;<input type=\"submit\" id=\"po_ceni_oddo\" value=\"Pretraži\" /><br />";
 
 var map = "<div id=\"map\" style=\"height:400px; text-align: center; width:50%\" class=\"map\"></div><script>";
-map += "var xx; var yy; var add;";
+map += "var xx; var yy; var ulica_broj; var grad;";
 map += "function reverseGeocode(coords) {";
 map += "fetch('http://nominatim.openstreetmap.org/reverse?format=json&lon=' + coords[0] + '&lat=' + coords[1])";
-map += ".then(function(response) {return response.json();}).then(function(json) {add = json.address;console.log(add);$(\"#kord\").html(add.city);});}";
+map += ".then(function(response) {return response.json();}).then(function(json) {var add = json.address;console.log(add);";
+map += "ulica_broj = add.road; if(add.house_number != null){ulica_broj += \" \"+add.house_number;}grad = add.city + \" \" + add.postcode; $(\"#kord\").html(\"[\" + ulica_broj +\" , \"+ grad + \"]\");});}";
 map += "var map = new ol.Map({layers: [new ol.layer.Tile({";
 map += "source: new ol.source.OSM()})],target: 'map',view: new ol.View({";
 map += "center: [2209717.3810248757,5660306.884676355],zoom: 19})});";
-map += "map.on('click', function (evt) {var coord = ol.proj.toLonLat(evt.coordinate); reverseGeocode(coord);";
+map += "map.on('dblclick', function (evt) {var coord = ol.proj.toLonLat(evt.coordinate); reverseGeocode(coord);";
 map += " xx = coord[0]; yy = coord[1];});";
 map += "<\/script>";
 

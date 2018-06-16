@@ -11,10 +11,10 @@ namespace TaksiSluzba.Models
         public DateTime VremePorudjbine { get; set; }
         public Lokacija PolaznaTacka { get; set; }
         public Enums.TipVozila TipVozila { get; set; }
-        public Korisnik Musterija { get; set; }
+        public string Musterija { get; set; } //Korisnik
         public Lokacija Odrediste { get; set; }
-        public Korisnik Dispecer { get; set; }
-        public Vozac Vozac { get; set; }
+        public string Dispecer { get; set; } //Dispcer
+        public string Vozac { get; set; } //Vozac
         public string Iznos { get; set; }
         public Komentar Komentar { get; set; }
         public Enums.StatusVoznje StatusVoznje { get; set; }

@@ -4,12 +4,12 @@
     <Id>2</Id>
     <KorisnickoIme>admin2</KorisnickoIme>
     <Lozinka>admin2</Lozinka>
-    <Ime>Stefan</Ime>
-    <Prezime>Filipovic</Prezime>
-    <Pol>Musko</Pol>
-    <JMBG>2609006800084</JMBG>
-    <Telefon>063/7667543</Telefon>
-    <Email>stefan.filipovic@gmail.com</Email>
+    <Ime>Andjela</Ime>
+    <Prezime>Krstic</Prezime>
+    <Pol>Zensko</Pol>
+    <JMBG>1001997800183</JMBG>
+    <Telefon>063/3212546</Telefon>
+    <Email>akrstic@gmail.com</Email>
     <Uloga>Dispecer</Uloga>
     <Voznje />
   </Korisnik>
@@ -17,13 +17,30 @@
     <Id>1</Id>
     <KorisnickoIme>admin1</KorisnickoIme>
     <Lozinka>admin1</Lozinka>
-    <Ime>Andjela</Ime>
-    <Prezime>Krstic</Prezime>
-    <Pol>Zensko</Pol>
-    <JMBG>1001997800183</JMBG>
-    <Telefon>063/3212546</Telefon>
-    <Email>akrstica@gmail.com</Email>
+    <Ime>Filip</Ime>
+    <Prezime>Filipovic</Prezime>
+    <Pol>Musko</Pol>
+    <JMBG>1910996800083</JMBG>
+    <Telefon>066/1112445</Telefon>
+    <Email>filipovicfilip@gmail.com</Email>
     <Uloga>Dispecer</Uloga>
-    <Voznje />
+    <Voznje>
+      <Voznja>
+        <Id>0vozac1</Id>
+        <VremePorudjbine>2018-06-17T00:11:52.695898+02:00</VremePorudjbine>
+        <PolaznaTacka>
+          <XKordinata>19.84156945778747</XKordinata>
+          <YKordinata>45.2494892007264</YKordinata>
+          <Adresa>
+            <Ulica_broj>Sremska 2</Ulica_broj>
+            <Mesto>Novi Sad 21000</Mesto>
+          </Adresa>
+        </PolaznaTacka>
+        <TipVozila>Putnicko_Vozilo</TipVozila>
+        <Dispecer>admin1</Dispecer>
+        <Vozac>vozac1</Vozac>
+        <StatusVoznje>Formirana</StatusVoznje>
+      </Voznja>
+    </Voznje>
   </Korisnik>
 </ArrayOfKorisnik>
