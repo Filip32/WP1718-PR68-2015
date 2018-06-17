@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ArrayOfString>
+    <string>3</string>
+    <string>musterija1</string>
+    <string>Musterija</string>
+  </ArrayOfString>
+  <ArrayOfString>
+    <string>4</string>
+    <string>musterija2</string>
+    <string>Musterija</string>
+  </ArrayOfString>
+  <ArrayOfString>
+    <string>5</string>
+    <string>vozac1</string>
+    <string>Vozac</string>
+  </ArrayOfString>
+</ArrayOfArrayOfString>

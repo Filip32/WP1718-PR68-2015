@@ -19,6 +19,9 @@ namespace TaksiSluzba.Controllers
         private static List<Vozac> vozaclist = new List<Vozac>();
         private static List<Korisnik> korisniklist = new List<Korisnik>();
         private static Dictionary<string, string> ulokovani = new Dictionary<string, string>();
+        private static List<List<string>> blokirani = new List<List<string>>();
+        private static List<Voznja> sveVoznje = new List<Voznja>();
+        private static List<Voznja> slobodneVoznje = new List<Voznja>();
         
         [HttpGet, Route("")]
         public RedirectResult Index()
@@ -26,6 +29,10 @@ namespace TaksiSluzba.Controllers
             ReadFromXML(Enums.Uloga.Dispecer);
             ReadFromXML(Enums.Uloga.Vozac);
             ReadFromXML(Enums.Uloga.Musterija);
+            ReadFromXMLBlokirani();
+            ReadFromXMLSlobodneVoznje();
+            ReadFromXMLSveVoznje();
+
             var requestUri = Request.RequestUri;
             return Redirect(requestUri.AbsoluteUri + "Content/index.html");
         }
@@ -216,8 +223,10 @@ namespace TaksiSluzba.Controllers
                 adminlist.Remove(dispecer);
                 dispecer.Voznje.Add(voznja);
                 adminlist.Add(dispecer);
+                sveVoznje.Add(voznja);
                 WriteToXMl(Enums.Uloga.Dispecer);
                 WriteToXMl(Enums.Uloga.Vozac);
+                WriteToXMSveVoznje();
                 return Ok(dispecer);
             }
             else
@@ -230,9 +239,97 @@ namespace TaksiSluzba.Controllers
                 voznja.Musterija = musterija.KorisnickoIme;
                 musterija.Voznje.Add(voznja);
                 korisniklist.Add(musterija);
+                sveVoznje.Add(voznja);
+                slobodneVoznje.Add(voznja);
                 WriteToXMl(Enums.Uloga.Musterija);
+                WriteToXMSveVoznje();
+                WriteToXMSlobodneVoznje();
                 return Ok(musterija);
             }
+        }
+
+        [HttpGet,Route("api/main/getblokirane")]
+        public IHttpActionResult GetBlokirane()
+        {
+            return Ok(blokirani);
+        }
+
+        [HttpGet,Route("api/main/blokiranje")]
+        public IHttpActionResult Blokiranje([FromUri]string Username)
+        {
+            if (vozaclist.Exists(i => i.KorisnickoIme == Username))
+            {
+                Vozac vozac = vozaclist.Find(i => i.KorisnickoIme == Username);
+                if (!vozac.Blokiran)
+                {
+                    vozaclist.Remove(vozac);
+                    vozac.Blokiran = true;
+                    vozaclist.Add(vozac);
+                    List<string> list = new List<string>();
+                    list.Add(vozac.Id);
+                    list.Add(vozac.KorisnickoIme);
+                    list.Add(vozac.Uloga.ToString());
+                    blokirani.Add(list);
+                    WriteToXMlBlokirani();
+                    return Ok(blokirani);
+                }
+            }
+
+            if (korisniklist.Exists(i => i.KorisnickoIme == Username))
+            {
+                Korisnik korisnik = korisniklist.Find(i => i.KorisnickoIme == Username);
+                if (!korisnik.Blokiran)
+                {
+                    korisniklist.Remove(korisnik);
+                    korisnik.Blokiran = true;
+                    korisniklist.Add(korisnik);
+                    List<string> list = new List<string>();
+                    list.Add(korisnik.Id);
+                    list.Add(korisnik.KorisnickoIme);
+                    list.Add(korisnik.Uloga.ToString());
+                    blokirani.Add(list);
+                    WriteToXMlBlokirani();
+                    return Ok(blokirani);
+                }
+            }
+
+            return Ok("Dato korisničo ime ne postoji ili nije moguće blokirati tu osobu.");
+        }
+
+        [Route("api/main/odblokiranje")]
+        public IHttpActionResult Odblokiranje(string Id)
+        {
+            List<string> list = new List<string>();
+            foreach (List<string> l in blokirani)
+            {
+                if (l[0] == Id)
+                    list = l;
+            }
+
+            string uloga = list[2];
+
+            if (uloga == "Musterija")
+            {
+                Korisnik k = korisniklist.Find(i => i.Id == Id);
+                korisniklist.Remove(k);
+                k.Blokiran = false;
+                korisniklist.Add(k);
+                blokirani.Remove(list);
+                WriteToXMl(Enums.Uloga.Musterija);
+                WriteToXMlBlokirani();
+            }
+            else
+            {
+                Vozac v = vozaclist.Find(i => i.Id == Id);
+                vozaclist.Remove(v);
+                v.Blokiran = false;
+                vozaclist.Add(v);
+                blokirani.Remove(list);
+                WriteToXMl(Enums.Uloga.Musterija);
+                WriteToXMlBlokirani();
+            }
+
+            return Ok(blokirani);
         }
 
         private void WriteToXMl(Enums.Uloga uloga)
@@ -279,5 +376,82 @@ namespace TaksiSluzba.Controllers
             catch { }
         }
 
+        private void WriteToXMlBlokirani()
+        {
+            string path = @"C:\Users\filip\Desktop\Projects\Web\Projekat\WP1718-PR68-2015\TaksiSluzba\Blokirani.xml";
+            XmlSerializer serializer = new XmlSerializer(typeof(List<List<string>>));
+
+            using (TextWriter writer = new StreamWriter(path))
+            {
+                    serializer.Serialize(writer, blokirani);
+            }
+        }
+
+        private void ReadFromXMLBlokirani()
+        {
+            string path = @"C:\Users\filip\Desktop\Projects\Web\Projekat\WP1718-PR68-2015\TaksiSluzba\Blokirani.xml";
+            XmlSerializer serializer = new XmlSerializer(typeof(List<List<string>>));
+
+            try
+            {
+                using (TextReader reader = new StreamReader(path))
+                {
+                        blokirani = (List<List<string>>)serializer.Deserialize(reader);
+                }
+            }
+            catch { }
+        }
+
+        private void WriteToXMSveVoznje()
+        {
+            string path = @"C:\Users\filip\Desktop\Projects\Web\Projekat\WP1718-PR68-2015\TaksiSluzba\SveVoznje.xml";
+            XmlSerializer serializer = new XmlSerializer(typeof(List<Voznja>));
+
+            using (TextWriter writer = new StreamWriter(path))
+            {
+                serializer.Serialize(writer, sveVoznje);
+            }
+        }
+
+        private void ReadFromXMLSveVoznje()
+        {
+            string path = @"C:\Users\filip\Desktop\Projects\Web\Projekat\WP1718-PR68-2015\TaksiSluzba\SveVoznje.xml";
+            XmlSerializer serializer = new XmlSerializer(typeof(List<Voznja>));
+
+            try
+            {
+                using (TextReader reader = new StreamReader(path))
+                {
+                    sveVoznje = (List<Voznja>)serializer.Deserialize(reader);
+                }
+            }
+            catch { }
+        }
+
+        private void WriteToXMSlobodneVoznje()
+        {
+            string path = @"C:\Users\filip\Desktop\Projects\Web\Projekat\WP1718-PR68-2015\TaksiSluzba\SlobodneVoznje.xml";
+            XmlSerializer serializer = new XmlSerializer(typeof(List<Voznja>));
+
+            using (TextWriter writer = new StreamWriter(path))
+            {
+                serializer.Serialize(writer, slobodneVoznje);
+            }
+        }
+
+        private void ReadFromXMLSlobodneVoznje()
+        {
+            string path = @"C:\Users\filip\Desktop\Projects\Web\Projekat\WP1718-PR68-2015\TaksiSluzba\SlobodneVoznje.xml";
+            XmlSerializer serializer = new XmlSerializer(typeof(List<Voznja>));
+
+            try
+            {
+                using (TextReader reader = new StreamReader(path))
+                {
+                    slobodneVoznje = (List<Voznja>)serializer.Deserialize(reader);
+                }
+            }
+            catch { }
+        }
     }
 }

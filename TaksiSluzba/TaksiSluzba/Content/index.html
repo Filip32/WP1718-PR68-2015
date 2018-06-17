@@ -577,25 +577,53 @@
             });
 
             $(document).on("click", "#dodrive", function () {
+                $.get("/api/main/getblokirane", function (data,status)
+                {
+                    if (status == "success") {
+                        var blok = "<div><div id= \"error1\" class=\"Red\" ></div > <p style=\"font-weight:bold; font-size:x-large\">Blokirani<\p>";
+                        blok += "<table border=\"1\"><tr><td>Korisnicko ime</td><td>Uloga</td><td>&nbsp;</td></tr>";
+                        for (var k in data) {
+                            blok += "<tr><td>" + data[k][1] + "</td><td>";
+                            blok += data[k][2] + "</td>";
+                            blok += "<td><input type=\"submit\" id=\"odblokiraj\" value=\"Odblokiraj\"></td></tr>";
+                        }
+                        blok += "</table><br/><br/><p style=\"font-weight:bold; font-size:large\">Blokirati unosom korisnickog imena<\p>";
+                        blok += "<input type=\"text\" id=\"blokirajpoimenu\"> &nbsp;&nbsp;<input type=\"submit\" id=\"blokiraj\" value=\"Blokiraj\">";
+                        sessionStorage.setItem("screen", blok);
+                        $("#screen").html(blok);
+                    }
+                });
+            });
 
-                var blok = "<div><div id= \"error1\" class=\"Red\" ></div > <p style=\"font-weight:bold; font-size:x-large\">Blokirani<\p>";
-                //get metoda za listu blokiranih
-                blok += "<table border=\"1\"><tr><td>Korisnicko ime</td><td>Uloga</td><td>&nbsp;</td></tr>";
-                /* for(k in blokirani)
-                 {
-                     blok += "<tr><td>" + blokirani.KorisnickoIme + "</td><td>";
-                     if (blokirani.Uloga == "2")
-                         blok += "Vozac</td>";
-                     else
-                         blok += "Musterija";
-
-                     blok += "<td><input type=\"hidden\" id=\"hiddenname\" value=\"" + blokirani.KorisnickoIme + "\"><input type=\"submit\" id=\"odblokiraj\" value=\"Odblokiraj\"></td></tr>";
-                 }*/
-
-                blok += "</table><br/><br/><p style=\"font-weight:bold; font-size:large\">Blokirati unosom korisnickog imena<\p>";
-                blok += "<input type=\"text\" id=\"blokirajpoimenu\"> &nbsp;&nbsp;<input type=\"submit\" id=\"blokiraj\" value=\"Blokiraj\">";
-                sessionStorage.setItem("screen", blok);
-                $("#screen").html(blok);
+            $(document).on("click", "#blokiraj", function ()
+            {
+                if ($("#blokirajpoimenu").val().trim() != "") {
+                    
+                    $.get("/api/main/blokiranje", { Username: $("#blokirajpoimenu").val() }, function (data, status)
+                    {
+                        if (status == "success")
+                        {
+                            if (data[0][1] != null) {
+                                var blok = "<div><div id= \"error1\" class=\"Red\" ></div > <p style=\"font-weight:bold; font-size:x-large\">Blokirani<\p>";
+                                blok += "<table border=\"1\"><tr><td>Korisnicko ime</td><td>Uloga</td><td>&nbsp;</td></tr>";
+                                for (var k in data) {
+                                    blok += "<tr><td>" + data[k][1] + "</td><td>";
+                                    blok += data[k][2] + "</td>";
+                                    blok += "<td><input type=\"submit\" id=\"odblokiraj\" value=\"Odblokiraj\"></td></tr>";
+                                }
+                                blok += "</table><br/><br/><p style=\"font-weight:bold; font-size:large\">Blokirati unosom korisnickog imena<\p>";
+                                blok += "<input type=\"text\" id=\"blokirajpoimenu\"> &nbsp;&nbsp;<input type=\"submit\" id=\"blokiraj\" value=\"Blokiraj\">";
+                                sessionStorage.setItem("screen", blok);
+                                $("#screen").html(blok);
+                            } else {
+                                $("#error1").html(data);
+                            }
+                        }
+                    });
+                }
+                else {
+                    $("#error1").html("Korisničko ime mora biti uneto kako bi se data osoba blokirala.");
+                }
             });
 
             $(document).on("dblclick", "#map", function ()
