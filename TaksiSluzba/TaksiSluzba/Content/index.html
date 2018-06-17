@@ -61,7 +61,7 @@
                         if (status == "success") {
                             sessionStorage.setItem("screen", textlog);
                             $("#screen").html(textlog);
-                            $("#error1").text(data);
+                            $("#error1").text(data).css("color","CornflowerBlue");
                         }
                     });
                 }
@@ -428,6 +428,7 @@
                                     Mesto: grad
                                 }
                             },
+                            Voznje: login_user.Voznje,
                             Automobil:
                             {
                                 GodisteAutomobila: $("#godiste").val(),
@@ -447,7 +448,8 @@
                             JMBG: $("#jmbg").val(),
                             Telefon: $("#tel").val(),
                             Email: $("#email").val(),
-                            Uloga: login_user.Uloga
+                            Uloga: login_user.Uloga,
+                            Voznje: login_user.Voznje
                         };
                     }
 
@@ -486,7 +488,34 @@
                             var table = "<div id=\"erorrr\">" + data + "</div><br /><p style=\"font-size:large; font-weight:bold\">Lista voznji<p><div>";
                             table += "<table border=\"1\"><tr><th>Polazna tačka</th><th>Odrediste</th><th>Musterija</th><th>Vozač</th><th>Dispečer</th><th>Status vožnje</th><th>&nbsp;</th><th>&nbsp;</th></tr>";
                             for (t in login_user.Voznje) {
-                                table += "<tr><td>" + login_user.Voznje[t].PolaznaTacka + "</td><td>" + login_user.Voznje[t].Odrediste + "</td><td>" + login_user.Voznje[t].Musterija + "</td><td>" + login_user.Voznje[t].Vozac + "</td><td>" + login_user.Voznje[t].Dispecer + "</td><td>" + login_user.Voznje[t].StatusVoznje + "</td><td><input type=\"submit\" id=\"obrada_voznje\" value=\"Obrada vožnje\" /></td><td><input type=\"submit\" id=\"detalji_voznje\" value=\"Detalji vožnje\" /></td></tr>";
+                                table += "<tr><td>" + login_user.Voznje[t].PolaznaTacka.Adresa.Ulica_broj + ", " + login_user.Voznje[t].PolaznaTacka.Adresa.Mesto + "</td><td>" + login_user.Voznje[t].Odrediste + "</td><td>" + login_user.Voznje[t].Musterija + "</td><td>" + login_user.Voznje[t].Vozac + "</td><td>" + login_user.Voznje[t].Dispecer + "</td><td>";
+
+                                if (login_user.Voznje[t].StatusVoznje == "1") {
+                                    table += "Formirana";
+                                }
+                                else if (login_user.Voznje[t].StatusVoznje == "2") {
+                                    table += "Obradjena";
+                                }
+                                else if (login_user.Voznje[t].StatusVoznje == "3") {
+                                    table += "Prihvacena";
+                                }
+                                else if (login_user.Voznje[t].StatusVoznje == "4") {
+                                    table += "Otkazana";
+                                }
+                                else if (login_user.Voznje[t].StatusVoznje == "5") {
+                                    table += "Neuspesna";
+                                }
+                                else if (login_user.Voznje[t].StatusVoznje == "6") {
+                                    table += "Uspesna";
+                                }
+                                else if (login_user.Voznje[t].StatusVoznje == "7") {
+                                    table += "U_toku";
+                                }
+                                else if (login_user.Voznje[t].StatusVoznje == "0") {
+                                    table += "Kreirana";
+                                }
+
+                                table += "</td><td><input type=\"submit\" id=\"obrada_voznje\" value=\"Obrada voznje\" /></td><td><input type=\"submit\" id=\"detalji_voznje\" value=\"Detalji voznje\" /></td></tr>";
                             }
                             table += "</table><br />";
 
@@ -632,6 +661,7 @@
                                     }
                                 },
                                 TipVozila: $("#cartipe").val(),
+                                Musterija: login_user.Id
                             };
                     }
 

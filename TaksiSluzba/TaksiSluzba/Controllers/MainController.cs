@@ -124,6 +124,7 @@ namespace TaksiSluzba.Controllers
                     Vozac v = vozaclist.Find(i => i.Id == osoba.Id);
                     vozaclist.Remove(v);
                     vozaclist.Add(osoba);
+                    ulokovani[osoba.Id] = osoba.KorisnickoIme;
                     WriteToXMl(Enums.Uloga.Vozac);
 
                     return Ok("Uspešno ažuriran profil.");
@@ -137,6 +138,7 @@ namespace TaksiSluzba.Controllers
                         Korisnik v = adminlist.Find(i => i.Id == ID);
                         adminlist.Remove(v);
                         adminlist.Add(k);
+                        ulokovani[k.Id] = k.KorisnickoIme;
                         WriteToXMl(Enums.Uloga.Dispecer);
                     }
                     else
@@ -185,9 +187,12 @@ namespace TaksiSluzba.Controllers
             foreach (string id in racun.Keys)
             {
                 Vozac v = vozaclist.Find(D => D.Id == id);
-                dictionary.Add(v.Id,v.KorisnickoIme);
-                s++;
-                if (s == 5) break;
+                if (v.Slobodan)
+                {
+                    dictionary.Add(v.Id, v.KorisnickoIme);
+                    s++;
+                    if (s == 5) break;
+                }
             }
 
             return Ok(dictionary);
@@ -217,10 +222,17 @@ namespace TaksiSluzba.Controllers
             }
             else
             {
-
+                Korisnik musterija = korisniklist.Find(i => i.Id == voznja.Musterija);
+                korisniklist.Remove(musterija);
+                voznja.Id = musterija.Voznje.Count + musterija.KorisnickoIme;
+                voznja.StatusVoznje = Enums.StatusVoznje.Kreirana;
+                voznja.VremePorudjbine = DateTime.Now;
+                voznja.Musterija = musterija.KorisnickoIme;
+                musterija.Voznje.Add(voznja);
+                korisniklist.Add(musterija);
+                WriteToXMl(Enums.Uloga.Musterija);
+                return Ok(musterija);
             }
-
-            return Ok();
         }
 
         private void WriteToXMl(Enums.Uloga uloga)

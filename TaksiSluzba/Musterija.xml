@@ -2,28 +2,32 @@
 <ArrayOfKorisnik xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Korisnik>
     <Id>4</Id>
-    <KorisnickoIme>musterija1</KorisnickoIme>
-    <Lozinka>musterija1</Lozinka>
-    <Ime>Stefan</Ime>
-    <Prezime>Banjac</Prezime>
-    <Pol>Musko</Pol>
-    <JMBG>2407996800045</JMBG>
-    <Telefon>062/2445432</Telefon>
-    <Email>banjac@gmail.com</Email>
+    <KorisnickoIme>musterija2</KorisnickoIme>
+    <Lozinka>musterija2</Lozinka>
+    <Ime>Petrisa</Ime>
+    <Prezime>Vasiljevic</Prezime>
+    <Pol>Zensko</Pol>
+    <JMBG>1903998800145</JMBG>
+    <Telefon>065/5554355</Telefon>
+    <Email>petrisa@gmail.com</Email>
     <Uloga>Musterija</Uloga>
+    <Slobodan>true</Slobodan>
+	<Blokiran>false</Blokiran>
     <Voznje />
   </Korisnik>
   <Korisnik>
-    <Id>5</Id>
-    <KorisnickoIme>musterija2</KorisnickoIme>
-    <Lozinka>musterija2</Lozinka>
-    <Ime>Miki</Ime>
-    <Prezime>Milosevic</Prezime>
+    <Id>3</Id>
+    <KorisnickoIme>musterija1</KorisnickoIme>
+    <Lozinka>musterija1</Lozinka>
+    <Ime>Petar</Ime>
+    <Prezime>Petrovic</Prezime>
     <Pol>Musko</Pol>
-    <JMBG>1805993800034</JMBG>
-    <Telefon>065/4354443</Telefon>
-    <Email>miki@gmail.com</Email>
+    <JMBG>1803993800034</JMBG>
+    <Telefon>065/2322233</Telefon>
+    <Email>petrovic.petar@gmail.com</Email>
     <Uloga>Musterija</Uloga>
+    <Slobodan>true</Slobodan>
+	<Blokiran>false</Blokiran>
     <Voznje />
   </Korisnik>
 </ArrayOfKorisnik>

@@ -17,10 +17,14 @@ namespace TaksiSluzba.Models
         public string Telefon { get; set; }
         public string Email { get; set; }
         public Enums.Uloga Uloga { get; set; }
+        public bool Slobodan { get; set; }
+        public bool Blokiran { get; set; }
         public List<Voznja> Voznje { get; set; }
 
         public Korisnik()
         {
+            Blokiran = false;
+            Slobodan = true;
             Voznje = new List<Voznja>();
         }
     }

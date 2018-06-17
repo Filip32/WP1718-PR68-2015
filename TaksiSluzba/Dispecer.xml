@@ -11,6 +11,8 @@
     <Telefon>063/3212546</Telefon>
     <Email>akrstic@gmail.com</Email>
     <Uloga>Dispecer</Uloga>
+	<Slobodan>true</Slobodan>
+	<Blokiran>false</Blokiran>
     <Voznje />
   </Korisnik>
   <Korisnik>
@@ -24,23 +26,8 @@
     <Telefon>066/1112445</Telefon>
     <Email>filipovicfilip@gmail.com</Email>
     <Uloga>Dispecer</Uloga>
-    <Voznje>
-      <Voznja>
-        <Id>0vozac1</Id>
-        <VremePorudjbine>2018-06-17T00:11:52.695898+02:00</VremePorudjbine>
-        <PolaznaTacka>
-          <XKordinata>19.84156945778747</XKordinata>
-          <YKordinata>45.2494892007264</YKordinata>
-          <Adresa>
-            <Ulica_broj>Sremska 2</Ulica_broj>
-            <Mesto>Novi Sad 21000</Mesto>
-          </Adresa>
-        </PolaznaTacka>
-        <TipVozila>Putnicko_Vozilo</TipVozila>
-        <Dispecer>admin1</Dispecer>
-        <Vozac>vozac1</Vozac>
-        <StatusVoznje>Formirana</StatusVoznje>
-      </Voznja>
-    </Voznje>
+	<Slobodan>true</Slobodan>
+	<Blokiran>false</Blokiran>
+    <Voznje />
   </Korisnik>
 </ArrayOfKorisnik>
