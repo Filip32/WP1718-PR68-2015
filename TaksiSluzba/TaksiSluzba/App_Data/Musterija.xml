@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfKorisnik xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Korisnik>
+    <Id>4</Id>
+    <KorisnickoIme>musterija2</KorisnickoIme>
+    <Lozinka>musterija2</Lozinka>
+    <Ime>Petrisa</Ime>
+    <Prezime>Vasiljevic</Prezime>
+    <Pol>Zensko</Pol>
+    <JMBG>1903998800145</JMBG>
+    <Telefon>065/5554355</Telefon>
+    <Email>petrisa@gmail.com</Email>
+    <Uloga>Musterija</Uloga>
+    <Slobodan>true</Slobodan>
+    <Blokiran>false</Blokiran>
+    <Voznje>
+      <Voznja>
+        <Id>0musterija2</Id>
+        <VremePorudjbine>2018-06-18T18:24:53.543917+02:00</VremePorudjbine>
+        <PolaznaTacka>
+          <XKordinata>19.849742148655853</XKordinata>
+          <YKordinata>45.24579550397789</YKordinata>
+          <Adresa>
+            <Ulica_broj>Dr Sime Milosevica</Ulica_broj>
+            <Mesto>Novi Sad 21101</Mesto>
+          </Adresa>
+        </PolaznaTacka>
+        <TipVozila>Putnicko_Vozilo</TipVozila>
+        <Musterija>musterija2</Musterija>
+        <StatusVoznje>Kreirana</StatusVoznje>
+      </Voznja>
+    </Voznje>
+  </Korisnik>
+  <Korisnik>
+    <Id>3</Id>
+    <KorisnickoIme>musterija1</KorisnickoIme>
+    <Lozinka>musterija1</Lozinka>
+    <Ime>Petar</Ime>
+    <Prezime>Petrovic</Prezime>
+    <Pol>Musko</Pol>
+    <JMBG>1803993800034</JMBG>
+    <Telefon>065/2322233</Telefon>
+    <Email>petrovic.petar@gmail.com</Email>
+    <Uloga>Musterija</Uloga>
+    <Slobodan>true</Slobodan>
+    <Blokiran>false</Blokiran>
+    <Voznje>
+      <Voznja>
+        <Id>0musterija1</Id>
+        <VremePorudjbine>2018-06-18T18:21:53.174413+02:00</VremePorudjbine>
+        <PolaznaTacka>
+          <XKordinata>19.849624131459198</XKordinata>
+          <YKordinata>45.24599190289797</YKordinata>
+          <Adresa>
+            <Ulica_broj>Dr Sime Milosevica</Ulica_broj>
+            <Mesto>Novi Sad 21101</Mesto>
+          </Adresa>
+        </PolaznaTacka>
+        <TipVozila>Putnicko_Vozilo</TipVozila>
+        <Musterija>musterija1</Musterija>
+        <StatusVoznje>Kreirana</StatusVoznje>
+      </Voznja>
+    </Voznje>
+  </Korisnik>
+</ArrayOfKorisnik>

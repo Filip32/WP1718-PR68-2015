@@ -1,63 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfVozac xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Vozac>
-    <Id>5</Id>
-    <KorisnickoIme>vozac1</KorisnickoIme>
-    <Lozinka>vozac1</Lozinka>
-    <Ime>Mirko</Ime>
-    <Prezime>Isidorovic</Prezime>
-    <Pol>Musko</Pol>
-    <JMBG>1209993800043</JMBG>
-    <Telefon>065/3442211</Telefon>
-    <Email>mirko@gmail.com</Email>
-    <Uloga>Vozac</Uloga>
-    <Slobodan>true</Slobodan>
-    <Voznje />
-    <Lokacija>
-      <XKordinata>19.85327162263454</XKordinata>
-      <YKordinata>45.25609189129813</YKordinata>
-      <Adresa>
-        <Ulica_broj>Dunavska</Ulica_broj>
-        <Mesto>Novi Sad 21000</Mesto>
-      </Adresa>
-    </Lokacija>
-    <Automobil>
-      <GodisteAutomobila>2015</GodisteAutomobila>
-      <RegistarskaTablica>NS453-KK</RegistarskaTablica>
-      <BrTaksija>5_vozac1</BrTaksija>
-      <TipVozila>Putnicko_Vozilo</TipVozila>
-    </Automobil>
-  </Vozac>
-  <Vozac>
-    <Id>6</Id>
-    <KorisnickoIme>vozac2</KorisnickoIme>
-    <Lozinka>vozac2</Lozinka>
-    <Ime>Petar</Ime>
-    <Prezime>Kralj</Prezime>
-    <Pol>Musko</Pol>
-    <JMBG>1404981800034</JMBG>
-    <Telefon>064/4331122</Telefon>
-    <Email>kralj@gmail.com</Email>
-    <Uloga>Vozac</Uloga>
-    <Slobodan>true</Slobodan>
-	<Blokiran>false</Blokiran>
-    <Voznje />
-    <Lokacija>
-      <XKordinata>19.855029940944924</XKordinata>
-      <YKordinata>45.25895522816012</YKordinata>
-      <Adresa>
-        <Ulica_broj>Beogradski Kej 25</Ulica_broj>
-        <Mesto>Novi Sad 21101</Mesto>
-      </Adresa>
-    </Lokacija>
-    <Automobil>
-      <GodisteAutomobila>2017</GodisteAutomobila>
-      <RegistarskaTablica>NS435-WE</RegistarskaTablica>
-      <BrTaksija>6_vozac2</BrTaksija>
-      <TipVozila>Putnicko_Vozilo</TipVozila>
-    </Automobil>
-  </Vozac>
-  <Vozac>
     <Id>7</Id>
     <KorisnickoIme>vozac3</KorisnickoIme>
     <Lozinka>vozac3</Lozinka>
@@ -69,7 +12,7 @@
     <Email>katicm@gmail.com</Email>
     <Uloga>Vozac</Uloga>
     <Slobodan>true</Slobodan>
-	<Blokiran>false</Blokiran>
+    <Blokiran>false</Blokiran>
     <Voznje />
     <Lokacija>
       <XKordinata>19.844670784887366</XKordinata>
@@ -98,7 +41,7 @@
     <Email>isi@gmail.com</Email>
     <Uloga>Vozac</Uloga>
     <Slobodan>true</Slobodan>
-	<Blokiran>false</Blokiran>
+    <Blokiran>false</Blokiran>
     <Voznje />
     <Lokacija>
       <XKordinata>19.72028271774992</XKordinata>
@@ -127,7 +70,7 @@
     <Email>jojkic@gmail.com</Email>
     <Uloga>Vozac</Uloga>
     <Slobodan>true</Slobodan>
-	<Blokiran>false</Blokiran>
+    <Blokiran>false</Blokiran>
     <Voznje />
     <Lokacija>
       <XKordinata>19.853521381157847</XKordinata>
@@ -156,7 +99,7 @@
     <Email>sinisa@gmail.com</Email>
     <Uloga>Vozac</Uloga>
     <Slobodan>true</Slobodan>
-	<Blokiran>false</Blokiran>
+    <Blokiran>false</Blokiran>
     <Voznje />
     <Lokacija>
       <XKordinata>19.83735085147642</XKordinata>
@@ -185,7 +128,7 @@
     <Email>kataji@gmail.com</Email>
     <Uloga>Vozac</Uloga>
     <Slobodan>true</Slobodan>
-	<Blokiran>false</Blokiran>
+    <Blokiran>false</Blokiran>
     <Voznje />
     <Lokacija>
       <XKordinata>19.83848976834237</XKordinata>
@@ -199,6 +142,64 @@
       <GodisteAutomobila>2018</GodisteAutomobila>
       <RegistarskaTablica>NS564-OP</RegistarskaTablica>
       <BrTaksija>11_vozac7</BrTaksija>
+      <TipVozila>Putnicko_Vozilo</TipVozila>
+    </Automobil>
+  </Vozac>
+  <Vozac>
+    <Id>5</Id>
+    <KorisnickoIme>vozac1</KorisnickoIme>
+    <Lozinka>vozac1</Lozinka>
+    <Ime>Mirko</Ime>
+    <Prezime>Isidorovic</Prezime>
+    <Pol>Musko</Pol>
+    <JMBG>1209993800043</JMBG>
+    <Telefon>065/3442211</Telefon>
+    <Email>mirko@gmail.com</Email>
+    <Uloga>Vozac</Uloga>
+    <Slobodan>true</Slobodan>
+    <Blokiran>false</Blokiran>
+    <Voznje />
+    <Lokacija>
+      <XKordinata>19.85327162263454</XKordinata>
+      <YKordinata>45.25609189129813</YKordinata>
+      <Adresa>
+        <Ulica_broj>Dunavska</Ulica_broj>
+        <Mesto>Novi Sad 21000</Mesto>
+      </Adresa>
+    </Lokacija>
+    <Automobil>
+      <GodisteAutomobila>2015</GodisteAutomobila>
+      <RegistarskaTablica>NS453-KK</RegistarskaTablica>
+      <BrTaksija>5_vozac1</BrTaksija>
+      <TipVozila>Putnicko_Vozilo</TipVozila>
+    </Automobil>
+  </Vozac>
+  <Vozac>
+    <Id>6</Id>
+    <KorisnickoIme>vozac2</KorisnickoIme>
+    <Lozinka>vozac2</Lozinka>
+    <Ime>Petar</Ime>
+    <Prezime>Kralj</Prezime>
+    <Pol>Musko</Pol>
+    <JMBG>1404981800034</JMBG>
+    <Telefon>064/4331122</Telefon>
+    <Email>kralj@gmail.com</Email>
+    <Uloga>Vozac</Uloga>
+    <Slobodan>true</Slobodan>
+    <Blokiran>false</Blokiran>
+    <Voznje />
+    <Lokacija>
+      <XKordinata>19.855029940944924</XKordinata>
+      <YKordinata>45.25895522816012</YKordinata>
+      <Adresa>
+        <Ulica_broj>Beogradski Kej 25</Ulica_broj>
+        <Mesto>Novi Sad 21101</Mesto>
+      </Adresa>
+    </Lokacija>
+    <Automobil>
+      <GodisteAutomobila>2017</GodisteAutomobila>
+      <RegistarskaTablica>NS435-WE</RegistarskaTablica>
+      <BrTaksija>6_vozac2</BrTaksija>
       <TipVozila>Putnicko_Vozilo</TipVozila>
     </Automobil>
   </Vozac>

@@ -55,12 +55,20 @@ namespace TaksiSluzba.Controllers
             else if (vozaclist.Exists(i => i.KorisnickoIme == user.Username && i.Lozinka == user.Password))
             {
                 korisnik = vozaclist.Find(i => i.KorisnickoIme == user.Username);
+                if (korisnik.Blokiran)
+                {
+                    return Ok("Korisnik je blokiran.");
+                }
                 ulokovani.Add(korisnik.Id, korisnik.KorisnickoIme);
                 return Ok(korisnik);
             }
             else if (korisniklist.Exists(i => i.KorisnickoIme == user.Username && i.Lozinka == user.Password))
             {
                 korisnik = korisniklist.Find(i => i.KorisnickoIme == user.Username);
+                if (korisnik.Blokiran)
+                {
+                    return Ok("Korisnik je blokiran.");
+                }
                 ulokovani.Add(korisnik.Id, korisnik.KorisnickoIme);
                 return Ok(korisnik);
             }
@@ -104,6 +112,7 @@ namespace TaksiSluzba.Controllers
             vozac.Uloga = Enums.Uloga.Vozac;
             vozac.Id = (adminlist.Count + vozaclist.Count + korisniklist.Count + 1).ToString();
             vozac.Automobil.BrTaksija = vozac.Id + "_" + vozac.KorisnickoIme;
+            vozac.Automobil.Vozac = vozac.KorisnickoIme;
             vozaclist.Add(vozac);
             WriteToXMl(Enums.Uloga.Vozac);
             return Ok("Vozač je dodat.");
@@ -211,6 +220,7 @@ namespace TaksiSluzba.Controllers
             if (voznja.Vozac != null)
             {
                 Vozac v = vozaclist.Find(i => i.Id == voznja.Vozac);
+                if (v.Blokiran) return Ok("Ne možete da izvršite ovu operaciju blokirani ste.");
                 vozaclist.Remove(v);
                 voznja.Id = v.Voznje.Count + v.KorisnickoIme;
                 voznja.StatusVoznje = Enums.StatusVoznje.Formirana;
@@ -232,6 +242,7 @@ namespace TaksiSluzba.Controllers
             else
             {
                 Korisnik musterija = korisniklist.Find(i => i.Id == voznja.Musterija);
+                if (musterija.Blokiran) return Ok("Ne možete da izvršite ovu operaciju blokirani ste.");
                 korisniklist.Remove(musterija);
                 voznja.Id = musterija.Voznje.Count + musterija.KorisnickoIme;
                 voznja.StatusVoznje = Enums.StatusVoznje.Kreirana;
@@ -271,6 +282,7 @@ namespace TaksiSluzba.Controllers
                     list.Add(vozac.Uloga.ToString());
                     blokirani.Add(list);
                     WriteToXMlBlokirani();
+                    WriteToXMl(Enums.Uloga.Vozac);
                     return Ok(blokirani);
                 }
             }
@@ -289,6 +301,7 @@ namespace TaksiSluzba.Controllers
                     list.Add(korisnik.Uloga.ToString());
                     blokirani.Add(list);
                     WriteToXMlBlokirani();
+                    WriteToXMl(Enums.Uloga.Musterija);
                     return Ok(blokirani);
                 }
             }
@@ -296,8 +309,8 @@ namespace TaksiSluzba.Controllers
             return Ok("Dato korisničo ime ne postoji ili nije moguće blokirati tu osobu.");
         }
 
-        [Route("api/main/odblokiranje")]
-        public IHttpActionResult Odblokiranje(string Id)
+        [HttpGet,Route("api/main/odblokiraj")]
+        public IHttpActionResult Odblokiranje([FromUri]string Id)
         {
             List<string> list = new List<string>();
             foreach (List<string> l in blokirani)
@@ -325,7 +338,7 @@ namespace TaksiSluzba.Controllers
                 v.Blokiran = false;
                 vozaclist.Add(v);
                 blokirani.Remove(list);
-                WriteToXMl(Enums.Uloga.Musterija);
+                WriteToXMl(Enums.Uloga.Vozac);
                 WriteToXMlBlokirani();
             }
 
@@ -334,7 +347,8 @@ namespace TaksiSluzba.Controllers
 
         private void WriteToXMl(Enums.Uloga uloga)
         {
-            string path = @"C:\Users\filip\Desktop\Projects\Web\Projekat\WP1718-PR68-2015\TaksiSluzba\" + uloga.ToString() + ".xml";
+            var path = System.Web.Hosting.HostingEnvironment.MapPath(@"~/App_Data/"+ uloga.ToString() + ".xml");
+
             XmlSerializer serializer;
             if (uloga == Enums.Uloga.Vozac)
                 serializer = new XmlSerializer(typeof(List<Vozac>));
@@ -354,7 +368,7 @@ namespace TaksiSluzba.Controllers
 
         private void ReadFromXML(Enums.Uloga uloga)
         {
-            string path = @"C:\Users\filip\Desktop\Projects\Web\Projekat\WP1718-PR68-2015\TaksiSluzba\" + uloga.ToString() + ".xml";
+            var path = System.Web.Hosting.HostingEnvironment.MapPath(@"~/App_Data/" + uloga.ToString() + ".xml");
             XmlSerializer serializer;
             if (uloga == Enums.Uloga.Vozac)
                     serializer = new XmlSerializer(typeof(List<Vozac>));
@@ -378,7 +392,7 @@ namespace TaksiSluzba.Controllers
 
         private void WriteToXMlBlokirani()
         {
-            string path = @"C:\Users\filip\Desktop\Projects\Web\Projekat\WP1718-PR68-2015\TaksiSluzba\Blokirani.xml";
+            var path = System.Web.Hosting.HostingEnvironment.MapPath(@"~/App_Data/Blokirani.xml");
             XmlSerializer serializer = new XmlSerializer(typeof(List<List<string>>));
 
             using (TextWriter writer = new StreamWriter(path))
@@ -389,7 +403,7 @@ namespace TaksiSluzba.Controllers
 
         private void ReadFromXMLBlokirani()
         {
-            string path = @"C:\Users\filip\Desktop\Projects\Web\Projekat\WP1718-PR68-2015\TaksiSluzba\Blokirani.xml";
+            var path = System.Web.Hosting.HostingEnvironment.MapPath(@"~/App_Data/Blokirani.xml");
             XmlSerializer serializer = new XmlSerializer(typeof(List<List<string>>));
 
             try
@@ -404,7 +418,7 @@ namespace TaksiSluzba.Controllers
 
         private void WriteToXMSveVoznje()
         {
-            string path = @"C:\Users\filip\Desktop\Projects\Web\Projekat\WP1718-PR68-2015\TaksiSluzba\SveVoznje.xml";
+            var path = System.Web.Hosting.HostingEnvironment.MapPath(@"~/App_Data/SveVoznje.xml");
             XmlSerializer serializer = new XmlSerializer(typeof(List<Voznja>));
 
             using (TextWriter writer = new StreamWriter(path))
@@ -415,7 +429,7 @@ namespace TaksiSluzba.Controllers
 
         private void ReadFromXMLSveVoznje()
         {
-            string path = @"C:\Users\filip\Desktop\Projects\Web\Projekat\WP1718-PR68-2015\TaksiSluzba\SveVoznje.xml";
+            var path = System.Web.Hosting.HostingEnvironment.MapPath(@"~/App_Data/SveVoznje.xml");
             XmlSerializer serializer = new XmlSerializer(typeof(List<Voznja>));
 
             try
@@ -430,7 +444,7 @@ namespace TaksiSluzba.Controllers
 
         private void WriteToXMSlobodneVoznje()
         {
-            string path = @"C:\Users\filip\Desktop\Projects\Web\Projekat\WP1718-PR68-2015\TaksiSluzba\SlobodneVoznje.xml";
+            var path = System.Web.Hosting.HostingEnvironment.MapPath(@"~/App_Data/SlobodneVoznje.xml");
             XmlSerializer serializer = new XmlSerializer(typeof(List<Voznja>));
 
             using (TextWriter writer = new StreamWriter(path))
@@ -441,7 +455,7 @@ namespace TaksiSluzba.Controllers
 
         private void ReadFromXMLSlobodneVoznje()
         {
-            string path = @"C:\Users\filip\Desktop\Projects\Web\Projekat\WP1718-PR68-2015\TaksiSluzba\SlobodneVoznje.xml";
+            var path = System.Web.Hosting.HostingEnvironment.MapPath(@"~/App_Data/SlobodneVoznje.xml");
             XmlSerializer serializer = new XmlSerializer(typeof(List<Voznja>));
 
             try
