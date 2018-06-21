@@ -89,7 +89,7 @@
 
                                 var table = "<p style=\"font-size:large; font-weight:bold\">Lista vožnji<p><div>";
                                 table += "<input type=\"submit\" id=\"reset\" value=\"Reset tabele\" /><br /><br />";
-                                table += "<table border=\"1\"><tr><th>Polazna tačka</th><th>Odrediste</th><th>Musterija</th><th>Vozač</th><th>Dispečer</th><th>Datum i vreme</th><th>Cena</th><th>Ocena</th><th>Status vožnje</th><th>&nbsp;</th><th>&nbsp;</th></tr>";
+                                table += "<table border=\"1\"><tr><th>Polazna tačka</th><th>Odredište</th><th>Mušterija</th><th>Vozač</th><th>Dispečer</th><th>Datum i vreme</th><th>Cena</th><th>Ocena</th><th>Status vožnje</th><th>&nbsp;</th><th>&nbsp;</th></tr>";
                                 for (t in data.Voznje) {
                                     table += "<tr><td>" + data.Voznje[t].PolaznaTacka.Adresa.Ulica_broj + ", " + data.Voznje[t].PolaznaTacka.Adresa.Mesto + "</td><td>";
                                     if (data.Voznje[t].Odrediste != null)
@@ -104,7 +104,10 @@
 
                                     table += "</td><td>" + data.Voznje[t].Iznos + "</td><td>";
                                     if (data.Voznje[t].Komentar != null)
-                                        table += data.Voznje[t].Komentar.OcenaVoznje + "</td><td>";
+                                        if (data.Voznje[t].Komentar.OcenaVoznje != null)
+                                            table += data.Voznje[t].Komentar.OcenaVoznje + "</td><td>";
+                                        else
+                                            table += "0</td><td>";
                                     else
                                         table += "0</td><td>";
 
@@ -112,19 +115,19 @@
                                         table += "Formirana";
                                     }
                                     else if (data.Voznje[t].StatusVoznje == "2") {
-                                        table += "Obradjena";
+                                        table += "Obrađena";
                                     }
                                     else if (data.Voznje[t].StatusVoznje == "3") {
-                                        table += "Prihvacena";
+                                        table += "Prihvaćena";
                                     }
                                     else if (data.Voznje[t].StatusVoznje == "4") {
                                         table += "Otkazana";
                                     }
                                     else if (data.Voznje[t].StatusVoznje == "5") {
-                                        table += "Neuspesna";
+                                        table += "Neuspešna";
                                     }
                                     else if (data.Voznje[t].StatusVoznje == "6") {
-                                        table += "Uspesna";
+                                        table += "Uspešna";
                                     }
                                     else if (data.Voznje[t].StatusVoznje == "0") {
                                         table += "Kreirana";
@@ -144,8 +147,8 @@
                                     if (data.Uloga == "2" && data.Voznje[t].StatusVoznje == "0")
                                         table += "Preuzmi";
                                     else
-                                        table += "Obrada voznje";
-                                    table += "\" /></td><td><input type=\"submit\" name=\"detalji_voznje\" id=\"" + data.Voznje[t].Id + "\" value=\"Detalji voznje\" /></td></tr>";
+                                        table += "Obrada vožnje";
+                                    table += "\" /></td><td><input type=\"submit\" name=\"detalji_voznje\" id=\"" + data.Voznje[t].Id + "\" value=\"Detalji vožnje\" /></td></tr>";
                                 }
                                 table += "</table><br />";
 
@@ -258,8 +261,9 @@
                     $.post("/api/main/adddriver", sand).done(function (data, status) {
                         if (status == "success") {
                             var login_user = JSON.parse(localStorage.getItem("loginuser"));
-                            var table = "<div id=\"erorrr\">" + data + "</div><br /><p style=\"font-size:large; font-weight:bold\">Lista voznji<p><div>";
-                            table += "<table border=\"1\"><tr><th>Polazna tačka</th><th>Odredište</th><th>Mušterija</th><th>Vozač</th><th>Dispečer</th><th>Status vožnje</th><th>&nbsp;</th><th>&nbsp;</th></tr>";
+                            var table = "<div id=\"erorrr\">" + data + "</div><br /><p style=\"font-size:large; font-weight:bold\">Lista vožnji<p><div>";
+                            table += "<input type=\"submit\" id=\"reset\" value=\"Reset tabele\" /><br /><br />";
+                            table += "<table border=\"1\"><tr><th>Polazna tačka</th><th>Odredište</th><th>Mušterija</th><th>Vozač</th><th>Dispečer</th><th>Datum i vreme</th><th>Cena</th><th>Ocena</th><th>Status vožnje</th><th>&nbsp;</th><th>&nbsp;</th></tr>";
                             for (t in login_user.Voznje) {
                                 table += "<tr><td>" + login_user.Voznje[t].PolaznaTacka.Adresa.Ulica_broj + ", " + login_user.Voznje[t].PolaznaTacka.Adresa.Mesto + "</td><td>";
                                 if (login_user.Voznje[t].Odrediste != null)
@@ -274,7 +278,10 @@
 
                                 table += "</td><td>" + login_user.Voznje[t].Iznos + "</td><td>";
                                 if (login_user.Voznje[t].Komentar != null)
-                                    table += login_user.Voznje[t].Komentar.OcenaVoznje + "</td><td>";
+                                    if (login_user.Voznje[t].Komentar.OcenaVoznje != null)
+                                        table += login_user.Voznje[t].Komentar.OcenaVoznje + "</td><td>";
+                                    else
+                                        table += "0</td><td>";
                                 else
                                     table += "0</td><td>";
 
@@ -282,19 +289,19 @@
                                     table += "Formirana";
                                 }
                                 else if (login_user.Voznje[t].StatusVoznje == "2") {
-                                    table += "Obradjena";
+                                    table += "Obrađena";
                                 }
                                 else if (login_user.Voznje[t].StatusVoznje == "3") {
-                                    table += "Prihvacena";
+                                    table += "Prihvaćena";
                                 }
                                 else if (login_user.Voznje[t].StatusVoznje == "4") {
                                     table += "Otkazana";
                                 }
                                 else if (login_user.Voznje[t].StatusVoznje == "5") {
-                                    table += "Neuspesna";
+                                    table += "Neuspešna";
                                 }
                                 else if (login_user.Voznje[t].StatusVoznje == "6") {
-                                    table += "Uspesna";
+                                    table += "Uspešna";
                                 }
                                 else if (login_user.Voznje[t].StatusVoznje == "0") {
                                     table += "Kreirana";
@@ -314,8 +321,8 @@
                                 if (login_user.Uloga == "2" && login_user.Voznje[t].StatusVoznje == "0")
                                     table += "Preuzmi";
                                 else
-                                    table += "Obrada voznje";
-                                table += "\" /></td><td><input type=\"submit\" name=\"detalji_voznje\" id=\"" + login_user.Voznje[t].Id + "\" value=\"Detalji voznje\" /></td></tr>";
+                                    table += "Obrada vožnje";
+                                table += "\" /></td><td><input type=\"submit\" name=\"detalji_voznje\" id=\"" + login_user.Voznje[t].Id + "\" value=\"Detalji vožnje\" /></td></tr>";
                             }
                             table += "</table><br />";
 
@@ -330,13 +337,17 @@
                             if (login_user.Uloga == "1") {
                                 table += "<br />";
                                 table += "Pretraga po imenu i prezimenu mušterije:<br />";
-                                table += "Ime:&nbsp; <input type=\"text\" id=\"imemus\">&nbsp; Prezime:&nbsp;<input type=\"text\" id=\"prezimemus\">&nbsp;&nbsp;<input type=\"submit\" id=\"po_mus\" value=\"Pretraži\" /><br />";
+                                table += "Ime:&nbsp; <input type=\"text\" id=\"imemus\">&nbsp; Prezime:&nbsp;<input type=\"text\" id=\"prezimemus\">&nbsp;&nbsp;<input type=\"submit\" id=\"po_mus\" value=\"Pretrazi\" /><br />";
                                 table += "<br />";
-                                table += "Pretraga po imenu i prezimenu vozača:<br />";
-                                table += "Ime:&nbsp; <input type=\"text\" id=\"imevoz\">&nbsp; Prezime:&nbsp;<input type=\"text\" id=\"prezimevoz\">&nbsp;&nbsp;<input type=\"submit\" id=\"po_voz\" value=\"Pretraži\" /><br />";
+                                table += "Pretraga po imenu i prezimenu vozača:<br />"
+                                table += "Ime:&nbsp; <input type=\"text\" id=\"imevoz\">&nbsp; Prezime:&nbsp;<input type=\"text\" id=\"prezimevoz\">&nbsp;&nbsp;<input type=\"submit\" id=\"po_voz\" value=\"Pretrazi\" /><br />";
+                            }
+                            else if (login_user.Uloga == "2") {
+                                table += "<br /><input type=\"submit\" id=\"sortiraj_udaljenost\" value=\"Sortiraj po udaljenosti\" /><br /><br />";
                             }
 
                             table += "</div>";
+                            localStorage.setItem("loginuser", JSON.stringify(login_user));
                             localStorage.setItem("screen", table);
                             $("#screen").html(table);
                         }
@@ -346,10 +357,10 @@
 
             $(document).on("click", "#home", function () {
                 var login_user = JSON.parse(localStorage.getItem("loginuser"));
-                var table = "<p style=\"font-size:large; font-weight:bold\">Lista vožnji<p><div>";
+                var table = "<div id=\"erorrr\"></div><br /><p style=\"font-size:large; font-weight:bold\">Lista vožnji<p><div>";
                 table += "<input type=\"submit\" id=\"reset\" value=\"Reset tabele\" /><br /><br />";
-                table += "<table border=\"1\"><tr><th>Polazna tačka</th><th>Odrediste</th><th>Musterija</th><th>Vozač</th><th>Dispečer</th><th>Datum i vreme</th><th>Cena</th><th>Ocena</th><th>Status vožnje</th><th>&nbsp;</th><th>&nbsp;</th></tr>";
-                for (t in login_user.Voznje) {
+                table += "<table border=\"1\"><tr><th>Polazna tačka</th><th>Odredište</th><th>Mušterija</th><th>Vozač</th><th>Dispečer</th><th>Datum i vreme</th><th>Cena</th><th>Ocena</th><th>Status vožnje</th><th>&nbsp;</th><th>&nbsp;</th></tr>";
+                  for (t in login_user.Voznje) {
                     table += "<tr><td>" + login_user.Voznje[t].PolaznaTacka.Adresa.Ulica_broj + ", " + login_user.Voznje[t].PolaznaTacka.Adresa.Mesto + "</td><td>";
                     if (login_user.Voznje[t].Odrediste != null)
                         table += login_user.Voznje[t].Odrediste.Adresa.Ulica_broj + ", " + login_user.Voznje[t].Odrediste.Adresa.Mesto;
@@ -363,7 +374,10 @@
 
                     table += "</td><td>" + login_user.Voznje[t].Iznos + "</td><td>";
                     if (login_user.Voznje[t].Komentar != null)
-                        table += login_user.Voznje[t].Komentar.OcenaVoznje + "</td><td>";
+                        if (login_user.Voznje[t].Komentar.OcenaVoznje != null)
+                            table += login_user.Voznje[t].Komentar.OcenaVoznje + "</td><td>";
+                        else
+                            table += "0</td><td>";
                     else
                         table += "0</td><td>";
 
@@ -371,19 +385,19 @@
                         table += "Formirana";
                     }
                     else if (login_user.Voznje[t].StatusVoznje == "2") {
-                        table += "Obradjena";
+                        table += "Obrađena";
                     }
                     else if (login_user.Voznje[t].StatusVoznje == "3") {
-                        table += "Prihvacena";
+                        table += "Prihvaćena";
                     }
                     else if (login_user.Voznje[t].StatusVoznje == "4") {
                         table += "Otkazana";
                     }
                     else if (login_user.Voznje[t].StatusVoznje == "5") {
-                        table += "Neuspesna";
+                        table += "Neuspešna";
                     }
                     else if (login_user.Voznje[t].StatusVoznje == "6") {
-                        table += "Uspesna";
+                        table += "Uspešna";
                     }
                     else if (login_user.Voznje[t].StatusVoznje == "0") {
                         table += "Kreirana";
@@ -403,8 +417,8 @@
                     if (login_user.Uloga == "2" && login_user.Voznje[t].StatusVoznje == "0")
                         table += "Preuzmi";
                     else
-                        table += "Obrada voznje";
-                    table += "\" /></td><td><input type=\"submit\" name=\"detalji_voznje\" id=\"" + login_user.Voznje[t].Id + "\" value=\"Detalji voznje\" /></td></tr>";
+                        table += "Obrada vožnje";
+                    table += "\" /></td><td><input type=\"submit\" name=\"detalji_voznje\" id=\"" + login_user.Voznje[t].Id + "\" value=\"Detalji vožnje\" /></td></tr>";
                 }
                 table += "</table><br />";
 
@@ -419,16 +433,17 @@
                 if (login_user.Uloga == "1") {
                     table += "<br />";
                     table += "Pretraga po imenu i prezimenu mušterije:<br />";
-                    table += "Ime:&nbsp; <input type=\"text\" id=\"imemus\">&nbsp; Prezime:&nbsp;<input type=\"text\" id=\"prezimemus\">&nbsp;&nbsp;<input type=\"submit\" id=\"po_mus\" value=\"Pretraži\" /><br />";
+                    table += "Ime:&nbsp; <input type=\"text\" id=\"imemus\">&nbsp; Prezime:&nbsp;<input type=\"text\" id=\"prezimemus\">&nbsp;&nbsp;<input type=\"submit\" id=\"po_mus\" value=\"Pretrazi\" /><br />";
                     table += "<br />";
                     table += "Pretraga po imenu i prezimenu vozača:<br />"
-                    table += "Ime:&nbsp; <input type=\"text\" id=\"imevoz\">&nbsp; Prezime:&nbsp;<input type=\"text\" id=\"prezimevoz\">&nbsp;&nbsp;<input type=\"submit\" id=\"po_voz\" value=\"Pretraži\" /><br />";
+                    table += "Ime:&nbsp; <input type=\"text\" id=\"imevoz\">&nbsp; Prezime:&nbsp;<input type=\"text\" id=\"prezimevoz\">&nbsp;&nbsp;<input type=\"submit\" id=\"po_voz\" value=\"Pretrazi\" /><br />";
                 }
                 else if (login_user.Uloga == "2") {
                     table += "<br /><input type=\"submit\" id=\"sortiraj_udaljenost\" value=\"Sortiraj po udaljenosti\" /><br /><br />";
                 }
 
                 table += "</div>";
+                localStorage.setItem("loginuser", JSON.stringify(login_user));
                 localStorage.setItem("screen", table);
                 $("#screen").html(table);
             });
@@ -564,12 +579,13 @@
                             var table = "";
                             if (login_user == "Korisničko ime već postoji u sistemu.") {
                                 login_user = JSON.parse(localStorage.getItem("loginuser"));
-                                table += "<div id=\"erorrr\">" + login_user + "</div><br /><p style=\"font-size:large; font-weight:bold\">Lista voznji<p><div>";
+                                table += "<div id=\"erorrr\">" + login_user + "</div><br /><p style=\"font-size:large; font-weight:bold\">Lista vožnji<p><div>";
 
                             } else {
-                                table += "<div id=\"erorrr\">Uspešno ažuriran profil.</div><br /><p style=\"font-size:large; font-weight:bold\">Lista voznji<p><div>";
+                                table += "<div id=\"erorrr\">Uspešno ažuriran profil.</div><br /><p style=\"font-size:large; font-weight:bold\">Lista vožnji<p><div>";
                             }
-                            table += "<table border=\"1\"><tr><th>Polazna tačka</th><th>Odrediste</th><th>Musterija</th><th>Vozač</th><th>Dispečer</th><th>Datum i vreme</th><th>Cena</th><th>Ocena</th><th>Status vožnje</th><th>&nbsp;</th><th>&nbsp;</th></tr>";
+                            table += "<input type=\"submit\" id=\"reset\" value=\"Reset tabele\" /><br /><br />";
+                            table += "<table border=\"1\"><tr><th>Polazna tačka</th><th>Odredište</th><th>Mušterija</th><th>Vozač</th><th>Dispečer</th><th>Datum i vreme</th><th>Cena</th><th>Ocena</th><th>Status vožnje</th><th>&nbsp;</th><th>&nbsp;</th></tr>";
                             for (t in login_user.Voznje) {
                                 table += "<tr><td>" + login_user.Voznje[t].PolaznaTacka.Adresa.Ulica_broj + ", " + login_user.Voznje[t].PolaznaTacka.Adresa.Mesto + "</td><td>";
                                 if (login_user.Voznje[t].Odrediste != null)
@@ -584,7 +600,10 @@
 
                                 table += "</td><td>" + login_user.Voznje[t].Iznos + "</td><td>";
                                 if (login_user.Voznje[t].Komentar != null)
-                                    table += login_user.Voznje[t].Komentar.OcenaVoznje + "</td><td>";
+                                    if (login_user.Voznje[t].Komentar.OcenaVoznje != null)
+                                        table += login_user.Voznje[t].Komentar.OcenaVoznje + "</td><td>";
+                                    else
+                                        table += "0</td><td>";
                                 else
                                     table += "0</td><td>";
 
@@ -592,19 +611,19 @@
                                     table += "Formirana";
                                 }
                                 else if (login_user.Voznje[t].StatusVoznje == "2") {
-                                    table += "Obradjena";
+                                    table += "Obrađena";
                                 }
                                 else if (login_user.Voznje[t].StatusVoznje == "3") {
-                                    table += "Prihvacena";
+                                    table += "Prihvaćena";
                                 }
                                 else if (login_user.Voznje[t].StatusVoznje == "4") {
                                     table += "Otkazana";
                                 }
                                 else if (login_user.Voznje[t].StatusVoznje == "5") {
-                                    table += "Neuspesna";
+                                    table += "Neuspešna";
                                 }
                                 else if (login_user.Voznje[t].StatusVoznje == "6") {
-                                    table += "Uspesna";
+                                    table += "Uspešna";
                                 }
                                 else if (login_user.Voznje[t].StatusVoznje == "0") {
                                     table += "Kreirana";
@@ -624,8 +643,8 @@
                                 if (login_user.Uloga == "2" && login_user.Voznje[t].StatusVoznje == "0")
                                     table += "Preuzmi";
                                 else
-                                    table += "Obrada voznje";
-                                table += "\" /></td><td><input type=\"submit\" name=\"detalji_voznje\" id=\"" + login_user.Voznje[t].Id + "\" value=\"Detalji voznje\" /></td></tr>";
+                                    table += "Obrada vožnje";
+                                table += "\" /></td><td><input type=\"submit\" name=\"detalji_voznje\" id=\"" + login_user.Voznje[t].Id + "\" value=\"Detalji vožnje\" /></td></tr>";
                             }
                             table += "</table><br />";
 
@@ -640,13 +659,17 @@
                             if (login_user.Uloga == "1") {
                                 table += "<br />";
                                 table += "Pretraga po imenu i prezimenu mušterije:<br />";
-                                table += "Ime:&nbsp; <input type=\"text\" id=\"imemus\">&nbsp; Prezime:&nbsp;<input type=\"text\" id=\"prezimemus\">&nbsp;&nbsp;<input type=\"submit\" id=\"po_mus\" value=\"Pretraži\" /><br />";
+                                table += "Ime:&nbsp; <input type=\"text\" id=\"imemus\">&nbsp; Prezime:&nbsp;<input type=\"text\" id=\"prezimemus\">&nbsp;&nbsp;<input type=\"submit\" id=\"po_mus\" value=\"Pretrazi\" /><br />";
                                 table += "<br />";
-                                table += "Pretraga po imenu i prezimenu vozača:<br />";
-                                table += "Ime:&nbsp; <input type=\"text\" id=\"imevoz\">&nbsp; Prezime:&nbsp;<input type=\"text\" id=\"prezimevoz\">&nbsp;&nbsp;<input type=\"submit\" id=\"po_voz\" value=\"Pretraži\" /><br />";
+                                table += "Pretraga po imenu i prezimenu vozača:<br />"
+                                table += "Ime:&nbsp; <input type=\"text\" id=\"imevoz\">&nbsp; Prezime:&nbsp;<input type=\"text\" id=\"prezimevoz\">&nbsp;&nbsp;<input type=\"submit\" id=\"po_voz\" value=\"Pretrazi\" /><br />";
+                            }
+                            else if (login_user.Uloga == "2") {
+                                table += "<br /><input type=\"submit\" id=\"sortiraj_udaljenost\" value=\"Sortiraj po udaljenosti\" /><br /><br />";
                             }
 
                             table += "</div>";
+
                             localStorage.removeItem("loginuser");
                             localStorage.setItem("loginuser", JSON.stringify(login_user));
                             localStorage.setItem("screen", table);
@@ -659,7 +682,7 @@
             $(document).on("click", "#adddrive", function () {
                 var login_user = JSON.parse(localStorage.getItem("loginuser"));
                 var addDrive = "<div><div id= \"error1\" class=\"Red\" ></div ><p style=\"font-weight:bold; font-size:x-large\">Dodaj vožnju<\p>";
-                addDrive = "<p id=\"greskavoznja\" class=\"Red\"></p><br />Polazište:<br />";
+                addDrive += "<p id=\"greskavoznja\" class=\"Red\"></p><br />Polazište:<br />";
                 addDrive += "<p id=\"kord\"></p>";
                 var mapa = "<div id=\"map\" style=\"height:400px; text-align: center; width:50%\" class=\"map\"></div><script>";
                 mapa += "var xx; var yy; var ulica_broj; var grad;";
@@ -739,7 +762,12 @@
                     $("#error1").html("Korisničko ime mora biti uneto kako bi se data osoba blokirala.");
                 }
             });
-           
+
+            $(document).on("click", "#cartipe", function ()
+            {
+
+            });
+
             $(document).on("dblclick", "#map", function ()
             {
                 var login_user = JSON.parse(localStorage.getItem("loginuser"));
@@ -749,15 +777,21 @@
                     if (xcord != null && ycord != null) {
                         var cords = {
                             x: xcord,
-                            y: ycord
+                            y: ycord,
                         };
                         $.get("/api/main/get5closest", cords).done(function (data, status) {
                             if (status == "success") {
                                 var por = "";
-                                for (var key in data) {
-                                    por += "<option value=\"" + data[key][0] + "\">" + data[key][1] + "</option>";
+                                if (data[0] != null) {
+                                    for (var key in data) {
+                                        por += "<option value=\"" + data[key][0] + "\">" + data[key][1] + "</option>";
+                                    }
+                                    $("#vozaci").html(por);
+                                } else
+                                {
+                                    por = "Trenutno nema slobodnih vozača. Probajte kasnije.";
+                                    $("#greskavoznja").html(por);
                                 }
-                                $("#vozaci").html(por);
                             }
                         });
                     }
@@ -837,27 +871,38 @@
                 }
                 else if (login_user.Uloga == "1"){ //Dispecer
                     if (voznja.StatusVoznje == "0") { //Kreirana
+                        var cords = {
+                            x: voznja.PolaznaTacka.XKordinata,
+                            y: voznja.PolaznaTacka.YKordinata
+                        };
                         $.get("/api/main/get5closest", cords).done(function (data, status) {
                             if (status == "success") {
-                                var forma = "<div style=\"color: red\" id=\"error\"></div><p>Vožnja</p>";
+                                var forma = "<div style=\"color: red\" id=\"error\"></div><p style=\"font-size:large; font-weight:bold\">Vožnja</p>";
                                 forma += "<input type=\"hidden\" id=\"hiddenidvozaca\" name=\"" + login_user.Id + "\" ><input type=\"hidden\" id=\"hiddenid\" name=\"" + id + "\" >";
-                                forma += "Polazna tačka: " + voznja.PolaznaTacka.Adresa.Ulica_broj + "," + voznja.PolaznaTacka.Adresa.Mesto + "<br />";
+                                forma += "Polazna tačka: [" + voznja.PolaznaTacka.Adresa.Ulica_broj + ",&nbsp;" + voznja.PolaznaTacka.Adresa.Mesto + "]<br />";
                                 var i = voznja.VremePorudjbine.split("T");
-                                var j = i.split(".");
-                                forma += "Datum kreiranja vožnje: " + i[0] + "," + j[0];
+                                var j = i[1].split(".");
+                                forma += "Datum kreiranja vožnje: [" + i[0] + "&nbsp;&nbsp;&nbsp;&nbsp;" + j[0] + "]";
                                 forma += "<br />Dodelite vozača:&nbsp;&nbsp;";
-                                forma += "<select id=\"kojivozac\">;"
-                                for (var key in data) {
-                                    forma += "<option value=\"" + data[key][0] + "\">" + data[key][1] + "</option>";
+                                if (data[0] != null) {
+                                    forma += "<select id=\"kojivozac\">;"
+                                    for (var key in data) {
+                                        forma += "<option value=\"" + data[key][0] + "\">" + data[key][1] + "</option>";
+                                    }
+                                    forma += "</select>";
+                                    forma += "<br /><br /><input type=\"submit\" id=\"izmenivoznjudispecer\" value=\"Izmeni\">";
+                                } else
+                                {
+                                    forma += "<p>Nema slobodnih vozača. Probajte kasnije.</p>";
                                 }
-                                forma += "</select>";
-                                forma += "<br /><input type=\"submit\" id=\"izmenivoznjudispecer\" value=\"Izmeni\">";
+                                
+                                localStorage.setItem("screen", forma);
                                 $("#screen").html(forma);
                             }
                         });
                     }
                 }
-                else{
+                else{ //Vozac
                     if (voznja.StatusVoznje == "0") { //Kreirana
                         var l = {
                             Id: login_user.Id,
@@ -871,27 +916,45 @@
                             success: function (login_user) {
                                 var table = "<p style=\"font-size:large; font-weight:bold\">Lista vožnji<p><div>";
                                 table += "<input type=\"submit\" id=\"reset\" value=\"Reset tabele\" /><br /><br />";
-                                table += "<table border=\"1\"><tr><th>Polazna tačka</th><th>Odrediste</th><th>Musterija</th><th>Vozač</th><th>Dispečer</th><th>Datum i vreme</th><th>Cena</th><th>Ocena</th><th>Status vožnje</th><th>&nbsp;</th><th>&nbsp;</th></tr>";
+                                table += "<table border=\"1\"><tr><th>Polazna tačka</th><th>Odredište</th><th>Mušterija</th><th>Vozač</th><th>Dispečer</th><th>Datum i vreme</th><th>Cena</th><th>Ocena</th><th>Status vožnje</th><th>&nbsp;</th><th>&nbsp;</th></tr>";
                                 for (t in login_user.Voznje) {
-                                    table += "<tr><td>" + login_user.Voznje[t].PolaznaTacka.Adresa.Ulica_broj + ", " + login_user.Voznje[t].PolaznaTacka.Adresa.Mesto + "</td><td>" + login_user.Voznje[t].Odrediste + "</td><td>" + login_user.Voznje[t].Musterija + "</td><td>" + login_user.Voznje[t].Vozac + "</td><td>" + login_user.Voznje[t].Dispecer + "</td><td>" + login_user.Voznje[t].VremePorudjbine + "</td><td>" + login_user.Voznje[t].Iznos + "</td><td>"; if (login_user.Voznje[t].Komentar != null) table += login_user.Voznje[t].Komentar.OcenaVoznje + "</td><td>"; table += "0</td><td>";
+                                    table += "<tr><td>" + login_user.Voznje[t].PolaznaTacka.Adresa.Ulica_broj + ", " + login_user.Voznje[t].PolaznaTacka.Adresa.Mesto + "</td><td>";
+                                    if (login_user.Voznje[t].Odrediste != null)
+                                        table += login_user.Voznje[t].Odrediste.Adresa.Ulica_broj + ", " + login_user.Voznje[t].Odrediste.Adresa.Mesto;
+                                    else
+                                        table += "null";
+                                    table += "</td><td>" + login_user.Voznje[t].Musterija + "</td><td>" + login_user.Voznje[t].Vozac + "</td><td>" + login_user.Voznje[t].Dispecer + "</td><td>";
+
+                                    var date = login_user.Voznje[t].VremePorudjbine.split("T");
+                                    var time = date[1].split(".");
+                                    table += date[0] + "~" + time[0];
+
+                                    table += "</td><td>" + login_user.Voznje[t].Iznos + "</td><td>";
+                                    if (login_user.Voznje[t].Komentar != null)
+                                        if (login_user.Voznje[t].Komentar.OcenaVoznje != null)
+                                            table += login_user.Voznje[t].Komentar.OcenaVoznje + "</td><td>";
+                                        else
+                                            table += "0</td><td>";
+                                    else
+                                        table += "0</td><td>";
 
                                     if (login_user.Voznje[t].StatusVoznje == "1") {
                                         table += "Formirana";
                                     }
                                     else if (login_user.Voznje[t].StatusVoznje == "2") {
-                                        table += "Obradjena";
+                                        table += "Obrađena";
                                     }
                                     else if (login_user.Voznje[t].StatusVoznje == "3") {
-                                        table += "Prihvacena";
+                                        table += "Prihvaćena";
                                     }
                                     else if (login_user.Voznje[t].StatusVoznje == "4") {
                                         table += "Otkazana";
                                     }
                                     else if (login_user.Voznje[t].StatusVoznje == "5") {
-                                        table += "Neuspesna";
+                                        table += "Neuspešna";
                                     }
                                     else if (login_user.Voznje[t].StatusVoznje == "6") {
-                                        table += "Uspesna";
+                                        table += "Uspešna";
                                     }
                                     else if (login_user.Voznje[t].StatusVoznje == "0") {
                                         table += "Kreirana";
@@ -904,12 +967,15 @@
                                     if (login_user.Uloga == "0")
                                         if (login_user.Voznje[t].StatusVoznje == "2" || login_user.Voznje[t].StatusVoznje == "3" || login_user.Voznje[t].StatusVoznje == "4" || login_user.Voznje[t].StatusVoznje == "5")
                                             table += " disabled ";
+                                    if (login_user.Uloga == "2")
+                                        if (login_user.Voznje[t].StatusVoznje == "6" || login_user.Voznje[t].StatusVoznje == "5")
+                                            table += " disabled ";
                                     table += "name=\"obrada_voznje\" id=\"" + login_user.Voznje[t].Id + "\" value=\"";
                                     if (login_user.Uloga == "2" && login_user.Voznje[t].StatusVoznje == "0")
                                         table += "Preuzmi";
                                     else
-                                        table += "Obrada voznje";
-                                    table += "\" /></td><td><input type=\"submit\" name=\"detalji_voznje\" id=\"" + login_user.Voznje[t].Id + "\" value=\"Detalji voznje\" /></td></tr>";
+                                        table += "Obrada vožnje";
+                                    table += "\" /></td><td><input type=\"submit\" name=\"detalji_voznje\" id=\"" + login_user.Voznje[t].Id + "\" value=\"Detalji vožnje\" /></td></tr>";
                                 }
                                 table += "</table><br />";
 
@@ -924,10 +990,10 @@
                                 if (login_user.Uloga == "1") {
                                     table += "<br />";
                                     table += "Pretraga po imenu i prezimenu mušterije:<br />";
-                                    table += "Ime:&nbsp; <input type=\"text\" id=\"imemus\">&nbsp; Prezime:&nbsp;<input type=\"text\" id=\"prezimemus\">&nbsp;&nbsp;<input type=\"submit\" id=\"po_mus\" value=\"Pretraži\" /><br />";
+                                    table += "Ime:&nbsp; <input type=\"text\" id=\"imemus\">&nbsp; Prezime:&nbsp;<input type=\"text\" id=\"prezimemus\">&nbsp;&nbsp;<input type=\"submit\" id=\"po_mus\" value=\"Pretrazi\" /><br />";
                                     table += "<br />";
                                     table += "Pretraga po imenu i prezimenu vozača:<br />"
-                                    table += "Ime:&nbsp; <input type=\"text\" id=\"imevoz\">&nbsp; Prezime:&nbsp;<input type=\"text\" id=\"prezimevoz\">&nbsp;&nbsp;<input type=\"submit\" id=\"po_voz\" value=\"Pretraži\" /><br />";
+                                    table += "Ime:&nbsp; <input type=\"text\" id=\"imevoz\">&nbsp; Prezime:&nbsp;<input type=\"text\" id=\"prezimevoz\">&nbsp;&nbsp;<input type=\"submit\" id=\"po_voz\" value=\"Pretrazi\" /><br />";
                                 }
                                 else if (login_user.Uloga == "2") {
                                     table += "<br /><input type=\"submit\" id=\"sortiraj_udaljenost\" value=\"Sortiraj po udaljenosti\" /><br /><br />";
@@ -1028,7 +1094,7 @@
                     success: function (login_user) {
                         var table = "<p style=\"font-size:large; font-weight:bold\">Lista vožnji<p><div>";
                         table += "<input type=\"submit\" id=\"reset\" value=\"Reset tabele\" /><br /><br />";
-                        table += "<table border=\"1\"><tr><th>Polazna tačka</th><th>Odrediste</th><th>Musterija</th><th>Vozač</th><th>Dispečer</th><th>Datum i vreme</th><th>Cena</th><th>Ocena</th><th>Status vožnje</th><th>&nbsp;</th><th>&nbsp;</th></tr>";
+                        table += "<table border=\"1\"><tr><th>Polazna tačka</th><th>Odredište</th><th>Mušterija</th><th>Vozač</th><th>Dispečer</th><th>Datum i vreme</th><th>Cena</th><th>Ocena</th><th>Status vožnje</th><th>&nbsp;</th><th>&nbsp;</th></tr>";
                         for (t in login_user.Voznje) {
                             table += "<tr><td>" + login_user.Voznje[t].PolaznaTacka.Adresa.Ulica_broj + ", " + login_user.Voznje[t].PolaznaTacka.Adresa.Mesto + "</td><td>";
                             if (login_user.Voznje[t].Odrediste != null)
@@ -1043,7 +1109,10 @@
 
                             table += "</td><td>" + login_user.Voznje[t].Iznos + "</td><td>";
                             if (login_user.Voznje[t].Komentar != null)
-                                table += login_user.Voznje[t].Komentar.OcenaVoznje + "</td><td>";
+                                if (login_user.Voznje[t].Komentar.OcenaVoznje != null)
+                                    table += login_user.Voznje[t].Komentar.OcenaVoznje + "</td><td>";
+                                else
+                                    table += "0</td><td>";
                             else
                                 table += "0</td><td>";
 
@@ -1051,19 +1120,19 @@
                                 table += "Formirana";
                             }
                             else if (login_user.Voznje[t].StatusVoznje == "2") {
-                                table += "Obradjena";
+                                table += "Obrađena";
                             }
                             else if (login_user.Voznje[t].StatusVoznje == "3") {
-                                table += "Prihvacena";
+                                table += "Prihvaćena";
                             }
                             else if (login_user.Voznje[t].StatusVoznje == "4") {
                                 table += "Otkazana";
                             }
                             else if (login_user.Voznje[t].StatusVoznje == "5") {
-                                table += "Neuspesna";
+                                table += "Neuspešna";
                             }
                             else if (login_user.Voznje[t].StatusVoznje == "6") {
-                                table += "Uspesna";
+                                table += "Uspešna";
                             }
                             else if (login_user.Voznje[t].StatusVoznje == "0") {
                                 table += "Kreirana";
@@ -1083,8 +1152,8 @@
                             if (login_user.Uloga == "2" && login_user.Voznje[t].StatusVoznje == "0")
                                 table += "Preuzmi";
                             else
-                                table += "Obrada voznje";
-                            table += "\" /></td><td><input type=\"submit\" name=\"detalji_voznje\" id=\"" + login_user.Voznje[t].Id + "\" value=\"Detalji voznje\" /></td></tr>";
+                                table += "Obrada vožnje";
+                            table += "\" /></td><td><input type=\"submit\" name=\"detalji_voznje\" id=\"" + login_user.Voznje[t].Id + "\" value=\"Detalji vožnje\" /></td></tr>";
                         }
                         table += "</table><br />";
 
@@ -1099,10 +1168,10 @@
                         if (login_user.Uloga == "1") {
                             table += "<br />";
                             table += "Pretraga po imenu i prezimenu mušterije:<br />";
-                            table += "Ime:&nbsp; <input type=\"text\" id=\"imemus\">&nbsp; Prezime:&nbsp;<input type=\"text\" id=\"prezimemus\">&nbsp;&nbsp;<input type=\"submit\" id=\"po_mus\" value=\"Pretraži\" /><br />";
+                            table += "Ime:&nbsp; <input type=\"text\" id=\"imemus\">&nbsp; Prezime:&nbsp;<input type=\"text\" id=\"prezimemus\">&nbsp;&nbsp;<input type=\"submit\" id=\"po_mus\" value=\"Pretrazi\" /><br />";
                             table += "<br />";
                             table += "Pretraga po imenu i prezimenu vozača:<br />"
-                            table += "Ime:&nbsp; <input type=\"text\" id=\"imevoz\">&nbsp; Prezime:&nbsp;<input type=\"text\" id=\"prezimevoz\">&nbsp;&nbsp;<input type=\"submit\" id=\"po_voz\" value=\"Pretraži\" /><br />";
+                            table += "Ime:&nbsp; <input type=\"text\" id=\"imevoz\">&nbsp; Prezime:&nbsp;<input type=\"text\" id=\"prezimevoz\">&nbsp;&nbsp;<input type=\"submit\" id=\"po_voz\" value=\"Pretrazi\" /><br />";
                         }
                         else if (login_user.Uloga == "2") {
                             table += "<br /><input type=\"submit\" id=\"sortiraj_udaljenost\" value=\"Sortiraj po udaljenosti\" /><br /><br />";
@@ -1186,7 +1255,7 @@
                         success: function (login_user) {
                             var table = "<p style=\"font-size:large; font-weight:bold\">Lista vožnji<p><div>";
                             table += "<input type=\"submit\" id=\"reset\" value=\"Reset tabele\" /><br /><br />";
-                            table += "<table border=\"1\"><tr><th>Polazna tačka</th><th>Odrediste</th><th>Musterija</th><th>Vozač</th><th>Dispečer</th><th>Datum i vreme</th><th>Cena</th><th>Ocena</th><th>Status vožnje</th><th>&nbsp;</th><th>&nbsp;</th></tr>";
+                            table += "<table border=\"1\"><tr><th>Polazna tačka</th><th>Odredište</th><th>Mušterija</th><th>Vozač</th><th>Dispečer</th><th>Datum i vreme</th><th>Cena</th><th>Ocena</th><th>Status vožnje</th><th>&nbsp;</th><th>&nbsp;</th></tr>";
                             for (t in login_user.Voznje) {
                                 table += "<tr><td>" + login_user.Voznje[t].PolaznaTacka.Adresa.Ulica_broj + ", " + login_user.Voznje[t].PolaznaTacka.Adresa.Mesto + "</td><td>";
                                 if (login_user.Voznje[t].Odrediste != null)
@@ -1201,7 +1270,10 @@
 
                                 table += "</td><td>" + login_user.Voznje[t].Iznos + "</td><td>";
                                 if (login_user.Voznje[t].Komentar != null)
-                                    table += login_user.Voznje[t].Komentar.OcenaVoznje + "</td><td>";
+                                    if (login_user.Voznje[t].Komentar.OcenaVoznje != null)
+                                        table += login_user.Voznje[t].Komentar.OcenaVoznje + "</td><td>";
+                                    else
+                                        table += "0</td><td>";
                                 else
                                     table += "0</td><td>";
 
@@ -1209,19 +1281,19 @@
                                     table += "Formirana";
                                 }
                                 else if (login_user.Voznje[t].StatusVoznje == "2") {
-                                    table += "Obradjena";
+                                    table += "Obrađena";
                                 }
                                 else if (login_user.Voznje[t].StatusVoznje == "3") {
-                                    table += "Prihvacena";
+                                    table += "Prihvaćena";
                                 }
                                 else if (login_user.Voznje[t].StatusVoznje == "4") {
                                     table += "Otkazana";
                                 }
                                 else if (login_user.Voznje[t].StatusVoznje == "5") {
-                                    table += "Neuspesna";
+                                    table += "Neuspešna";
                                 }
                                 else if (login_user.Voznje[t].StatusVoznje == "6") {
-                                    table += "Uspesna";
+                                    table += "Uspešna";
                                 }
                                 else if (login_user.Voznje[t].StatusVoznje == "0") {
                                     table += "Kreirana";
@@ -1241,8 +1313,8 @@
                                 if (login_user.Uloga == "2" && login_user.Voznje[t].StatusVoznje == "0")
                                     table += "Preuzmi";
                                 else
-                                    table += "Obrada voznje";
-                                table += "\" /></td><td><input type=\"submit\" name=\"detalji_voznje\" id=\"" + login_user.Voznje[t].Id + "\" value=\"Detalji voznje\" /></td></tr>";
+                                    table += "Obrada vožnje";
+                                table += "\" /></td><td><input type=\"submit\" name=\"detalji_voznje\" id=\"" + login_user.Voznje[t].Id + "\" value=\"Detalji vožnje\" /></td></tr>";
                             }
                             table += "</table><br />";
 
@@ -1257,10 +1329,10 @@
                             if (login_user.Uloga == "1") {
                                 table += "<br />";
                                 table += "Pretraga po imenu i prezimenu mušterije:<br />";
-                                table += "Ime:&nbsp; <input type=\"text\" id=\"imemus\">&nbsp; Prezime:&nbsp;<input type=\"text\" id=\"prezimemus\">&nbsp;&nbsp;<input type=\"submit\" id=\"po_mus\" value=\"Pretraži\" /><br />";
+                                table += "Ime:&nbsp; <input type=\"text\" id=\"imemus\">&nbsp; Prezime:&nbsp;<input type=\"text\" id=\"prezimemus\">&nbsp;&nbsp;<input type=\"submit\" id=\"po_mus\" value=\"Pretrazi\" /><br />";
                                 table += "<br />";
                                 table += "Pretraga po imenu i prezimenu vozača:<br />"
-                                table += "Ime:&nbsp; <input type=\"text\" id=\"imevoz\">&nbsp; Prezime:&nbsp;<input type=\"text\" id=\"prezimevoz\">&nbsp;&nbsp;<input type=\"submit\" id=\"po_voz\" value=\"Pretraži\" /><br />";
+                                table += "Ime:&nbsp; <input type=\"text\" id=\"imevoz\">&nbsp; Prezime:&nbsp;<input type=\"text\" id=\"prezimevoz\">&nbsp;&nbsp;<input type=\"submit\" id=\"po_voz\" value=\"Pretrazi\" /><br />";
                             }
                             else if (login_user.Uloga == "2") {
                                 table += "<br /><input type=\"submit\" id=\"sortiraj_udaljenost\" value=\"Sortiraj po udaljenosti\" /><br /><br />";
@@ -1282,7 +1354,13 @@
             $(document).on("click", "#add_drive_button", function ()
             {
                 var login_user = JSON.parse(localStorage.getItem("loginuser"));
-                if (xx == null && yy == null) {
+                if (login_user.Uloga == "1") {
+                    if ($("#vozaci").val() == null) {
+                        $("#greskavoznja").html("Nema slobodnih vozača.");
+                        return;
+                    }
+                }
+                if (xx == null || yy == null) {
                     $("#greskavoznja").html("Sva polja moraju biti popunjena.");
                 }
                 else {
@@ -1333,7 +1411,7 @@
 
                                 var table = "<p style=\"font-size:large; font-weight:bold\">Lista vožnji<p><div>";
                                 table += "<input type=\"submit\" id=\"reset\" value=\"Reset tabele\" /><br /><br />";
-                                table += "<table border=\"1\"><tr><th>Polazna tačka</th><th>Odrediste</th><th>Musterija</th><th>Vozač</th><th>Dispečer</th><th>Datum i vreme</th><th>Cena</th><th>Ocena</th><th>Status vožnje</th><th>&nbsp;</th><th>&nbsp;</th></tr>";
+                                table += "<table border=\"1\"><tr><th>Polazna tačka</th><th>Odredište</th><th>Mušterija</th><th>Vozač</th><th>Dispečer</th><th>Datum i vreme</th><th>Cena</th><th>Ocena</th><th>Status vožnje</th><th>&nbsp;</th><th>&nbsp;</th></tr>";
                                 for (t in login_user.Voznje) {
                                     table += "<tr><td>" + login_user.Voznje[t].PolaznaTacka.Adresa.Ulica_broj + ", " + login_user.Voznje[t].PolaznaTacka.Adresa.Mesto + "</td><td>";
                                     if (login_user.Voznje[t].Odrediste != null)
@@ -1348,7 +1426,10 @@
 
                                     table += "</td><td>" + login_user.Voznje[t].Iznos + "</td><td>";
                                     if (login_user.Voznje[t].Komentar != null)
-                                        table += login_user.Voznje[t].Komentar.OcenaVoznje + "</td><td>";
+                                        if (login_user.Voznje[t].Komentar.OcenaVoznje != null)
+                                            table += login_user.Voznje[t].Komentar.OcenaVoznje + "</td><td>";
+                                        else
+                                            table += "0</td><td>";
                                     else
                                         table += "0</td><td>";
 
@@ -1356,19 +1437,19 @@
                                         table += "Formirana";
                                     }
                                     else if (login_user.Voznje[t].StatusVoznje == "2") {
-                                        table += "Obradjena";
+                                        table += "Obrađena";
                                     }
                                     else if (login_user.Voznje[t].StatusVoznje == "3") {
-                                        table += "Prihvacena";
+                                        table += "Prihvaćena";
                                     }
                                     else if (login_user.Voznje[t].StatusVoznje == "4") {
                                         table += "Otkazana";
                                     }
                                     else if (login_user.Voznje[t].StatusVoznje == "5") {
-                                        table += "Neuspesna";
+                                        table += "Neuspešna";
                                     }
                                     else if (login_user.Voznje[t].StatusVoznje == "6") {
-                                        table += "Uspesna";
+                                        table += "Uspešna";
                                     }
                                     else if (login_user.Voznje[t].StatusVoznje == "0") {
                                         table += "Kreirana";
@@ -1388,20 +1469,20 @@
                                     if (login_user.Uloga == "2" && login_user.Voznje[t].StatusVoznje == "0")
                                         table += "Preuzmi";
                                     else
-                                        table += "Obrada voznje";
-                                    table += "\" /></td><td><input type=\"submit\" name=\"detalji_voznje\" id=\"" + login_user.Voznje[t].Id + "\" value=\"Detalji voznje\" /></td></tr>";
+                                        table += "Obrada vožnje";
+                                    table += "\" /></td><td><input type=\"submit\" name=\"detalji_voznje\" id=\"" + login_user.Voznje[t].Id + "\" value=\"Detalji vožnje\" /></td></tr>";
                                 }
                                 table += "</table><br />";
 
-                                if (data.Uloga == "1") {
+                                if (login_user.Uloga == "1") {
                                     table += "<input type=\"submit\" id=\"sve_voznje_sis\" value=\"Sve vožnje u sistemu\" /><br /><br />";
-                                } else if (data.Uloga == "2") {
+                                } else if (login_user.Uloga == "2") {
                                     table += "<input type=\"submit\" id=\"sve_voznje_cekanje\" value=\"Sve vožnje na čekanju\" /><br /><br />";
                                 }
 
                                 table += pocetnastr;
 
-                                if (data.Uloga == "1") {
+                                if (login_user.Uloga == "1") {
                                     table += "<br />";
                                     table += "Pretraga po imenu i prezimenu mušterije:<br />";
                                     table += "Ime:&nbsp; <input type=\"text\" id=\"imemus\">&nbsp; Prezime:&nbsp;<input type=\"text\" id=\"prezimemus\">&nbsp;&nbsp;<input type=\"submit\" id=\"po_mus\" value=\"Pretrazi\" /><br />";
@@ -1409,7 +1490,7 @@
                                     table += "Pretraga po imenu i prezimenu vozača:<br />"
                                     table += "Ime:&nbsp; <input type=\"text\" id=\"imevoz\">&nbsp; Prezime:&nbsp;<input type=\"text\" id=\"prezimevoz\">&nbsp;&nbsp;<input type=\"submit\" id=\"po_voz\" value=\"Pretrazi\" /><br />";
                                 }
-                                else if (data.Uloga == "2") {
+                                else if (login_user.Uloga == "2") {
                                     table += "<br /><input type=\"submit\" id=\"sortiraj_udaljenost\" value=\"Sortiraj po udaljenosti\" /><br /><br />";
                                 }
 
@@ -1426,12 +1507,114 @@
 
             $(document).on("click", "#izmenivoznjudispecer", function ()
             {
-                // ovde ce ici poziv ka serveru za Dispecera
+                var idDispecera = $("#hiddenidvozaca").attr("name");
+                var idVoznje = $("#hiddenid").attr("name");
+                var vozac = $("#kojivozac").val();
+                var to =
+                    {
+                        IdDispecera: idDispecera,
+                        IdVoznje: idVoznje,
+                        IdVozaca: vozac
+                    }
+
+                $.ajax({
+                    url: "/api/main/dispecerizmenavoznje",
+                    type: "PUT",
+                    data: to,
+                    success: function (login_user) {
+                        var table = "<div id=\"erorrr\"></div><br /><p style=\"font-size:large; font-weight:bold\">Lista vožnji<p><div>";
+                        table += "<input type=\"submit\" id=\"reset\" value=\"Reset tabele\" /><br /><br />";
+                        table += "<table border=\"1\"><tr><th>Polazna tačka</th><th>Odredište</th><th>Mušterija</th><th>Vozač</th><th>Dispečer</th><th>Datum i vreme</th><th>Cena</th><th>Ocena</th><th>Status vožnje</th><th>&nbsp;</th><th>&nbsp;</th></tr>";
+                        for (t in login_user.Voznje) {
+                            table += "<tr><td>" + login_user.Voznje[t].PolaznaTacka.Adresa.Ulica_broj + ", " + login_user.Voznje[t].PolaznaTacka.Adresa.Mesto + "</td><td>";
+                            if (login_user.Voznje[t].Odrediste != null)
+                                table += login_user.Voznje[t].Odrediste.Adresa.Ulica_broj + ", " + login_user.Voznje[t].Odrediste.Adresa.Mesto;
+                            else
+                                table += "null";
+                            table += "</td><td>" + login_user.Voznje[t].Musterija + "</td><td>" + login_user.Voznje[t].Vozac + "</td><td>" + login_user.Voznje[t].Dispecer + "</td><td>";
+
+                            var date = login_user.Voznje[t].VremePorudjbine.split("T");
+                            var time = date[1].split(".");
+                            table += date[0] + "~" + time[0];
+
+                            table += "</td><td>" + login_user.Voznje[t].Iznos + "</td><td>";
+                            if (login_user.Voznje[t].Komentar != null)
+                                if (login_user.Voznje[t].Komentar.OcenaVoznje != null)
+                                    table += login_user.Voznje[t].Komentar.OcenaVoznje + "</td><td>";
+                                else
+                                    table += "0</td><td>";
+                            else
+                                table += "0</td><td>";
+
+                            if (login_user.Voznje[t].StatusVoznje == "1") {
+                                table += "Formirana";
+                            }
+                            else if (login_user.Voznje[t].StatusVoznje == "2") {
+                                table += "Obrađena";
+                            }
+                            else if (login_user.Voznje[t].StatusVoznje == "3") {
+                                table += "Prihvaćena";
+                            }
+                            else if (login_user.Voznje[t].StatusVoznje == "4") {
+                                table += "Otkazana";
+                            }
+                            else if (login_user.Voznje[t].StatusVoznje == "5") {
+                                table += "Neuspešna";
+                            }
+                            else if (login_user.Voznje[t].StatusVoznje == "6") {
+                                table += "Uspešna";
+                            }
+                            else if (login_user.Voznje[t].StatusVoznje == "0") {
+                                table += "Kreirana";
+                            }
+
+                            table += "</td><td><input type=\"submit\"";
+                            if (login_user.Uloga == "1")
+                                if (login_user.Voznje[t].StatusVoznje != "0")
+                                    table += " disabled ";
+                            if (login_user.Uloga == "0")
+                                if (login_user.Voznje[t].StatusVoznje == "2" || login_user.Voznje[t].StatusVoznje == "3" || login_user.Voznje[t].StatusVoznje == "4" || login_user.Voznje[t].StatusVoznje == "5")
+                                    table += " disabled ";
+                            if (login_user.Uloga == "2")
+                                if (login_user.Voznje[t].StatusVoznje == "6" || login_user.Voznje[t].StatusVoznje == "5")
+                                    table += " disabled ";
+                            table += "name=\"obrada_voznje\" id=\"" + login_user.Voznje[t].Id + "\" value=\"";
+                            if (login_user.Uloga == "2" && login_user.Voznje[t].StatusVoznje == "0")
+                                table += "Preuzmi";
+                            else
+                                table += "Obrada vožnje";
+                            table += "\" /></td><td><input type=\"submit\" name=\"detalji_voznje\" id=\"" + login_user.Voznje[t].Id + "\" value=\"Detalji vožnje\" /></td></tr>";
+                        }
+                        table += "</table><br />";
+
+                        if (login_user.Uloga == "1") {
+                            table += "<input type=\"submit\" id=\"sve_voznje_sis\" value=\"Sve vožnje u sistemu\" /><br /><br />";
+                        } else if (login_user.Uloga == "2") {
+                            table += "<input type=\"submit\" id=\"sve_voznje_cekanje\" value=\"Sve vožnje na čekanju\" /><br /><br />";
+                        }
+
+                        table += pocetnastr;
+
+                        if (login_user.Uloga == "1") {
+                            table += "<br />";
+                            table += "Pretraga po imenu i prezimenu mušterije:<br />";
+                            table += "Ime:&nbsp; <input type=\"text\" id=\"imemus\">&nbsp; Prezime:&nbsp;<input type=\"text\" id=\"prezimemus\">&nbsp;&nbsp;<input type=\"submit\" id=\"po_mus\" value=\"Pretrazi\" /><br />";
+                            table += "<br />";
+                            table += "Pretraga po imenu i prezimenu vozača:<br />"
+                            table += "Ime:&nbsp; <input type=\"text\" id=\"imevoz\">&nbsp; Prezime:&nbsp;<input type=\"text\" id=\"prezimevoz\">&nbsp;&nbsp;<input type=\"submit\" id=\"po_voz\" value=\"Pretrazi\" /><br />";
+                        }
+                        else if (login_user.Uloga == "2") {
+                            table += "<br /><input type=\"submit\" id=\"sortiraj_udaljenost\" value=\"Sortiraj po udaljenosti\" /><br /><br />";
+                        }
+
+                        table += "</div>";
+                        localStorage.setItem("loginuser", JSON.stringify(login_user));
+                        localStorage.setItem("screen", table);
+                        $("#screen").html(table);
+                    }
+                });
             });
 
-            $(document).on("click", "#sta", function () {
-                // ovde ce ici poziv ka serveru za Vozaca
-            });
         });
     </script>
 </head>

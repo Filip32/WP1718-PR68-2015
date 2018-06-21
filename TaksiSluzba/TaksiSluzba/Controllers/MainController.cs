@@ -41,7 +41,8 @@ namespace TaksiSluzba.Controllers
         [HttpGet,Route("api/main/loginuser")]
         public IHttpActionResult LoginUser([FromUri] LoginUserClass user)
         {
-            if (ulokovani.ContainsKey(user.Username))
+            foreach(string key in ulokovani.Keys)
+            if (ulokovani[key] == user.Username)
             {
                 return Ok("Dati korisnik je već ulogovan.");
             }
@@ -493,6 +494,7 @@ namespace TaksiSluzba.Controllers
                 voznja.VremePorudjbine = DateTime.Now;
                 voznja.Vozac = v.KorisnickoIme;
                 v.Voznje.Add(voznja);
+                v.Slobodan = false;
                 vozaclist.Add(v);
                 Korisnik dispecer = adminlist.Find(i => i.Id == voznja.Dispecer);
                 voznja.Dispecer = dispecer.KorisnickoIme;
@@ -682,9 +684,43 @@ namespace TaksiSluzba.Controllers
         }
 
         [HttpPut, Route("api/main/dispecerizmenavoznje")]
-        public IHttpActionResult IzmenaVoznjeDispecer([FromBody]IzmenaVoznje izmenaVoznje)
+        public IHttpActionResult IzmenaVoznjeDispecer([FromBody]IzmenaVoznjeDispecer izmenaVoznje)
         {
-            return Ok();
+            Korisnik dispecer = adminlist.Find(i => i.Id == izmenaVoznje.IdDispecera);
+            Vozac vozac = vozaclist.Find(i => i.Id == izmenaVoznje.IdVozaca);
+            Voznja voznja = slobodneVoznje.Find(i => i.Id == izmenaVoznje.IdVoznje);
+            Korisnik musterija = korisniklist.Find(i => i.KorisnickoIme == voznja.Musterija);
+
+            musterija.Voznje.Remove(voznja);
+            adminlist.Remove(dispecer);
+            vozaclist.Remove(vozac);
+            sveVoznje.Remove(voznja);
+            slobodneVoznje.Remove(voznja);
+
+            WriteToXMSlobodneVoznje();
+
+            voznja.Vozac = vozac.KorisnickoIme;
+            voznja.Dispecer = dispecer.KorisnickoIme;
+            voznja.StatusVoznje = Enums.StatusVoznje.Obradjena;
+
+            sveVoznje.Add(voznja);
+            WriteToXMSveVoznje();
+
+            //izmeniti Vozaca
+            vozac.Voznje.Add(voznja);
+            vozac.Slobodan = false;
+            vozaclist.Add(vozac);
+            WriteToXMl(Enums.Uloga.Vozac);
+            //izmeniti Dispecera
+            dispecer.Voznje.Add(voznja);
+            adminlist.Add(dispecer);
+            WriteToXMl(Enums.Uloga.Dispecer);
+            //izmeniti Musteriju
+            musterija.Voznje.Add(voznja);
+            korisniklist.Add(musterija);
+            WriteToXMl(Enums.Uloga.Musterija);
+
+            return Ok(dispecer);
         }
 
         [HttpPut, Route("api/main/vozacizmenavoznje")]
@@ -716,12 +752,14 @@ namespace TaksiSluzba.Controllers
             if (izmenaVoznje.Opis == null)
             {
                 voznja.StatusVoznje = Enums.StatusVoznje.Uspesna;
+                vozac.Slobodan = true;
                 voznja.Odrediste = izmenaVoznje.Destinacija;
                 voznja.Iznos = izmenaVoznje.Cena;
             }
             else
             {
                 voznja.StatusVoznje = Enums.StatusVoznje.Neuspesna;
+                vozac.Slobodan = true;
                 voznja.Komentar = new Komentar();
                 voznja.Komentar.Opis = izmenaVoznje.Opis;
                 voznja.Komentar.DatumObjave = DateTime.Now;
@@ -758,8 +796,11 @@ namespace TaksiSluzba.Controllers
             Voznja voznja = slobodneVoznje.Find(i => i.Id == izmenaVoznje.IdVoznje);
             slobodneVoznje.Remove(voznja);
             WriteToXMSlobodneVoznje();
+
             Korisnik korisnik = korisniklist.Find(i => i.KorisnickoIme == voznja.Musterija);
+            korisniklist.Remove(korisnik);
             korisnik.Voznje.Remove(voznja);
+
             sveVoznje.Remove(voznja);
 
             Vozac vozac = vozaclist.Find(i => i.Id == izmenaVoznje.Id);
@@ -769,8 +810,11 @@ namespace TaksiSluzba.Controllers
             voznja.Vozac = vozac.KorisnickoIme;
 
             korisnik.Voznje.Add(voznja);
+            korisniklist.Add(korisnik);
             WriteToXMl(Enums.Uloga.Musterija);
             vozac.Voznje.Add(voznja);
+            vozac.Slobodan = false;
+            vozaclist.Add(vozac);
             WriteToXMl(Enums.Uloga.Vozac);
 
             sveVoznje.Add(voznja);

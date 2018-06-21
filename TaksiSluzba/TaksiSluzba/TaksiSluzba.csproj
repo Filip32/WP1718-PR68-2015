@@ -188,6 +188,7 @@
     <Compile Include="Models\Automobil.cs" />
     <Compile Include="Models\Enums.cs" />
     <Compile Include="Models\IzmenaVoznje.cs" />
+    <Compile Include="Models\IzmenaVoznjeDispecer.cs" />
     <Compile Include="Models\Komentar.cs" />
     <Compile Include="Models\Korisnik.cs" />
     <Compile Include="Models\LoginUserClass.cs" />

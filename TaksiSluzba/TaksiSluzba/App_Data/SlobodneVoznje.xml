@@ -2,73 +2,13 @@
 <ArrayOfVoznja xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Voznja>
     <Id>0musterija1</Id>
-    <VremePorudjbine>2018-06-18T18:21:53.174413+02:00</VremePorudjbine>
+    <VremePorudjbine>2018-06-21T21:05:19.0030334+02:00</VremePorudjbine>
     <PolaznaTacka>
-      <XKordinata>19.849624131459198</XKordinata>
-      <YKordinata>45.24599190289797</YKordinata>
+      <XKordinata>19.646447901996986</XKordinata>
+      <YKordinata>45.573572559321576</YKordinata>
       <Adresa>
-        <Ulica_broj>Dr Sime Milosevica</Ulica_broj>
-        <Mesto>Novi Sad 21101</Mesto>
-      </Adresa>
-    </PolaznaTacka>
-    <TipVozila>Putnicko_Vozilo</TipVozila>
-    <Musterija>musterija1</Musterija>
-    <StatusVoznje>Kreirana</StatusVoznje>
-  </Voznja>
-  <Voznja>
-    <Id>0musterija2</Id>
-    <VremePorudjbine>2018-06-18T18:24:53.543917+02:00</VremePorudjbine>
-    <PolaznaTacka>
-      <XKordinata>19.849742148655853</XKordinata>
-      <YKordinata>45.24579550397789</YKordinata>
-      <Adresa>
-        <Ulica_broj>Dr Sime Milosevica</Ulica_broj>
-        <Mesto>Novi Sad 21101</Mesto>
-      </Adresa>
-    </PolaznaTacka>
-    <TipVozila>Putnicko_Vozilo</TipVozila>
-    <Musterija>musterija2</Musterija>
-    <StatusVoznje>Kreirana</StatusVoznje>
-  </Voznja>
-  <Voznja>
-    <Id>1musterija1</Id>
-    <VremePorudjbine>2018-06-20T00:28:03.9290251+02:00</VremePorudjbine>
-    <PolaznaTacka>
-      <XKordinata>19.849624131459198</XKordinata>
-      <YKordinata>45.24599190289797</YKordinata>
-      <Adresa>
-        <Ulica_broj>Dr Sime Milosevica</Ulica_broj>
-        <Mesto>null</Mesto>
-      </Adresa>
-    </PolaznaTacka>
-    <TipVozila>Putnicko_Vozilo</TipVozila>
-    <Musterija>musterija1</Musterija>
-    <StatusVoznje>Kreirana</StatusVoznje>
-  </Voznja>
-  <Voznja>
-    <Id>2musterija1</Id>
-    <VremePorudjbine>2018-06-20T00:44:11.9374917+02:00</VremePorudjbine>
-    <PolaznaTacka>
-      <XKordinata>19.850679415743105</XKordinata>
-      <YKordinata>45.259906657423784</YKordinata>
-      <Adresa>
-        <Ulica_broj>Sumadijska 17</Ulica_broj>
-        <Mesto>Novi Sad 21101</Mesto>
-      </Adresa>
-    </PolaznaTacka>
-    <TipVozila>Putnicko_Vozilo</TipVozila>
-    <Musterija>musterija1</Musterija>
-    <StatusVoznje>Kreirana</StatusVoznje>
-  </Voznja>
-  <Voznja>
-    <Id>3musterija1</Id>
-    <VremePorudjbine>2018-06-20T10:03:05.3323353+02:00</VremePorudjbine>
-    <PolaznaTacka>
-      <XKordinata>19.843641449904858</XKordinata>
-      <YKordinata>45.25080063661159</YKordinata>
-      <Adresa>
-        <Ulica_broj>Vase Stajica 20</Ulica_broj>
-        <Mesto>Novi Sad 21101</Mesto>
+        <Ulica_broj>Југословенске Народне Армије 5</Ulica_broj>
+        <Mesto>Vrbas Municipality 21460</Mesto>
       </Adresa>
     </PolaznaTacka>
     <TipVozila>Putnicko_Vozilo</TipVozila>
