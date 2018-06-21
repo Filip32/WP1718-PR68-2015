@@ -53,12 +53,77 @@
           <YKordinata>45.24599190289797</YKordinata>
           <Adresa>
             <Ulica_broj>Dr Sime Milosevica</Ulica_broj>
+          </Adresa>
+        </PolaznaTacka>
+        <TipVozila>Putnicko_Vozilo</TipVozila>
+        <Musterija>musterija1</Musterija>
+        <Komentar>
+          <Opis>Ne treba mi.</Opis>
+          <DatumObjave>2018-06-20T00:27:35.3685041+02:00</DatumObjave>
+          <Korisnik>musterija1</Korisnik>
+          <Voznja>0musterija1</Voznja>
+          <OcenaVoznje>0</OcenaVoznje>
+        </Komentar>
+        <StatusVoznje>Uspesna</StatusVoznje>
+      </Voznja>
+      <Voznja>
+        <Id>1musterija1</Id>
+        <VremePorudjbine>2018-06-20T00:28:03.9290251+02:00</VremePorudjbine>
+        <PolaznaTacka>
+          <XKordinata>19.8503257431751</XKordinata>
+          <YKordinata>45.24806636379077</YKordinata>
+          <Adresa>
+            <Ulica_broj>Bulevar Cara Lazara 1</Ulica_broj>
+            <Mesto>Novi Sad 21000</Mesto>
+          </Adresa>
+        </PolaznaTacka>
+        <TipVozila>Putnicko_Vozilo</TipVozila>
+        <Musterija>musterija1</Musterija>
+        <Komentar>
+          <Opis>jok</Opis>
+          <DatumObjave>2018-06-20T00:31:16.2575316+02:00</DatumObjave>
+          <Korisnik>musterija1</Korisnik>
+          <Voznja>1musterija1</Voznja>
+          <OcenaVoznje>0</OcenaVoznje>
+        </Komentar>
+        <StatusVoznje>Otkazana</StatusVoznje>
+      </Voznja>
+      <Voznja>
+        <Id>2musterija1</Id>
+        <VremePorudjbine>2018-06-20T00:44:11.9374917+02:00</VremePorudjbine>
+        <PolaznaTacka>
+          <XKordinata>19.850679415743105</XKordinata>
+          <YKordinata>45.259906657423784</YKordinata>
+          <Adresa>
+            <Ulica_broj>Sumadijska 17</Ulica_broj>
             <Mesto>Novi Sad 21101</Mesto>
           </Adresa>
         </PolaznaTacka>
         <TipVozila>Putnicko_Vozilo</TipVozila>
         <Musterija>musterija1</Musterija>
         <StatusVoznje>Kreirana</StatusVoznje>
+      </Voznja>
+      <Voznja>
+        <Id>3musterija1</Id>
+        <VremePorudjbine>2018-06-20T10:03:05.3323353+02:00</VremePorudjbine>
+        <PolaznaTacka>
+          <XKordinata>19.846637491721125</XKordinata>
+          <YKordinata>45.24709852258238</YKordinata>
+          <Adresa>
+            <Ulica_broj>Radnicka</Ulica_broj>
+            <Mesto>Novi Sad 21101</Mesto>
+          </Adresa>
+        </PolaznaTacka>
+        <TipVozila>Putnicko_Vozilo</TipVozila>
+        <Musterija>musterija1</Musterija>
+        <Komentar>
+          <Opis>Ne treba.</Opis>
+          <DatumObjave>2018-06-20T10:05:53.9481249+02:00</DatumObjave>
+          <Korisnik>musterija1</Korisnik>
+          <Voznja>3musterija1</Voznja>
+          <OcenaVoznje>0</OcenaVoznje>
+        </Komentar>
+        <StatusVoznje>Neuspesna</StatusVoznje>
       </Voznja>
     </Voznje>
   </Korisnik>
