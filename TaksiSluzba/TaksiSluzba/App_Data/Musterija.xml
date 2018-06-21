@@ -42,6 +42,7 @@
         </PolaznaTacka>
         <TipVozila>Putnicko_Vozilo</TipVozila>
         <Musterija>musterija1</Musterija>
+        <Dispecer>musterija1</Dispecer>
         <StatusVoznje>Kreirana</StatusVoznje>
       </Voznja>
       <Voznja>
@@ -57,12 +58,35 @@
         </PolaznaTacka>
         <TipVozila>Putnicko_Vozilo</TipVozila>
         <Musterija>musterija1</Musterija>
+        <Dispecer>musterija1</Dispecer>
         <Komentar>
           <Opis>Bc</Opis>
           <DatumObjave>2018-06-21T21:06:31.6548005+02:00</DatumObjave>
           <Korisnik>musterija1</Korisnik>
           <Voznja>1musterija1</Voznja>
           <OcenaVoznje>1</OcenaVoznje>
+        </Komentar>
+        <StatusVoznje>Otkazana</StatusVoznje>
+      </Voznja>
+      <Voznja>
+        <Id>2musterija1</Id>
+        <VremePorudjbine>2018-06-22T01:33:07.4196248+02:00</VremePorudjbine>
+        <PolaznaTacka>
+          <XKordinata>19.85334579745026</XKordinata>
+          <YKordinata>45.24738186809657</YKordinata>
+          <Adresa>
+            <Ulica_broj>Dr Zorana Djindjica</Ulica_broj>
+            <Mesto>Novi Sad 21101</Mesto>
+          </Adresa>
+        </PolaznaTacka>
+        <TipVozila>Putnicko_Vozilo</TipVozila>
+        <Musterija>musterija1</Musterija>
+        <Komentar>
+          <Opis>ddd</Opis>
+          <DatumObjave>2018-06-22T01:43:00.9815152+02:00</DatumObjave>
+          <Korisnik>musterija1</Korisnik>
+          <Voznja>2musterija1</Voznja>
+          <OcenaVoznje>0</OcenaVoznje>
         </Komentar>
         <StatusVoznje>Otkazana</StatusVoznje>
       </Voznja>

@@ -13,6 +13,7 @@
     </PolaznaTacka>
     <TipVozila>Putnicko_Vozilo</TipVozila>
     <Musterija>musterija1</Musterija>
+    <Dispecer>musterija1</Dispecer>
     <StatusVoznje>Kreirana</StatusVoznje>
   </Voznja>
 </ArrayOfVoznja>

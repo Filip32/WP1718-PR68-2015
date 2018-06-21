@@ -30,28 +30,6 @@
     <Blokiran>false</Blokiran>
     <Voznje>
       <Voznja>
-        <Id>0vozac1</Id>
-        <VremePorudjbine>2018-06-21T20:56:31.3245256+02:00</VremePorudjbine>
-        <PolaznaTacka>
-          <XKordinata>19.849255327719646</XKordinata>
-          <YKordinata>45.246560322868845</YKordinata>
-          <Adresa>
-            <Ulica_broj>Dr Sime Milosevica</Ulica_broj>
-            <Mesto>Novi Sad 21101</Mesto>
-          </Adresa>
-        </PolaznaTacka>
-        <TipVozila>Putnicko_Vozilo</TipVozila>
-        <Dispecer>vozac1</Dispecer>
-        <Vozac>vozac1</Vozac>
-        <Komentar>
-          <Opis>Bc</Opis>
-          <DatumObjave>2018-06-21T21:00:13.4332905+02:00</DatumObjave>
-          <Voznja>0vozac1</Voznja>
-          <OcenaVoznje>0</OcenaVoznje>
-        </Komentar>
-        <StatusVoznje>Neuspesna</StatusVoznje>
-      </Voznja>
-      <Voznja>
         <Id>0vozac3</Id>
         <VremePorudjbine>2018-06-21T20:57:21.8276077+02:00</VremePorudjbine>
         <PolaznaTacka>
@@ -75,6 +53,162 @@
         <Vozac>vozac3</Vozac>
         <Iznos>500</Iznos>
         <StatusVoznje>Uspesna</StatusVoznje>
+      </Voznja>
+      <Voznja>
+        <Id>0vozac6</Id>
+        <VremePorudjbine>2018-06-21T22:52:12.0412963+02:00</VremePorudjbine>
+        <PolaznaTacka>
+          <XKordinata>19.84972605540176</XKordinata>
+          <YKordinata>45.24588426126624</YKordinata>
+          <Adresa>
+            <Ulica_broj>Dr Sime Milosevica</Ulica_broj>
+            <Mesto>Novi Sad 21101</Mesto>
+          </Adresa>
+        </PolaznaTacka>
+        <TipVozila>Putnicko_Vozilo</TipVozila>
+        <Odrediste>
+          <XKordinata>19.84981993271729</XKordinata>
+          <YKordinata>45.24605988698133</YKordinata>
+          <Adresa>
+            <Ulica_broj>Dr Sime Milosevica</Ulica_broj>
+            <Mesto>Novi Sad 21101</Mesto>
+          </Adresa>
+        </Odrediste>
+        <Dispecer>admin1</Dispecer>
+        <Vozac>vozac6</Vozac>
+        <Iznos>55</Iznos>
+        <StatusVoznje>Uspesna</StatusVoznje>
+      </Voznja>
+      <Voznja>
+        <Id>0vozac7</Id>
+        <VremePorudjbine>2018-06-21T22:52:30.186265+02:00</VremePorudjbine>
+        <PolaznaTacka>
+          <XKordinata>19.85071847273729</XKordinata>
+          <YKordinata>45.2464186905178</YKordinata>
+          <Adresa>
+            <Ulica_broj>Vladimira Perica Valtera</Ulica_broj>
+            <Mesto>Novi Sad 21101</Mesto>
+          </Adresa>
+        </PolaznaTacka>
+        <TipVozila>Putnicko_Vozilo</TipVozila>
+        <Dispecer>admin1</Dispecer>
+        <Vozac>vozac7</Vozac>
+        <Komentar>
+          <Opis>fff</Opis>
+          <DatumObjave>2018-06-21T22:53:31.1096562+02:00</DatumObjave>
+          <Voznja>0vozac7</Voznja>
+          <OcenaVoznje>0</OcenaVoznje>
+        </Komentar>
+        <StatusVoznje>Neuspesna</StatusVoznje>
+      </Voznja>
+      <Voznja>
+        <Id>1vozac3</Id>
+        <VremePorudjbine>2018-06-21T23:03:14.0719483+02:00</VremePorudjbine>
+        <PolaznaTacka>
+          <XKordinata>19.849085565179553</XKordinata>
+          <YKordinata>45.24645417807051</YKordinata>
+          <Adresa>
+            <Ulica_broj>Dr Sime Milosevica</Ulica_broj>
+            <Mesto>Novi Sad 21101</Mesto>
+          </Adresa>
+        </PolaznaTacka>
+        <TipVozila>Putnicko_Vozilo</TipVozila>
+        <Odrediste>
+          <XKordinata>19.849793110627136</XKordinata>
+          <YKordinata>45.24603722562921</YKordinata>
+          <Adresa>
+            <Ulica_broj>Dr Sime Milosevica</Ulica_broj>
+            <Mesto>Novi Sad 21101</Mesto>
+          </Adresa>
+        </Odrediste>
+        <Dispecer>admin1</Dispecer>
+        <Vozac>vozac3</Vozac>
+        <Iznos>500</Iznos>
+        <StatusVoznje>Uspesna</StatusVoznje>
+      </Voznja>
+      <Voznja>
+        <Id>0vozac1</Id>
+        <VremePorudjbine>2018-06-21T20:56:31.3245256+02:00</VremePorudjbine>
+        <PolaznaTacka>
+          <XKordinata>19.849255327719646</XKordinata>
+          <YKordinata>45.246560322868845</YKordinata>
+          <Adresa>
+            <Ulica_broj>Dr Sime Milosevica</Ulica_broj>
+            <Mesto>Novi Sad 21101</Mesto>
+          </Adresa>
+        </PolaznaTacka>
+        <TipVozila>Putnicko_Vozilo</TipVozila>
+        <Dispecer>vozac1</Dispecer>
+        <Vozac>vozac1</Vozac>
+        <Komentar>
+          <Opis>Bc</Opis>
+          <DatumObjave>2018-06-21T21:00:13.4332905+02:00</DatumObjave>
+          <Voznja>0vozac1</Voznja>
+          <OcenaVoznje>0</OcenaVoznje>
+        </Komentar>
+        <StatusVoznje>Neuspesna</StatusVoznje>
+      </Voznja>
+      <Voznja>
+        <Id>1vozac1</Id>
+        <VremePorudjbine>2018-06-21T23:00:26.8459232+02:00</VremePorudjbine>
+        <PolaznaTacka>
+          <XKordinata>19.853814087072823</XKordinata>
+          <YKordinata>45.24665474424006</YKordinata>
+          <Adresa>
+            <Ulica_broj>Dr Zorana Djindjica</Ulica_broj>
+            <Mesto>Novi Sad 21101</Mesto>
+          </Adresa>
+        </PolaznaTacka>
+        <TipVozila>Putnicko_Vozilo</TipVozila>
+        <Dispecer>vozac1</Dispecer>
+        <Vozac>vozac1</Vozac>
+        <Komentar>
+          <Opis>Nece pa nece.</Opis>
+          <DatumObjave>2018-06-21T23:01:20.2967854+02:00</DatumObjave>
+          <Korisnik>5</Korisnik>
+          <Voznja>1vozac1</Voznja>
+          <OcenaVoznje>0</OcenaVoznje>
+        </Komentar>
+        <StatusVoznje>Neuspesna</StatusVoznje>
+      </Voznja>
+      <Voznja>
+        <Id>2vozac1</Id>
+        <VremePorudjbine>2018-06-22T01:50:44.7262326+02:00</VremePorudjbine>
+        <PolaznaTacka>
+          <XKordinata>19.849599991578064</XKordinata>
+          <YKordinata>45.246042890968084</YKordinata>
+          <Adresa>
+            <Ulica_broj>Dr Sime Milosevica</Ulica_broj>
+            <Mesto>Novi Sad 21101</Mesto>
+          </Adresa>
+        </PolaznaTacka>
+        <TipVozila>Putnicko_Vozilo</TipVozila>
+        <Dispecer>admin1</Dispecer>
+        <Vozac>vozac1</Vozac>
+        <StatusVoznje>Formirana</StatusVoznje>
+      </Voznja>
+      <Voznja>
+        <Id>2vozac1</Id>
+        <VremePorudjbine>2018-06-22T01:50:44.7262326+02:00</VremePorudjbine>
+        <PolaznaTacka>
+          <XKordinata>19.849599991578064</XKordinata>
+          <YKordinata>45.246042890968084</YKordinata>
+          <Adresa>
+            <Ulica_broj>Dr Sime Milosevica</Ulica_broj>
+            <Mesto>Novi Sad 21101</Mesto>
+          </Adresa>
+        </PolaznaTacka>
+        <TipVozila>Putnicko_Vozilo</TipVozila>
+        <Dispecer>admin1</Dispecer>
+        <Vozac>vozac1</Vozac>
+        <Komentar>
+          <Opis>fdfdf</Opis>
+          <DatumObjave>2018-06-22T01:52:37.9826108+02:00</DatumObjave>
+          <Korisnik>vozac1</Korisnik>
+          <Voznja>2vozac1</Voznja>
+          <OcenaVoznje>0</OcenaVoznje>
+        </Komentar>
+        <StatusVoznje>Neuspesna</StatusVoznje>
       </Voznja>
     </Voznje>
   </Korisnik>

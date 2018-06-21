@@ -761,6 +761,7 @@ namespace TaksiSluzba.Controllers
                 voznja.StatusVoznje = Enums.StatusVoznje.Neuspesna;
                 vozac.Slobodan = true;
                 voznja.Komentar = new Komentar();
+                voznja.Komentar.Korisnik = vozac.KorisnickoIme;
                 voznja.Komentar.Opis = izmenaVoznje.Opis;
                 voznja.Komentar.DatumObjave = DateTime.Now;
                 voznja.Komentar.Voznja = izmenaVoznje.IdVoznje;
@@ -823,6 +824,117 @@ namespace TaksiSluzba.Controllers
             return Ok(vozac);
         }
 
+        [HttpGet, Route("api/main/detaljivoznje")]
+        public IHttpActionResult DetaljiVoznje([FromUri]ZavrsitiVoznju detalji)
+        {
+            Voznja voznja = new Voznja();
+            if (adminlist.Exists(i => i.Id == detalji.IdVozaca)) {
+                Korisnik k = adminlist.Find(i => i.Id == detalji.IdVozaca);
+                voznja = k.Voznje.Find(i => i.Id == detalji.IdVoznje);
+            } else if (korisniklist.Exists(i => i.Id == detalji.IdVozaca)) {
+                Korisnik k = korisniklist.Find(i => i.Id == detalji.IdVozaca);
+                voznja = k.Voznje.Find(i => i.Id == detalji.IdVoznje);
+            } else if (vozaclist.Exists(i => i.Id == detalji.IdVozaca)) {
+                Korisnik k = vozaclist.Find(i => i.Id == detalji.IdVozaca);
+                voznja = k.Voznje.Find(i => i.Id == detalji.IdVoznje);
+            }
+
+            string back = "<h3>Vožnja</h3>";
+            back += "<p>Id vožnje: "+ voznja.Id +"</p>";
+            back += "<p>Vreme poruđbine: "+ voznja.VremePorudjbine +"</p>";
+            back += "<p>Status vožnje :"+ voznja.StatusVoznje.ToString() +"</p>";
+            back += "<p>Tip vozila: "+ voznja.TipVozila +"</p>";
+            if (voznja.Iznos != null)
+            {
+                back += "<p>Cena: "+voznja.Iznos+"</p>";
+            }
+            back += "<br /><p style=\"font-weight: bold;\">Polazna tačka</p>";
+            back += "<p>Ulica i broj: "+ voznja.PolaznaTacka.Adresa.Ulica_broj +"</p>";
+            back += "<p>Mesto: "+ voznja.PolaznaTacka.Adresa.Mesto +"</p>";
+            if (voznja.Odrediste != null)
+            {
+                back += "<br /><p style=\"font-weight: bold;\">Odredište</p>";
+                back += "<p>Ulica i broj :"+ voznja.Odrediste.Adresa.Ulica_broj +"</p>";
+                back += "<p>Mesto :"+ voznja.Odrediste.Adresa.Mesto +"</p>";
+            }
+            if (voznja.Musterija != null)
+            {
+                Korisnik musterija = korisniklist.Find(i => i.KorisnickoIme == voznja.Musterija);
+                back += "<br /><p>Mušterija("+musterija.KorisnickoIme+"): " + musterija.Ime + "&nbsp;&nbsp;" + musterija.Prezime + "</p>";
+            }
+            if (voznja.Dispecer != null)
+            {
+                Korisnik dispecer = adminlist.Find(i => i.KorisnickoIme == voznja.Dispecer);
+                back += "<br /><p>Dispečer(" + dispecer.KorisnickoIme + "): " + dispecer.Ime + "&nbsp;&nbsp;" + dispecer.Prezime + "</p>";
+            }
+            if (voznja.Vozac != null)
+            {
+                Vozac vozac = vozaclist.Find(i => i.KorisnickoIme == voznja.Vozac);
+                back += "<br /><p>Vozač(" + vozac.KorisnickoIme + "): " + vozac.Ime + "&nbsp;&nbsp;" + vozac.Prezime + "</p>";
+            }
+
+            if (voznja.Komentar != null)
+            {
+                back += "<br /><p style=\"font-weight: bold;\">Komentar</p>";
+                back += "<p>Komentar ostavio: " + voznja.Komentar.Korisnik + "</p>";
+                back += "<p>Tekst: " + voznja.Komentar.Opis + "</p>";
+                back += "<p>Ocena: " + voznja.Komentar.OcenaVoznje + "</p>";
+                back += "<p>Datum objave: " + voznja.Komentar.DatumObjave + "<p>";
+            }
+            else
+            {
+                back += "<br /><p style=\"font-weight: bold;\">Na ovoj vožnji nema ostavljenog komentara.</p>";
+
+            }
+
+            return Ok(back);
+        }
+
+        [HttpGet, Route("api/main/resetbutton")]
+        public IHttpActionResult Reset([FromUri]string Id)
+        {
+            if (adminlist.Exists(i => i.Id == Id))
+            {
+                Korisnik k = adminlist.Find(i => i.Id == Id);
+                return Ok(k);
+            }
+            else if (korisniklist.Exists(i => i.Id == Id))
+            {
+                Korisnik k = korisniklist.Find(i => i.Id == Id);
+                return Ok(k);
+            }
+            else
+            {
+                Vozac k = vozaclist.Find(i => i.Id == Id);
+                return Ok(k);
+            }
+        }
+
+        [HttpGet, Route("api/main/isitblocked")]
+        public IHttpActionResult DaLiJeBlokiran([FromUri]string Id)
+        {
+           if (korisniklist.Exists(i => i.Id == Id))
+            {
+                Korisnik k = korisniklist.Find(i => i.Id == Id);
+                if (k.Blokiran)
+                {
+                    Logoff(k.KorisnickoIme);
+                    return Ok("true");
+                }
+            }
+            else if(vozaclist.Exists(i => i.Id == Id))
+            {
+                Vozac k = vozaclist.Find(i => i.Id == Id);
+                if (k.Blokiran)
+                {
+                    Logoff(k.KorisnickoIme);
+                    return Ok("true");
+                }
+            }
+
+            return Ok("false");
+        }
+
         private void WriteToXMl(Enums.Uloga uloga)
         {
             var path = System.Web.Hosting.HostingEnvironment.MapPath(@"~/App_Data/"+ uloga.ToString() + ".xml");
@@ -842,6 +954,20 @@ namespace TaksiSluzba.Controllers
                 else
                     serializer.Serialize(writer, adminlist);
             }
+        }
+
+        private void Logoff(string Username)
+        {
+            foreach (string key in ulokovani.Keys)
+            {
+                if (Username == ulokovani[key])
+                {
+                    ulokovani.Remove(key);
+                    WriteToXMUlogovani();
+                    break;
+                }
+            }
+
         }
 
         private void ReadFromXML(Enums.Uloga uloga)
