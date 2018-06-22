@@ -1,19 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ArrayOfVoznja xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <Voznja>
-    <Id>0musterija1</Id>
-    <VremePorudjbine>2018-06-21T21:05:19.0030334+02:00</VremePorudjbine>
-    <PolaznaTacka>
-      <XKordinata>19.646447901996986</XKordinata>
-      <YKordinata>45.573572559321576</YKordinata>
-      <Adresa>
-        <Ulica_broj>Југословенске Народне Армије 5</Ulica_broj>
-        <Mesto>Vrbas Municipality 21460</Mesto>
-      </Adresa>
-    </PolaznaTacka>
-    <TipVozila>Putnicko_Vozilo</TipVozila>
-    <Musterija>musterija1</Musterija>
-    <Dispecer>musterija1</Dispecer>
-    <StatusVoznje>Kreirana</StatusVoznje>
-  </Voznja>
-</ArrayOfVoznja>
+<ArrayOfVoznja xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />

@@ -617,8 +617,18 @@ namespace TaksiSluzba.Controllers
         public IHttpActionResult IzmenaVoznjeMusterija([FromBody]IzmenaVoznje izmenaVoznje)
         {
             Korisnik k = korisniklist.Find(i => i.Id == izmenaVoznje.Id);
-            korisniklist.Remove(k);
             Voznja voznja = k.Voznje.Find(i => i.Id == izmenaVoznje.IdVoznje);
+            if (izmenaVoznje.Lokacija != null)
+            {
+                if (izmenaVoznje.Opis != null)
+                {
+                    if (voznja.StatusVoznje != Enums.StatusVoznje.Kreirana)
+                    {
+                        return Ok("No");
+                    }
+                }
+            }
+            korisniklist.Remove(k);
             k.Voznje.Remove(voznja);
 
             if (izmenaVoznje.Lokacija != null)
@@ -689,14 +699,21 @@ namespace TaksiSluzba.Controllers
             Korisnik dispecer = adminlist.Find(i => i.Id == izmenaVoznje.IdDispecera);
             Vozac vozac = vozaclist.Find(i => i.Id == izmenaVoznje.IdVozaca);
             Voznja voznja = slobodneVoznje.Find(i => i.Id == izmenaVoznje.IdVoznje);
-            Korisnik musterija = korisniklist.Find(i => i.KorisnickoIme == voznja.Musterija);
+            if (voznja.StatusVoznje != Enums.StatusVoznje.Kreirana)
+            {
+                return Ok("No");
+            }
 
-            musterija.Voznje.Remove(voznja);
+            Korisnik musterija = korisniklist.Find(i => i.KorisnickoIme == voznja.Musterija);
+            korisniklist.Remove(musterija);
             adminlist.Remove(dispecer);
             vozaclist.Remove(vozac);
-            sveVoznje.Remove(voznja);
-            slobodneVoznje.Remove(voznja);
 
+            musterija.Voznje.Remove(voznja);
+
+            sveVoznje.Remove(voznja);
+
+            slobodneVoznje.Remove(voznja);
             WriteToXMSlobodneVoznje();
 
             voznja.Vozac = vozac.KorisnickoIme;
@@ -722,7 +739,7 @@ namespace TaksiSluzba.Controllers
 
             return Ok(dispecer);
         }
-
+        
         [HttpPut, Route("api/main/vozacizmenavoznje")]
         public IHttpActionResult IzmenaVoznjeVozac([FromBody]ZavrsitiVoznju izmenaVoznje)
         {
@@ -794,7 +811,11 @@ namespace TaksiSluzba.Controllers
         [HttpPut, Route("api/main/preuzmivoznju")]
         public IHttpActionResult VozacPreuzmiVoznju([FromBody]IzmenaVoznje izmenaVoznje)
         {
-            Voznja voznja = slobodneVoznje.Find(i => i.Id == izmenaVoznje.IdVoznje);
+            Voznja voznja = sveVoznje.Find(i => i.Id == izmenaVoznje.IdVoznje);
+            if (voznja.StatusVoznje != Enums.StatusVoznje.Kreirana)
+            {
+                return Ok("No");
+            }
             slobodneVoznje.Remove(voznja);
             WriteToXMSlobodneVoznje();
 
@@ -933,6 +954,18 @@ namespace TaksiSluzba.Controllers
             }
 
             return Ok("false");
+        }
+
+        [HttpGet, Route("api/main/svevoznjeusistemu")]
+        public IHttpActionResult GetSveVoznje()
+        {
+            return Ok(sveVoznje);
+        }
+
+        [HttpGet, Route("api/main/slobodnevoznjeusistemu")]
+        public IHttpActionResult GetSlobodneVoznje()
+        {
+            return Ok(slobodneVoznje);
         }
 
         private void WriteToXMl(Enums.Uloga uloga)
