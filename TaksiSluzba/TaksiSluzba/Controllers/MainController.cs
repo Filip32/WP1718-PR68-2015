@@ -963,8 +963,18 @@ namespace TaksiSluzba.Controllers
         }
 
         [HttpGet, Route("api/main/slobodnevoznjeusistemu")]
-        public IHttpActionResult GetSlobodneVoznje()
+        public IHttpActionResult GetSlobodneVoznje([FromUri]string Id)
         {
+            if (vozaclist.Exists(i => i.Id == Id))
+            {
+                Vozac k = vozaclist.Find(i => i.Id == Id);
+                if (k.Blokiran)
+                {
+                    Logoff(k.KorisnickoIme);
+                    return Ok("true");
+                }
+            }
+
             return Ok(slobodneVoznje);
         }
 
