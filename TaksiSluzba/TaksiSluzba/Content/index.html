@@ -70,6 +70,9 @@
                     }
                     $.get("/api/main/loginuser", data).done(function (data, status) {
                         if (status == "success") {
+                            localStorage.removeItem("sveVoznje");
+                            localStorage.removeItem("slobodneVoznje");
+                            localStorage.removeItem("pretraga");
                             if (data.KorisnickoIme == null)
                                 $("#error1").text(data);
                             else {
@@ -204,7 +207,9 @@
                     data: un,
                     type: "DELETE"              
                 });
-
+                localStorage.removeItem("sveVoznje");
+                localStorage.removeItem("slobodneVoznje");
+                localStorage.removeItem("pretraga");
                 localStorage.removeItem("loginuser");
                 $("#mainmanu").html(menu);
                 localStorage.setItem("screen", textlog);
@@ -213,6 +218,9 @@
             });
 
             $(document).on("click", "#adddriver", function () {
+                localStorage.removeItem("sveVoznje");
+                localStorage.removeItem("slobodneVoznje");
+                localStorage.removeItem("pretraga");
                 $("#screen").html(addDriver);
                 localStorage.setItem("screen", addDriver);
             });
@@ -357,6 +365,9 @@
 
             $(document).on("click", "#home", function () {
                 var login_user = JSON.parse(localStorage.getItem("loginuser"));
+                localStorage.removeItem("sveVoznje");
+                localStorage.removeItem("slobodneVoznje");
+                localStorage.removeItem("pretraga");
                 var table = "<div id=\"erorrr\"></div><br /><p style=\"font-size:large; font-weight:bold\">Lista vožnji<p><div>";
                 table += "<input type=\"submit\" id=\"reset\" value=\"Reset tabele\" /><br /><br />";
                 table += "<table border=\"1\" id=\"maintable\"><tr><th>Polazna tačka</th><th>Odredište</th><th>Mušterija</th><th>Vozač</th><th>Dispečer</th><th>Datum i vreme</th><th>Cena</th><th>Ocena</th><th>Status vožnje</th><th>&nbsp;</th><th>&nbsp;</th></tr>";
@@ -450,6 +461,9 @@
 
             $(document).on("click", "#profil", function () {
                 var login_user = JSON.parse(localStorage.getItem("loginuser"));
+                localStorage.removeItem("sveVoznje");
+                localStorage.removeItem("slobodneVoznje");
+                localStorage.removeItem("pretraga");
                 var profil = "<div><div id= \"error1\" class=\"Red\" ></div > <p style=\"font-weight:bold; font-size:x-large\">Profil<\p>";
                 profil += "<table><tr><td>Korisničko ime:</td><td> <input type=\"text\" id=\"username\" value=\"" + login_user.KorisnickoIme + "\"/></td></tr>";
                 profil += "<tr><td>Lozinka: </td><td> <input type=\"password\" id=\"password\"value=\"" + login_user.Lozinka + "\" /> </td></tr>";
@@ -699,6 +713,9 @@
 
             $(document).on("click", "#adddrive", function () {
                 var login_user = JSON.parse(localStorage.getItem("loginuser"));
+                localStorage.removeItem("sveVoznje");
+                localStorage.removeItem("slobodneVoznje");
+                localStorage.removeItem("pretraga");
                 var addDrive = "<div><div id= \"error1\" class=\"Red\" ></div ><p style=\"font-weight:bold; font-size:x-large\">Dodaj vožnju<\p>";
                 addDrive += "<p id=\"greskavoznja\" class=\"Red\"></p><br />Polazište:<br />";
                 addDrive += "<p id=\"kord\"></p>";
@@ -732,6 +749,9 @@
                 $.get("/api/main/getblokirane", function (data,status)
                 {
                     if (status == "success") {
+                        localStorage.removeItem("sveVoznje");
+                        localStorage.removeItem("slobodneVoznje");
+                        localStorage.removeItem("pretraga");
                         var blok = "<div><div id= \"error1\" class=\"Red\" ></div > <p style=\"font-weight:bold; font-size:x-large\">Blokirani<\p>";
                         blok += "<table border=\"1\" id=\"maintable\"><tr><td>Korisnicko ime</td><td>Uloga</td><td>&nbsp;</td></tr>";
                         for (var k in data) {
@@ -838,6 +858,9 @@
 
             $(document).on("click", "[name = 'obrada_voznje']", function () {
                 var login_user = JSON.parse(localStorage.getItem("loginuser"));
+                localStorage.removeItem("sveVoznje");
+                localStorage.removeItem("slobodneVoznje");
+                localStorage.removeItem("pretraga");
                 var id = $(this).attr("id");
                 var voznja;
 
@@ -1451,6 +1474,9 @@
             $(document).on("click","[name = 'detalji_voznje']",function() {
                 var idVoznje = $(this).attr("id");
                 var login_user = JSON.parse(localStorage.getItem("loginuser"));
+                localStorage.removeItem("sveVoznje");
+                localStorage.removeItem("slobodneVoznje");
+                localStorage.removeItem("pretraga");
                 var data = { IdVoznje: idVoznje, IdVozaca: login_user.Id }
                 $.get("/api/main/detaljivoznje", data, function (data, status)
                 {
@@ -1754,7 +1780,9 @@
             $(document).on("click", "#reset", function ()
             {
                 var login_user = JSON.parse(localStorage.getItem("loginuser"));
-
+                localStorage.removeItem("sveVoznje");
+                localStorage.removeItem("slobodneVoznje");
+                localStorage.removeItem("pretraga");
                     let data = { Id: login_user.Id };
                     $.get("/api/main/isitblocked", data, function (data, status) {
                         if (status == "success") {
@@ -1849,6 +1877,9 @@
                 $.get("/api/main/svevoznjeusistemu", function (data, status)
                 {
                     if (status == "success") {
+                        localStorage.removeItem("sveVoznje");
+                        localStorage.removeItem("slobodneVoznje");
+                        localStorage.removeItem("pretraga");
                             var table = "<tr><th>Polazna tačka</th><th>Odredište</th><th>Mušterija</th><th>Vozač</th><th>Dispečer</th><th>Datum i vreme</th><th>Cena</th><th>Ocena</th><th>Status vožnje</th><th>&nbsp;</th><th>&nbsp;</th></tr>";
                             for (t in data) {
                                 table += "<tr><td>" + data[t].PolaznaTacka.Adresa.Ulica_broj + ", " + data[t].PolaznaTacka.Adresa.Mesto + "</td><td>";
@@ -1978,6 +2009,736 @@
                             localStorage.setItem("slobodneVoznje", JSON.stringify(data));
                             localStorage.setItem("screen", $("#screen").html());
                         }
+                    }
+                });
+            });
+
+            $(document).on("click", "#po_statusu", function ()
+            {
+                var login_user = JSON.parse(localStorage.getItem("loginuser"));
+                var status = $("#status_v").val();
+                var t = false;
+                if (localStorage.getItem("sveVoznje") != null || localStorage.getItem("slobodneVoznje") != null)
+                {
+                    t = true;
+                }
+                var data =
+                    {
+                        IdKorisnika: login_user.Id,
+                        Status: status,
+                        Dodatni: t,
+                        Pretraga: JSON.parse(localStorage.getItem("pretraga"))
+                    }
+                $.post("/api/main/postatusu", data, function (data, status)
+                {
+                    if (status == "success")
+                    {
+                        var table = "<tr><th>Polazna tačka</th><th>Odredište</th><th>Mušterija</th><th>Vozač</th><th>Dispečer</th><th>Datum i vreme</th><th>Cena</th><th>Ocena</th><th>Status vožnje</th><th>&nbsp;</th><th>&nbsp;</th></tr>";
+                        for (t in data) {
+                            table += "<tr><td>" + data[t].PolaznaTacka.Adresa.Ulica_broj + ", " + data[t].PolaznaTacka.Adresa.Mesto + "</td><td>";
+                            if (data[t].Odrediste != null) {
+                                if (data[t].Odrediste.Adresa != null)
+                                    table += data[t].Odrediste.Adresa.Ulica_broj + ", " + data[t].Odrediste.Adresa.Mesto;
+                                else
+                                    table += "null";
+                            } else
+                                table += "null";
+                            table += "</td><td>" + data[t].Musterija + "</td><td>" + data[t].Vozac + "</td><td>" + data[t].Dispecer + "</td><td>";
+
+                            var date = data[t].VremePorudjbine.split("T");
+                            var time = date[1].split(".");
+                            table += date[0] + " ~ " + time[0];
+
+                            table += "</td><td>" + data[t].Iznos + "</td><td>";
+                            if (data[t].Komentar != null)
+                                if (data[t].Komentar.OcenaVoznje != null)
+                                    table += data[t].Komentar.OcenaVoznje + "</td><td>";
+                                else
+                                    table += "0</td><td>";
+                            else
+                                table += "0</td><td>";
+
+                            if (data[t].StatusVoznje == "1") {
+                                table += "Formirana";
+                            }
+                            else if (data[t].StatusVoznje == "2") {
+                                table += "Obrađena";
+                            }
+                            else if (data[t].StatusVoznje == "3") {
+                                table += "Prihvaćena";
+                            }
+                            else if (data[t].StatusVoznje == "4") {
+                                table += "Otkazana";
+                            }
+                            else if (data[t].StatusVoznje == "5") {
+                                table += "Neuspešna";
+                            }
+                            else if (data[t].StatusVoznje == "6") {
+                                table += "Uspešna";
+                            }
+                            else if (data[t].StatusVoznje == "0") {
+                                table += "Kreirana";
+                            }
+
+                            table += "</td><td><input type=\"submit\"";
+                            if (data[t].StatusVoznje != "0")
+                                table += " disabled ";
+
+                            table += "name=\"obrada_voznje\" id=\"" + data[t].Id + "\" value=\"";
+                            if (data.Uloga == "2" && data.Voznje[t].StatusVoznje == "0")
+                                table += "Preuzmi";
+                            else
+                                table += "Obrada vožnje";
+                            table += "\" /></td><td><input type=\"submit\" name=\"detalji_voznje\" id=\"" + data[t].Id + "\" value=\"Detalji vožnje\" /></td></tr>";
+                        }
+                        $("#maintable").html(table);
+                        localStorage.setItem("pretraga", JSON.stringify(data));
+                        localStorage.setItem("screen", $("#screen").html());
+                    }
+                });
+            });
+
+            $(document).on("click", "#po_datumu", function ()
+            {
+                var login_user = JSON.parse(localStorage.getItem("loginuser"));
+                var t = false;
+                if (localStorage.getItem("sveVoznje") != null || localStorage.getItem("slobodneVoznje") != null) {
+                    t = true;
+                }
+                var data =
+                    {
+                        IdKorisnika: login_user.Id,
+                        Dodatni: t,
+                        Pretraga: JSON.parse(localStorage.getItem("pretraga"))
+                    }
+                $.post("/api/main/podatumu", data, function (data, status) {
+                    if (status == "success") {
+                        var table = "<tr><th>Polazna tačka</th><th>Odredište</th><th>Mušterija</th><th>Vozač</th><th>Dispečer</th><th>Datum i vreme</th><th>Cena</th><th>Ocena</th><th>Status vožnje</th><th>&nbsp;</th><th>&nbsp;</th></tr>";
+                        for (t in data) {
+                            table += "<tr><td>" + data[t].PolaznaTacka.Adresa.Ulica_broj + ", " + data[t].PolaznaTacka.Adresa.Mesto + "</td><td>";
+                            if (data[t].Odrediste != null) {
+                                if (data[t].Odrediste.Adresa != null)
+                                    table += data[t].Odrediste.Adresa.Ulica_broj + ", " + data[t].Odrediste.Adresa.Mesto;
+                                else
+                                    table += "null";
+                            } else
+                                table += "null";
+                            table += "</td><td>" + data[t].Musterija + "</td><td>" + data[t].Vozac + "</td><td>" + data[t].Dispecer + "</td><td>";
+
+                            var date = data[t].VremePorudjbine.split("T");
+                            var time = date[1].split(".");
+                            table += date[0] + " ~ " + time[0];
+
+                            table += "</td><td>" + data[t].Iznos + "</td><td>";
+                            if (data[t].Komentar != null)
+                                if (data[t].Komentar.OcenaVoznje != null)
+                                    table += data[t].Komentar.OcenaVoznje + "</td><td>";
+                                else
+                                    table += "0</td><td>";
+                            else
+                                table += "0</td><td>";
+
+                            if (data[t].StatusVoznje == "1") {
+                                table += "Formirana";
+                            }
+                            else if (data[t].StatusVoznje == "2") {
+                                table += "Obrađena";
+                            }
+                            else if (data[t].StatusVoznje == "3") {
+                                table += "Prihvaćena";
+                            }
+                            else if (data[t].StatusVoznje == "4") {
+                                table += "Otkazana";
+                            }
+                            else if (data[t].StatusVoznje == "5") {
+                                table += "Neuspešna";
+                            }
+                            else if (data[t].StatusVoznje == "6") {
+                                table += "Uspešna";
+                            }
+                            else if (data[t].StatusVoznje == "0") {
+                                table += "Kreirana";
+                            }
+
+                            table += "</td><td><input type=\"submit\"";
+                            if (data[t].StatusVoznje != "0")
+                                table += " disabled ";
+
+                            table += "name=\"obrada_voznje\" id=\"" + data[t].Id + "\" value=\"";
+                            if (data.Uloga == "2" && data.Voznje[t].StatusVoznje == "0")
+                                table += "Preuzmi";
+                            else
+                                table += "Obrada vožnje";
+                            table += "\" /></td><td><input type=\"submit\" name=\"detalji_voznje\" id=\"" + data[t].Id + "\" value=\"Detalji vožnje\" /></td></tr>";
+                        }
+                        $("#maintable").html(table);
+                        localStorage.setItem("pretraga", JSON.stringify(data));
+                        localStorage.setItem("screen", $("#screen").html());
+                    }
+                });
+            });
+
+            $(document).on("click", "#po_oceni", function ()
+            {
+                var login_user = JSON.parse(localStorage.getItem("loginuser"));
+                var t = false;
+                if (localStorage.getItem("sveVoznje") != null || localStorage.getItem("slobodneVoznje") != null) {
+                    t = true;
+                }
+                var data =
+                    {
+                        IdKorisnika: login_user.Id,
+                        Dodatni: t,
+                        Pretraga: JSON.parse(localStorage.getItem("pretraga"))
+                    }
+                $.post("/api/main/pooceni", data, function (data, status) {
+                    if (status == "success") {
+                        var table = "<tr><th>Polazna tačka</th><th>Odredište</th><th>Mušterija</th><th>Vozač</th><th>Dispečer</th><th>Datum i vreme</th><th>Cena</th><th>Ocena</th><th>Status vožnje</th><th>&nbsp;</th><th>&nbsp;</th></tr>";
+                        for (t in data) {
+                            table += "<tr><td>" + data[t].PolaznaTacka.Adresa.Ulica_broj + ", " + data[t].PolaznaTacka.Adresa.Mesto + "</td><td>";
+                            if (data[t].Odrediste != null) {
+                                if (data[t].Odrediste.Adresa != null)
+                                    table += data[t].Odrediste.Adresa.Ulica_broj + ", " + data[t].Odrediste.Adresa.Mesto;
+                                else
+                                    table += "null";
+                            } else
+                                table += "null";
+                            table += "</td><td>" + data[t].Musterija + "</td><td>" + data[t].Vozac + "</td><td>" + data[t].Dispecer + "</td><td>";
+
+                            var date = data[t].VremePorudjbine.split("T");
+                            var time = date[1].split(".");
+                            table += date[0] + " ~ " + time[0];
+
+                            table += "</td><td>" + data[t].Iznos + "</td><td>";
+                            if (data[t].Komentar != null)
+                                if (data[t].Komentar.OcenaVoznje != null)
+                                    table += data[t].Komentar.OcenaVoznje + "</td><td>";
+                                else
+                                    table += "0</td><td>";
+                            else
+                                table += "0</td><td>";
+
+                            if (data[t].StatusVoznje == "1") {
+                                table += "Formirana";
+                            }
+                            else if (data[t].StatusVoznje == "2") {
+                                table += "Obrađena";
+                            }
+                            else if (data[t].StatusVoznje == "3") {
+                                table += "Prihvaćena";
+                            }
+                            else if (data[t].StatusVoznje == "4") {
+                                table += "Otkazana";
+                            }
+                            else if (data[t].StatusVoznje == "5") {
+                                table += "Neuspešna";
+                            }
+                            else if (data[t].StatusVoznje == "6") {
+                                table += "Uspešna";
+                            }
+                            else if (data[t].StatusVoznje == "0") {
+                                table += "Kreirana";
+                            }
+
+                            table += "</td><td><input type=\"submit\"";
+                            if (data[t].StatusVoznje != "0")
+                                table += " disabled ";
+
+                            table += "name=\"obrada_voznje\" id=\"" + data[t].Id + "\" value=\"";
+                            if (data.Uloga == "2" && data.Voznje[t].StatusVoznje == "0")
+                                table += "Preuzmi";
+                            else
+                                table += "Obrada vožnje";
+                            table += "\" /></td><td><input type=\"submit\" name=\"detalji_voznje\" id=\"" + data[t].Id + "\" value=\"Detalji vožnje\" /></td></tr>";
+                        }
+                        $("#maintable").html(table);
+                        localStorage.setItem("pretraga", JSON.stringify(data));
+                        localStorage.setItem("screen", $("#screen").html());
+                    }
+                });
+            });
+
+            $(document).on("click", "#sortiraj_udaljenost", function ()
+            {
+                var login_user = JSON.parse(localStorage.getItem("loginuser"));
+                var t = false;
+                if (localStorage.getItem("sveVoznje") != null || localStorage.getItem("slobodneVoznje") != null) {
+                    t = true;
+                }
+                var data =
+                    {
+                        IdKorisnika: login_user.Id,
+                        Dodatni: t,
+                        Pretraga: JSON.parse(localStorage.getItem("pretraga"))
+                    }
+                $.post("/api/main/poudaljenosti", data, function (data, status) {
+                    if (status == "success") {
+                        var table = "<tr><th>Polazna tačka</th><th>Odredište</th><th>Mušterija</th><th>Vozač</th><th>Dispečer</th><th>Datum i vreme</th><th>Cena</th><th>Ocena</th><th>Status vožnje</th><th>&nbsp;</th><th>&nbsp;</th></tr>";
+                        for (t in data) {
+                            table += "<tr><td>" + data[t].PolaznaTacka.Adresa.Ulica_broj + ", " + data[t].PolaznaTacka.Adresa.Mesto + "</td><td>";
+                            if (data[t].Odrediste != null) {
+                                if (data[t].Odrediste.Adresa != null)
+                                    table += data[t].Odrediste.Adresa.Ulica_broj + ", " + data[t].Odrediste.Adresa.Mesto;
+                                else
+                                    table += "null";
+                            } else
+                                table += "null";
+                            table += "</td><td>" + data[t].Musterija + "</td><td>" + data[t].Vozac + "</td><td>" + data[t].Dispecer + "</td><td>";
+
+                            var date = data[t].VremePorudjbine.split("T");
+                            var time = date[1].split(".");
+                            table += date[0] + " ~ " + time[0];
+
+                            table += "</td><td>" + data[t].Iznos + "</td><td>";
+                            if (data[t].Komentar != null)
+                                if (data[t].Komentar.OcenaVoznje != null)
+                                    table += data[t].Komentar.OcenaVoznje + "</td><td>";
+                                else
+                                    table += "0</td><td>";
+                            else
+                                table += "0</td><td>";
+
+                            if (data[t].StatusVoznje == "1") {
+                                table += "Formirana";
+                            }
+                            else if (data[t].StatusVoznje == "2") {
+                                table += "Obrađena";
+                            }
+                            else if (data[t].StatusVoznje == "3") {
+                                table += "Prihvaćena";
+                            }
+                            else if (data[t].StatusVoznje == "4") {
+                                table += "Otkazana";
+                            }
+                            else if (data[t].StatusVoznje == "5") {
+                                table += "Neuspešna";
+                            }
+                            else if (data[t].StatusVoznje == "6") {
+                                table += "Uspešna";
+                            }
+                            else if (data[t].StatusVoznje == "0") {
+                                table += "Kreirana";
+                            }
+
+                            table += "</td><td><input type=\"submit\"";
+                            if (data[t].StatusVoznje != "0")
+                                table += " disabled ";
+
+                            table += "name=\"obrada_voznje\" id=\"" + data[t].Id + "\" value=\"";
+                            if (data.Uloga == "2" && data.Voznje[t].StatusVoznje == "0")
+                                table += "Preuzmi";
+                            else
+                                table += "Obrada vožnje";
+                            table += "\" /></td><td><input type=\"submit\" name=\"detalji_voznje\" id=\"" + data[t].Id + "\" value=\"Detalji vožnje\" /></td></tr>";
+                        }
+                        $("#maintable").html(table);
+                        localStorage.setItem("pretraga", JSON.stringify(data));
+                        localStorage.setItem("screen", $("#screen").html());
+                    }
+                });
+            });
+
+            $(document).on("click", "#po_mus", function () {
+                var login_user = JSON.parse(localStorage.getItem("loginuser"));
+                var t = false;
+                if (localStorage.getItem("sveVoznje") != null || localStorage.getItem("slobodneVoznje") != null) {
+                    t = true;
+                }
+                var data =
+                    {
+                        IdKorisnika: login_user.Id,
+                        Dodatni: t,
+                        Pretraga: JSON.parse(localStorage.getItem("pretraga")),
+                        Stavka1: $("#imemus").val(),
+                        Stavka2: $("#prezimemus").val()
+                    }
+                $.post("/api/main/poimenuprzmusterije", data, function (data, status) {
+                    if (status == "success") {
+                        var table = "<tr><th>Polazna tačka</th><th>Odredište</th><th>Mušterija</th><th>Vozač</th><th>Dispečer</th><th>Datum i vreme</th><th>Cena</th><th>Ocena</th><th>Status vožnje</th><th>&nbsp;</th><th>&nbsp;</th></tr>";
+                        for (t in data) {
+                            table += "<tr><td>" + data[t].PolaznaTacka.Adresa.Ulica_broj + ", " + data[t].PolaznaTacka.Adresa.Mesto + "</td><td>";
+                            if (data[t].Odrediste != null) {
+                                if (data[t].Odrediste.Adresa != null)
+                                    table += data[t].Odrediste.Adresa.Ulica_broj + ", " + data[t].Odrediste.Adresa.Mesto;
+                                else
+                                    table += "null";
+                            } else
+                                table += "null";
+                            table += "</td><td>" + data[t].Musterija + "</td><td>" + data[t].Vozac + "</td><td>" + data[t].Dispecer + "</td><td>";
+
+                            var date = data[t].VremePorudjbine.split("T");
+                            var time = date[1].split(".");
+                            table += date[0] + " ~ " + time[0];
+
+                            table += "</td><td>" + data[t].Iznos + "</td><td>";
+                            if (data[t].Komentar != null)
+                                if (data[t].Komentar.OcenaVoznje != null)
+                                    table += data[t].Komentar.OcenaVoznje + "</td><td>";
+                                else
+                                    table += "0</td><td>";
+                            else
+                                table += "0</td><td>";
+
+                            if (data[t].StatusVoznje == "1") {
+                                table += "Formirana";
+                            }
+                            else if (data[t].StatusVoznje == "2") {
+                                table += "Obrađena";
+                            }
+                            else if (data[t].StatusVoznje == "3") {
+                                table += "Prihvaćena";
+                            }
+                            else if (data[t].StatusVoznje == "4") {
+                                table += "Otkazana";
+                            }
+                            else if (data[t].StatusVoznje == "5") {
+                                table += "Neuspešna";
+                            }
+                            else if (data[t].StatusVoznje == "6") {
+                                table += "Uspešna";
+                            }
+                            else if (data[t].StatusVoznje == "0") {
+                                table += "Kreirana";
+                            }
+
+                            table += "</td><td><input type=\"submit\"";
+                            if (data[t].StatusVoznje != "0")
+                                table += " disabled ";
+
+                            table += "name=\"obrada_voznje\" id=\"" + data[t].Id + "\" value=\"";
+                            if (data.Uloga == "2" && data.Voznje[t].StatusVoznje == "0")
+                                table += "Preuzmi";
+                            else
+                                table += "Obrada vožnje";
+                            table += "\" /></td><td><input type=\"submit\" name=\"detalji_voznje\" id=\"" + data[t].Id + "\" value=\"Detalji vožnje\" /></td></tr>";
+                        }
+                        $("#maintable").html(table);
+                        localStorage.setItem("pretraga", JSON.stringify(data));
+                        localStorage.setItem("screen", $("#screen").html());
+                    }
+                });
+            });
+
+            $(document).on("click", "#po_voz", function () {
+                var login_user = JSON.parse(localStorage.getItem("loginuser"));
+                var t = false;
+                if (localStorage.getItem("sveVoznje") != null || localStorage.getItem("slobodneVoznje") != null) {
+                    t = true;
+                }
+                var data =
+                    {
+                        IdKorisnika: login_user.Id,
+                        Dodatni: t,
+                        Pretraga: JSON.parse(localStorage.getItem("pretraga")),
+                        Stavka1: $("#imevoz").val(),
+                        Stavka2: $("#prezimevoz").val()
+                    }
+                $.post("/api/main/poimenuprzvozac", data, function (data, status) {
+                    if (status == "success") {
+                        var table = "<tr><th>Polazna tačka</th><th>Odredište</th><th>Mušterija</th><th>Vozač</th><th>Dispečer</th><th>Datum i vreme</th><th>Cena</th><th>Ocena</th><th>Status vožnje</th><th>&nbsp;</th><th>&nbsp;</th></tr>";
+                        for (t in data) {
+                            table += "<tr><td>" + data[t].PolaznaTacka.Adresa.Ulica_broj + ", " + data[t].PolaznaTacka.Adresa.Mesto + "</td><td>";
+                            if (data[t].Odrediste != null) {
+                                if (data[t].Odrediste.Adresa != null)
+                                    table += data[t].Odrediste.Adresa.Ulica_broj + ", " + data[t].Odrediste.Adresa.Mesto;
+                                else
+                                    table += "null";
+                            } else
+                                table += "null";
+                            table += "</td><td>" + data[t].Musterija + "</td><td>" + data[t].Vozac + "</td><td>" + data[t].Dispecer + "</td><td>";
+
+                            var date = data[t].VremePorudjbine.split("T");
+                            var time = date[1].split(".");
+                            table += date[0] + " ~ " + time[0];
+
+                            table += "</td><td>" + data[t].Iznos + "</td><td>";
+                            if (data[t].Komentar != null)
+                                if (data[t].Komentar.OcenaVoznje != null)
+                                    table += data[t].Komentar.OcenaVoznje + "</td><td>";
+                                else
+                                    table += "0</td><td>";
+                            else
+                                table += "0</td><td>";
+
+                            if (data[t].StatusVoznje == "1") {
+                                table += "Formirana";
+                            }
+                            else if (data[t].StatusVoznje == "2") {
+                                table += "Obrađena";
+                            }
+                            else if (data[t].StatusVoznje == "3") {
+                                table += "Prihvaćena";
+                            }
+                            else if (data[t].StatusVoznje == "4") {
+                                table += "Otkazana";
+                            }
+                            else if (data[t].StatusVoznje == "5") {
+                                table += "Neuspešna";
+                            }
+                            else if (data[t].StatusVoznje == "6") {
+                                table += "Uspešna";
+                            }
+                            else if (data[t].StatusVoznje == "0") {
+                                table += "Kreirana";
+                            }
+
+                            table += "</td><td><input type=\"submit\"";
+                            if (data[t].StatusVoznje != "0")
+                                table += " disabled ";
+
+                            table += "name=\"obrada_voznje\" id=\"" + data[t].Id + "\" value=\"";
+                            if (data.Uloga == "2" && data.Voznje[t].StatusVoznje == "0")
+                                table += "Preuzmi";
+                            else
+                                table += "Obrada vožnje";
+                            table += "\" /></td><td><input type=\"submit\" name=\"detalji_voznje\" id=\"" + data[t].Id + "\" value=\"Detalji vožnje\" /></td></tr>";
+                        }
+                        $("#maintable").html(table);
+                        localStorage.setItem("pretraga", JSON.stringify(data));
+                        localStorage.setItem("screen", $("#screen").html());
+                    }
+                });
+            });
+
+            $(document).on("click", "#po_datumu_oddo", function () {
+                var login_user = JSON.parse(localStorage.getItem("loginuser"));
+                var t = false;
+                if (localStorage.getItem("sveVoznje") != null || localStorage.getItem("slobodneVoznje") != null) {
+                    t = true;
+                }
+                var data =
+                    {
+                        IdKorisnika: login_user.Id,
+                        Dodatni: t,
+                        Pretraga: JSON.parse(localStorage.getItem("pretraga")),
+                        Stavka1: $("#oddatum").val(),
+                        Stavka2: $("#dodatum").val()
+                    }
+                $.post("/api/main/podatumuoddo", data, function (data, status) {
+                    if (status == "success") {
+                        var table = "<tr><th>Polazna tačka</th><th>Odredište</th><th>Mušterija</th><th>Vozač</th><th>Dispečer</th><th>Datum i vreme</th><th>Cena</th><th>Ocena</th><th>Status vožnje</th><th>&nbsp;</th><th>&nbsp;</th></tr>";
+                        for (t in data) {
+                            table += "<tr><td>" + data[t].PolaznaTacka.Adresa.Ulica_broj + ", " + data[t].PolaznaTacka.Adresa.Mesto + "</td><td>";
+                            if (data[t].Odrediste != null) {
+                                if (data[t].Odrediste.Adresa != null)
+                                    table += data[t].Odrediste.Adresa.Ulica_broj + ", " + data[t].Odrediste.Adresa.Mesto;
+                                else
+                                    table += "null";
+                            } else
+                                table += "null";
+                            table += "</td><td>" + data[t].Musterija + "</td><td>" + data[t].Vozac + "</td><td>" + data[t].Dispecer + "</td><td>";
+
+                            var date = data[t].VremePorudjbine.split("T");
+                            var time = date[1].split(".");
+                            table += date[0] + " ~ " + time[0];
+
+                            table += "</td><td>" + data[t].Iznos + "</td><td>";
+                            if (data[t].Komentar != null)
+                                if (data[t].Komentar.OcenaVoznje != null)
+                                    table += data[t].Komentar.OcenaVoznje + "</td><td>";
+                                else
+                                    table += "0</td><td>";
+                            else
+                                table += "0</td><td>";
+
+                            if (data[t].StatusVoznje == "1") {
+                                table += "Formirana";
+                            }
+                            else if (data[t].StatusVoznje == "2") {
+                                table += "Obrađena";
+                            }
+                            else if (data[t].StatusVoznje == "3") {
+                                table += "Prihvaćena";
+                            }
+                            else if (data[t].StatusVoznje == "4") {
+                                table += "Otkazana";
+                            }
+                            else if (data[t].StatusVoznje == "5") {
+                                table += "Neuspešna";
+                            }
+                            else if (data[t].StatusVoznje == "6") {
+                                table += "Uspešna";
+                            }
+                            else if (data[t].StatusVoznje == "0") {
+                                table += "Kreirana";
+                            }
+
+                            table += "</td><td><input type=\"submit\"";
+                            if (data[t].StatusVoznje != "0")
+                                table += " disabled ";
+
+                            table += "name=\"obrada_voznje\" id=\"" + data[t].Id + "\" value=\"";
+                            if (data.Uloga == "2" && data.Voznje[t].StatusVoznje == "0")
+                                table += "Preuzmi";
+                            else
+                                table += "Obrada vožnje";
+                            table += "\" /></td><td><input type=\"submit\" name=\"detalji_voznje\" id=\"" + data[t].Id + "\" value=\"Detalji vožnje\" /></td></tr>";
+                        }
+                        $("#maintable").html(table);
+                        localStorage.setItem("pretraga", JSON.stringify(data));
+                        localStorage.setItem("screen", $("#screen").html());
+                    }
+                });
+            });
+
+            $(document).on("click", "#po_oceni_oddo", function () {
+                var login_user = JSON.parse(localStorage.getItem("loginuser"));
+                var t = false;
+                if (localStorage.getItem("sveVoznje") != null || localStorage.getItem("slobodneVoznje") != null) {
+                    t = true;
+                }
+                var data =
+                    {
+                        IdKorisnika: login_user.Id,
+                        Dodatni: t,
+                        Pretraga: JSON.parse(localStorage.getItem("pretraga")),
+                        Stavka1: $("#ocenaod").val(),
+                        Stavka2: $("#ocenado").val()
+                    }
+                $.post("/api/main/poocenioddo", data, function (data, status) {
+                    if (status == "success") {
+                        var table = "<tr><th>Polazna tačka</th><th>Odredište</th><th>Mušterija</th><th>Vozač</th><th>Dispečer</th><th>Datum i vreme</th><th>Cena</th><th>Ocena</th><th>Status vožnje</th><th>&nbsp;</th><th>&nbsp;</th></tr>";
+                        for (t in data) {
+                            table += "<tr><td>" + data[t].PolaznaTacka.Adresa.Ulica_broj + ", " + data[t].PolaznaTacka.Adresa.Mesto + "</td><td>";
+                            if (data[t].Odrediste != null) {
+                                if (data[t].Odrediste.Adresa != null)
+                                    table += data[t].Odrediste.Adresa.Ulica_broj + ", " + data[t].Odrediste.Adresa.Mesto;
+                                else
+                                    table += "null";
+                            } else
+                                table += "null";
+                            table += "</td><td>" + data[t].Musterija + "</td><td>" + data[t].Vozac + "</td><td>" + data[t].Dispecer + "</td><td>";
+
+                            var date = data[t].VremePorudjbine.split("T");
+                            var time = date[1].split(".");
+                            table += date[0] + " ~ " + time[0];
+
+                            table += "</td><td>" + data[t].Iznos + "</td><td>";
+                            if (data[t].Komentar != null)
+                                if (data[t].Komentar.OcenaVoznje != null)
+                                    table += data[t].Komentar.OcenaVoznje + "</td><td>";
+                                else
+                                    table += "0</td><td>";
+                            else
+                                table += "0</td><td>";
+
+                            if (data[t].StatusVoznje == "1") {
+                                table += "Formirana";
+                            }
+                            else if (data[t].StatusVoznje == "2") {
+                                table += "Obrađena";
+                            }
+                            else if (data[t].StatusVoznje == "3") {
+                                table += "Prihvaćena";
+                            }
+                            else if (data[t].StatusVoznje == "4") {
+                                table += "Otkazana";
+                            }
+                            else if (data[t].StatusVoznje == "5") {
+                                table += "Neuspešna";
+                            }
+                            else if (data[t].StatusVoznje == "6") {
+                                table += "Uspešna";
+                            }
+                            else if (data[t].StatusVoznje == "0") {
+                                table += "Kreirana";
+                            }
+
+                            table += "</td><td><input type=\"submit\"";
+                            if (data[t].StatusVoznje != "0")
+                                table += " disabled ";
+
+                            table += "name=\"obrada_voznje\" id=\"" + data[t].Id + "\" value=\"";
+                            if (data.Uloga == "2" && data.Voznje[t].StatusVoznje == "0")
+                                table += "Preuzmi";
+                            else
+                                table += "Obrada vožnje";
+                            table += "\" /></td><td><input type=\"submit\" name=\"detalji_voznje\" id=\"" + data[t].Id + "\" value=\"Detalji vožnje\" /></td></tr>";
+                        }
+                        $("#maintable").html(table);
+                        localStorage.setItem("pretraga", JSON.stringify(data));
+                        localStorage.setItem("screen", $("#screen").html());
+                    }
+                });
+            });
+
+            $(document).on("click", "#po_ceni_oddo", function () {
+                var login_user = JSON.parse(localStorage.getItem("loginuser"));
+                var t = false;
+                if (localStorage.getItem("sveVoznje") != null || localStorage.getItem("slobodneVoznje") != null) {
+                    t = true;
+                }
+                var data =
+                    {
+                        IdKorisnika: login_user.Id,
+                        Dodatni: t,
+                        Pretraga: JSON.parse(localStorage.getItem("pretraga")),
+                        Stavka1: $("#odcena").val(),
+                        Stavka2: $("#docena").val()
+                    }
+                $.post("/api/main/pocenioddo", data, function (data, status) {
+                    if (status == "success") {
+                        var table = "<tr><th>Polazna tačka</th><th>Odredište</th><th>Mušterija</th><th>Vozač</th><th>Dispečer</th><th>Datum i vreme</th><th>Cena</th><th>Ocena</th><th>Status vožnje</th><th>&nbsp;</th><th>&nbsp;</th></tr>";
+                        for (t in data) {
+                            table += "<tr><td>" + data[t].PolaznaTacka.Adresa.Ulica_broj + ", " + data[t].PolaznaTacka.Adresa.Mesto + "</td><td>";
+                            if (data[t].Odrediste != null) {
+                                if (data[t].Odrediste.Adresa != null)
+                                    table += data[t].Odrediste.Adresa.Ulica_broj + ", " + data[t].Odrediste.Adresa.Mesto;
+                                else
+                                    table += "null";
+                            } else
+                                table += "null";
+                            table += "</td><td>" + data[t].Musterija + "</td><td>" + data[t].Vozac + "</td><td>" + data[t].Dispecer + "</td><td>";
+
+                            var date = data[t].VremePorudjbine.split("T");
+                            var time = date[1].split(".");
+                            table += date[0] + " ~ " + time[0];
+
+                            table += "</td><td>" + data[t].Iznos + "</td><td>";
+                            if (data[t].Komentar != null)
+                                if (data[t].Komentar.OcenaVoznje != null)
+                                    table += data[t].Komentar.OcenaVoznje + "</td><td>";
+                                else
+                                    table += "0</td><td>";
+                            else
+                                table += "0</td><td>";
+
+                            if (data[t].StatusVoznje == "1") {
+                                table += "Formirana";
+                            }
+                            else if (data[t].StatusVoznje == "2") {
+                                table += "Obrađena";
+                            }
+                            else if (data[t].StatusVoznje == "3") {
+                                table += "Prihvaćena";
+                            }
+                            else if (data[t].StatusVoznje == "4") {
+                                table += "Otkazana";
+                            }
+                            else if (data[t].StatusVoznje == "5") {
+                                table += "Neuspešna";
+                            }
+                            else if (data[t].StatusVoznje == "6") {
+                                table += "Uspešna";
+                            }
+                            else if (data[t].StatusVoznje == "0") {
+                                table += "Kreirana";
+                            }
+
+                            table += "</td><td><input type=\"submit\"";
+                            if (data[t].StatusVoznje != "0")
+                                table += " disabled ";
+
+                            table += "name=\"obrada_voznje\" id=\"" + data[t].Id + "\" value=\"";
+                            if (data.Uloga == "2" && data.Voznje[t].StatusVoznje == "0")
+                                table += "Preuzmi";
+                            else
+                                table += "Obrada vožnje";
+                            table += "\" /></td><td><input type=\"submit\" name=\"detalji_voznje\" id=\"" + data[t].Id + "\" value=\"Detalji vožnje\" /></td></tr>";
+                        }
+                        $("#maintable").html(table);
+                        localStorage.setItem("pretraga", JSON.stringify(data));
+                        localStorage.setItem("screen", $("#screen").html());
                     }
                 });
             });

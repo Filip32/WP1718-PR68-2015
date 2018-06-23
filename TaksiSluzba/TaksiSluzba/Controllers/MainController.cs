@@ -153,7 +153,7 @@ namespace TaksiSluzba.Controllers
                     {
                         if (voznja.Vozac == staro)
                         {
-                            sveVoznje.Remove(voznja);
+                            sveVoznje.RemoveAll(x => x.Id == voznja.Id);
                             voznja.Dispecer = novo;
                             sveVoznje.Add(voznja);
                         }
@@ -171,7 +171,7 @@ namespace TaksiSluzba.Controllers
                         {
                             if (voznja.Vozac == staro)
                             {
-                                korisnik.Voznje.Remove(voznja);
+                                korisnik.Voznje.RemoveAll(x => x.Id == voznja.Id);
                                 voznja.Dispecer = novo;
                                 korisnik.Voznje.Add(voznja);
                             }
@@ -191,7 +191,7 @@ namespace TaksiSluzba.Controllers
                         {
                             if (voznja.Vozac == staro)
                             {
-                                korisnik.Voznje.Remove(voznja);
+                                korisnik.Voznje.RemoveAll(x => x.Id == voznja.Id);
                                 voznja.Dispecer = novo;
                                 korisnik.Voznje.Add(voznja);
                             }
@@ -211,7 +211,7 @@ namespace TaksiSluzba.Controllers
                         {
                             if (voznja.Vozac == staro)
                             {
-                                korisnik.Voznje.Remove(voznja);
+                                korisnik.Voznje.RemoveAll(x => x.Id == voznja.Id);
                                 voznja.Dispecer = novo;
                                 korisnik.Voznje.Add(voznja);
                             }
@@ -247,7 +247,7 @@ namespace TaksiSluzba.Controllers
                         {
                             if (voznja.Dispecer == staro)
                             {
-                                sveVoznje.Remove(voznja);
+                                sveVoznje.RemoveAll(x => x.Id == voznja.Id);
                                 voznja.Dispecer = novo;
                                 sveVoznje.Add(voznja);
                             }
@@ -265,7 +265,7 @@ namespace TaksiSluzba.Controllers
                             {
                                 if (voznja.Dispecer == staro)
                                 {
-                                    korisnik.Voznje.Remove(voznja);
+                                    korisnik.Voznje.RemoveAll(x => x.Id == voznja.Id);
                                     voznja.Dispecer = novo;
                                     korisnik.Voznje.Add(voznja);
                                 }
@@ -285,7 +285,7 @@ namespace TaksiSluzba.Controllers
                             {
                                 if (voznja.Dispecer == staro)
                                 {
-                                    korisnik.Voznje.Remove(voznja);
+                                    korisnik.Voznje.RemoveAll(x => x.Id == voznja.Id);
                                     voznja.Dispecer = novo;
                                     korisnik.Voznje.Add(voznja);
                                 }
@@ -305,7 +305,7 @@ namespace TaksiSluzba.Controllers
                             {
                                 if (voznja.Dispecer == staro)
                                 {
-                                    korisnik.Voznje.Remove(voznja);
+                                    korisnik.Voznje.RemoveAll(x => x.Id == voznja.Id);
                                     voznja.Dispecer = novo;
                                     korisnik.Voznje.Add(voznja);
                                 }
@@ -335,7 +335,7 @@ namespace TaksiSluzba.Controllers
                         {
                             if (voznja.Musterija == staro)
                             {
-                                slobodneVoznje.Remove(voznja);
+                                slobodneVoznje.RemoveAll(x => x.Id == voznja.Id);
                                 voznja.Dispecer = novo;
                                 slobodneVoznje.Add(voznja);
                             }
@@ -348,7 +348,7 @@ namespace TaksiSluzba.Controllers
                         {
                             if (voznja.Musterija == staro)
                             {
-                                sveVoznje.Remove(voznja);
+                                sveVoznje.RemoveAll(x => x.Id == voznja.Id);
                                 voznja.Dispecer = novo;
                                 sveVoznje.Add(voznja);
                             }
@@ -366,7 +366,7 @@ namespace TaksiSluzba.Controllers
                             {
                                 if (voznja.Musterija == staro)
                                 {
-                                    korisnik.Voznje.Remove(voznja);
+                                    korisnik.Voznje.RemoveAll(x => x.Id == voznja.Id);
                                     voznja.Dispecer = novo;
                                     korisnik.Voznje.Add(voznja);
                                 }
@@ -386,7 +386,7 @@ namespace TaksiSluzba.Controllers
                             {
                                 if (voznja.Musterija == staro)
                                 {
-                                    korisnik.Voznje.Remove(voznja);
+                                    korisnik.Voznje.RemoveAll(x => x.Id == voznja.Id);
                                     voznja.Dispecer = novo;
                                     korisnik.Voznje.Add(voznja);
                                 }
@@ -406,7 +406,7 @@ namespace TaksiSluzba.Controllers
                             {
                                 if (voznja.Musterija == staro)
                                 {
-                                    korisnik.Voznje.Remove(voznja);
+                                    korisnik.Voznje.RemoveAll(x => x.Id == voznja.Id);
                                     voznja.Dispecer = novo;
                                     korisnik.Voznje.Add(voznja);
                                 }
@@ -629,7 +629,7 @@ namespace TaksiSluzba.Controllers
                 }
             }
             korisniklist.Remove(k);
-            k.Voznje.Remove(voznja);
+            k.Voznje.RemoveAll(x => x.Id == voznja.Id);
 
             if (izmenaVoznje.Lokacija != null)
             {
@@ -656,13 +656,13 @@ namespace TaksiSluzba.Controllers
             {
                 Vozac vozac = vozaclist.Find(i => i.KorisnickoIme == voznja.Vozac);
                 vozaclist.Remove(vozac);
-                vozac.Voznje.Remove(voznja);
+                vozac.Voznje.RemoveAll(x => x.Id == voznja.Id);
                 Korisnik dispecer = new Korisnik();
                 if (voznja.Dispecer != null)
                 {
                     dispecer = adminlist.Find(i => i.KorisnickoIme == voznja.Dispecer);
                     adminlist.Remove(dispecer);
-                    dispecer.Voznje.Remove(voznja);
+                    dispecer.Voznje.RemoveAll(x => x.Id == voznja.Id);
                 }
                 voznja.Komentar = new Komentar();
                 voznja.Komentar.Opis = izmenaVoznje.Opis;
@@ -709,11 +709,11 @@ namespace TaksiSluzba.Controllers
             adminlist.Remove(dispecer);
             vozaclist.Remove(vozac);
 
-            musterija.Voznje.Remove(voznja);
+            musterija.Voznje.RemoveAll(x => x.Id == voznja.Id);
 
-            sveVoznje.Remove(voznja);
+            sveVoznje.RemoveAll(x => x.Id == voznja.Id);
 
-            slobodneVoznje.Remove(voznja);
+            slobodneVoznje.RemoveAll(x => x.Id == voznja.Id);
             WriteToXMSlobodneVoznje();
 
             voznja.Vozac = vozac.KorisnickoIme;
@@ -751,20 +751,21 @@ namespace TaksiSluzba.Controllers
             if (voznja.Musterija != null)
             {
                 musterija = korisniklist.Find(i => i.KorisnickoIme == voznja.Musterija);
-                korisniklist.Remove(musterija);
-                musterija.Voznje.Remove(voznja);
+                korisniklist.RemoveAll(x => x.Id == musterija.Id);
+                //musterija.Voznje.Remove(voznja);
+                musterija.Voznje.RemoveAll(x => x.Id == voznja.Id);
             }
 
             if (voznja.Dispecer != null)
             {
                 admin = adminlist.Find(i => i.KorisnickoIme == voznja.Dispecer);
-                adminlist.Remove(admin);
-                admin.Voznje.Remove(voznja);
+                adminlist.RemoveAll(x => x.Id == admin.Id);
+                admin.Voznje.RemoveAll(x => x.Id == voznja.Id);
             }
 
-            vozaclist.Remove(vozac);
-            vozac.Voznje.Remove(voznja);
-            sveVoznje.Remove(voznja);
+            vozaclist.RemoveAll(x => x.Id == vozac.Id);
+            vozac.Voznje.RemoveAll(x => x.Id == voznja.Id);
+            sveVoznje.RemoveAll(x => x.Id == voznja.Id);
 
             if (izmenaVoznje.Opis == null)
             {
@@ -821,9 +822,9 @@ namespace TaksiSluzba.Controllers
 
             Korisnik korisnik = korisniklist.Find(i => i.KorisnickoIme == voznja.Musterija);
             korisniklist.Remove(korisnik);
-            korisnik.Voznje.Remove(voznja);
+            korisnik.Voznje.RemoveAll(x => x.Id == voznja.Id);
 
-            sveVoznje.Remove(voznja);
+            sveVoznje.RemoveAll(x => x.Id == voznja.Id);
 
             Vozac vozac = vozaclist.Find(i => i.Id == izmenaVoznje.Id);
             vozaclist.Remove(vozac);
@@ -978,6 +979,501 @@ namespace TaksiSluzba.Controllers
             return Ok(slobodneVoznje);
         }
 
+        [Route("api/main/postatusu")]
+        public IHttpActionResult PoStatusu(ZaPretrage pretrage)
+        {
+            if (pretrage.Pretraga[0].Id == null)
+            {
+                Korisnik k = new Korisnik();
+                Enums.StatusVoznje statusVoznje = GetTip(pretrage.Status);
+                if (korisniklist.Exists(i => i.Id == pretrage.IdKorisnika))
+                {
+                    k = korisniklist.Find(i => i.Id == pretrage.IdKorisnika);
+                }
+                else if (adminlist.Exists(i => i.Id == pretrage.IdKorisnika))
+                {
+                    k = adminlist.Find(i => i.Id == pretrage.IdKorisnika);
+                }
+                else if (vozaclist.Exists(i => i.Id == pretrage.IdKorisnika))
+                {
+                    k = vozaclist.Find(i => i.Id == pretrage.IdKorisnika);
+                }
+                List<Voznja> toSend = new List<Voznja>();
+
+                foreach (Voznja v in k.Voznje)
+                {
+                    if (v.StatusVoznje == statusVoznje)
+                    {
+                        toSend.Add(v);
+                    }
+                }
+
+                if (pretrage.Dodatni)
+                {
+                    if (k.Uloga == Enums.Uloga.Dispecer)
+                    {
+                        toSend = new List<Voznja>();
+                        foreach (Voznja v in sveVoznje)
+                        {
+                            if (v.StatusVoznje == statusVoznje)
+                            {
+                                toSend.Add(v);
+                            }
+                        }
+                    }
+                    else if (k.Uloga == Enums.Uloga.Vozac)
+                    {
+                        foreach (Voznja v in slobodneVoznje)
+                        {
+                            if (v.StatusVoznje == statusVoznje)
+                            {
+                                toSend.Add(v);
+                            }
+                        }
+                    }
+                }
+
+                return Ok(toSend);
+            }
+            else
+            {
+                List<Voznja> toSend = new List<Voznja>();
+                Enums.StatusVoznje statusVoznje = GetTip(pretrage.Status);
+                foreach (Voznja v in pretrage.Pretraga)
+                {
+                    if (v.StatusVoznje == statusVoznje)
+                    {
+                        toSend.Add(v);
+                    }
+                }
+                return Ok(toSend);
+            }
+        }
+
+        [Route("api/main/podatumu")]
+        public IHttpActionResult SortiranjeDatum(ZaPretrage pretrage)
+        {
+            if (pretrage.Pretraga[0].Id == null)
+            {
+                Korisnik k = new Korisnik();
+                if (korisniklist.Exists(i => i.Id == pretrage.IdKorisnika))
+                {
+                    k = korisniklist.Find(i => i.Id == pretrage.IdKorisnika);
+                }
+                else if (adminlist.Exists(i => i.Id == pretrage.IdKorisnika))
+                {
+                    k = adminlist.Find(i => i.Id == pretrage.IdKorisnika);
+                }
+                else if (vozaclist.Exists(i => i.Id == pretrage.IdKorisnika))
+                {
+                    k = vozaclist.Find(i => i.Id == pretrage.IdKorisnika);
+                }
+                List<Voznja> toSend = new List<Voznja>();
+
+
+                foreach (Voznja v in k.Voznje)
+                {
+                    toSend.Add(v);
+                }
+
+                if (pretrage.Dodatni)
+                {
+                    if (k.Uloga == Enums.Uloga.Dispecer)
+                    {
+                        toSend = new List<Voznja>();
+                        foreach (Voznja v in sveVoznje)
+                        {
+                                toSend.Add(v);
+                        }
+                    }
+                    else if (k.Uloga == Enums.Uloga.Vozac)
+                    {
+                        foreach (Voznja v in slobodneVoznje)
+                        {
+                                toSend.Add(v);
+                        }
+                    }
+                }
+
+                toSend = toSend.OrderBy(X => X.VremePorudjbine).ToList();
+                return Ok(toSend);
+            }
+            else
+            {
+                List<Voznja> toSend = new List<Voznja>();
+
+                foreach (Voznja v in pretrage.Pretraga)
+                {
+                        toSend.Add(v);
+                }
+                toSend = toSend.OrderBy(X => X.VremePorudjbine).ToList();
+                return Ok(toSend);
+            }
+        }
+
+        [Route("api/main/pooceni")]
+        public IHttpActionResult SortiranjeOcena(ZaPretrage pretrage)
+        {
+            if (pretrage.Pretraga[0].Id == null)
+            {
+                Korisnik k = new Korisnik();
+                if (korisniklist.Exists(i => i.Id == pretrage.IdKorisnika))
+                {
+                    k = korisniklist.Find(i => i.Id == pretrage.IdKorisnika);
+                }
+                else if (adminlist.Exists(i => i.Id == pretrage.IdKorisnika))
+                {
+                    k = adminlist.Find(i => i.Id == pretrage.IdKorisnika);
+                }
+                else if (vozaclist.Exists(i => i.Id == pretrage.IdKorisnika))
+                {
+                    k = vozaclist.Find(i => i.Id == pretrage.IdKorisnika);
+                }
+                List<Voznja> toSend = new List<Voznja>();
+
+
+                foreach (Voznja v in k.Voznje)
+                {
+                    toSend.Add(v);
+                }
+
+                if (pretrage.Dodatni)
+                {
+                    if (k.Uloga == Enums.Uloga.Dispecer)
+                    {
+                        toSend = new List<Voznja>();
+                        foreach (Voznja v in sveVoznje)
+                        {
+                            toSend.Add(v);
+                        }
+                    }
+                    else if (k.Uloga == Enums.Uloga.Vozac)
+                    {
+                        foreach (Voznja v in slobodneVoznje)
+                        {
+                            toSend.Add(v);
+                        }
+                    }
+                }
+                List<Voznja> Komentar = new List<Voznja>();
+                foreach (Voznja v in toSend) {
+                    if (v.Komentar != null)
+                        Komentar.Add(v);
+                }
+
+                Komentar = Komentar.OrderBy(X => X.Komentar.OcenaVoznje).ToList();
+                Komentar.Reverse();
+                foreach (Voznja v in toSend)
+                {
+                    if (v.Komentar == null)
+                        Komentar.Add(v);
+                }
+
+                return Ok(Komentar);
+            }
+            else
+            {
+                List<Voznja> toSend = new List<Voznja>();
+
+                foreach (Voznja v in pretrage.Pretraga)
+                {
+                    toSend.Add(v);
+                }
+
+                List<Voznja> Komentar = new List<Voznja>();
+                foreach (Voznja v in toSend)
+                {
+                    if (v.Komentar != null)
+                        Komentar.Add(v);
+                }
+
+                Komentar = Komentar.OrderBy(X => X.Komentar.OcenaVoznje).ToList();
+                Komentar.Reverse();
+                foreach (Voznja v in toSend)
+                {
+                    if (v.Komentar == null)
+                        Komentar.Add(v);
+                }
+
+                return Ok(Komentar);
+            }
+        }
+
+        [Route("api/main/poudaljenosti")]
+        public IHttpActionResult SortiranjeUdaljenost(ZaPretrage pretrage)
+        {
+            List<Voznja> toSend = new List<Voznja>();
+
+            Vozac k = new Vozac();
+            if (vozaclist.Exists(i => i.Id == pretrage.IdKorisnika))
+            {
+                k = vozaclist.Find(i => i.Id == pretrage.IdKorisnika);
+            }
+
+            if (pretrage.Pretraga[0].Id == null)
+            {
+                foreach (Voznja v in k.Voznje)
+                {
+                    toSend.Add(v);
+                }
+
+                if (pretrage.Dodatni)
+                {
+                    if (k.Uloga == Enums.Uloga.Vozac)
+                    {
+                        foreach (Voznja v in slobodneVoznje)
+                        {
+                            toSend.Add(v);
+                        }
+                    }
+                }
+            }
+            else
+            {
+
+                foreach (Voznja v in pretrage.Pretraga)
+                {
+                    toSend.Add(v);
+                }
+            }
+
+
+            Dictionary<string, Double> racun = new Dictionary<string, Double>();
+            double x = Convert.ToDouble(k.Lokacija.XKordinata);
+            double y = Convert.ToDouble(k.Lokacija.YKordinata);
+
+            foreach (Voznja v in toSend)
+            {
+                Double xx = Convert.ToDouble(v.PolaznaTacka.XKordinata);
+                Double yy = Convert.ToDouble(v.PolaznaTacka.YKordinata);
+                Double r = Math.Sqrt(Math.Pow((xx - x), 2) + Math.Pow((yy - y), 2));
+                racun.Add(v.Id, r);
+            }
+
+            racun = racun.OrderBy(o => o.Value).ToDictionary(f => f.Key, f => f.Value);
+
+            List<Voznja> toSend2 = new List<Voznja>();
+            foreach (string p in racun.Keys)
+            {
+                Voznja voznja2 = toSend.Find(X => X.Id == p);
+                toSend2.Add(voznja2);
+            }
+
+            return Ok(toSend2);
+        }
+
+        [Route("api/main/poimenuprzmusterije")]
+        public IHttpActionResult PoImenuPrezimenuMusterije(ZaPretrage pretrage)
+        {
+            Korisnik k = new Korisnik();
+            if (adminlist.Exists(i => i.Id == pretrage.IdKorisnika))
+            {
+                k = adminlist.Find(i => i.Id == pretrage.IdKorisnika);
+            }
+            List<Voznja> toSend = new List<Voznja>();
+
+            if (pretrage.Pretraga[0].Id == null)
+            {
+                foreach (Voznja v in k.Voznje)
+                {
+                    toSend.Add(v);
+                }
+
+                if (pretrage.Dodatni)
+                {
+                    if (k.Uloga == Enums.Uloga.Dispecer)
+                    {
+                        toSend = new List<Voznja>();
+                        foreach (Voznja v in sveVoznje)
+                        {
+                            toSend.Add(v);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                foreach (Voznja v in pretrage.Pretraga)
+                {
+                    toSend.Add(v);
+                }
+            }
+
+            List<Voznja> toSend2 = new List<Voznja>();
+            List<Voznja> pom = new List<Voznja>();
+
+            if (pretrage.Stavka1 != null && pretrage.Stavka2 != null)
+            {
+                foreach (Voznja v in toSend)
+                {
+                    if (v.Musterija != null)
+                    {
+                        Korisnik kk = korisniklist.Find(x => x.KorisnickoIme == v.Musterija);
+                        if (kk.Ime.ToLower() == pretrage.Stavka1.ToLower())
+                        {
+                            pom.Add(v);
+                        }
+                    }
+                }
+
+                foreach (Voznja v in pom)
+                {
+                    if (v.Musterija != null)
+                    {
+                        Korisnik kk = korisniklist.Find(x => x.KorisnickoIme == v.Musterija);
+                        if (kk.Prezime.ToLower() == pretrage.Stavka2.ToLower())
+                        {
+                            toSend2.Add(v);
+                        }
+                    }
+                }
+            }else if (pretrage.Stavka1 != null)
+            {
+                foreach (Voznja v in toSend)
+                {
+                    if (v.Musterija != null)
+                    {
+                        Korisnik kk = korisniklist.Find(x => x.KorisnickoIme == v.Musterija);
+                        if (kk.Ime.ToLower() == pretrage.Stavka1.ToLower())
+                        {
+                            toSend2.Add(v);
+                        }
+                    }
+                }
+            }else if (pretrage.Stavka2 != null)
+            {
+                foreach (Voznja v in toSend)
+                {
+                    if (v.Musterija != null)
+                    {
+                        Korisnik kk = korisniklist.Find(x => x.KorisnickoIme == v.Musterija);
+                        if (kk.Prezime.ToLower() == pretrage.Stavka2.ToLower())
+                        {
+                            toSend2.Add(v);
+                        }
+                    }
+                }
+            }
+
+            return Ok(toSend2);
+        }
+
+        [Route("api/main/poimenuprzvozac")]
+        public IHttpActionResult PoImenuPrezimenuVozaca(ZaPretrage pretrage)
+        {
+            Korisnik k = new Korisnik();
+            if (adminlist.Exists(i => i.Id == pretrage.IdKorisnika))
+            {
+                k = adminlist.Find(i => i.Id == pretrage.IdKorisnika);
+            }
+            List<Voznja> toSend = new List<Voznja>();
+
+            if (pretrage.Pretraga[0].Id == null)
+            {
+                foreach (Voznja v in k.Voznje)
+                {
+                    toSend.Add(v);
+                }
+
+                if (pretrage.Dodatni)
+                {
+                    if (k.Uloga == Enums.Uloga.Dispecer)
+                    {
+                        toSend = new List<Voznja>();
+                        foreach (Voznja v in sveVoznje)
+                        {
+                            toSend.Add(v);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                foreach (Voznja v in pretrage.Pretraga)
+                {
+                    toSend.Add(v);
+                }
+            }
+
+            List<Voznja> toSend2 = new List<Voznja>();
+            List<Voznja> pom = new List<Voznja>();
+
+            if (pretrage.Stavka1 != null && pretrage.Stavka2 != null)
+            {
+                foreach (Voznja v in toSend)
+                {
+                    if (v.Vozac != null)
+                    {
+                        Korisnik kk = vozaclist.Find(x => x.KorisnickoIme == v.Vozac);
+                        if (kk.Ime.ToLower() == pretrage.Stavka1.ToLower())
+                        {
+                            pom.Add(v);
+                        }
+                    }
+                }
+
+                foreach (Voznja v in pom)
+                {
+                    if (v.Vozac != null)
+                    {
+                        Korisnik kk = vozaclist.Find(x => x.KorisnickoIme == v.Vozac);
+                        if (kk.Prezime.ToLower() == pretrage.Stavka2.ToLower())
+                        {
+                            toSend2.Add(v);
+                        }
+                    }
+                }
+            }
+            else if (pretrage.Stavka1 != null)
+            {
+                foreach (Voznja v in toSend)
+                {
+                    if (v.Vozac != null)
+                    {
+                        Korisnik kk = vozaclist.Find(x => x.KorisnickoIme == v.Vozac);
+                        if (kk.Ime.ToLower() == pretrage.Stavka1.ToLower())
+                        {
+                            toSend2.Add(v);
+                        }
+                    }
+                }
+            }
+            else if (pretrage.Stavka2 != null)
+            {
+                foreach (Voznja v in toSend)
+                {
+                    if (v.Vozac != null)
+                    {
+                        Korisnik kk = vozaclist.Find(x => x.KorisnickoIme == v.Vozac);
+                        if (kk.Prezime.ToLower() == pretrage.Stavka2.ToLower())
+                        {
+                            toSend2.Add(v);
+                        }
+                    }
+                }
+            }
+
+            return Ok(toSend2);
+        }
+
+        [Route("api/main/podatumuoddo")]
+        public IHttpActionResult OdDoDatum(ZaPretrage pretrage)
+        {
+            return Ok();
+        }
+
+        [Route("api/main/poocenioddo")]
+        public IHttpActionResult OdDoOcena(ZaPretrage pretrage)
+        {
+            return Ok();
+        }
+
+        [Route("api/main/pocenioddo")]
+        public IHttpActionResult OdDoCena(ZaPretrage pretrage)
+        {
+            return Ok();
+        }
+
         private void WriteToXMl(Enums.Uloga uloga)
         {
             var path = System.Web.Hosting.HostingEnvironment.MapPath(@"~/App_Data/"+ uloga.ToString() + ".xml");
@@ -997,6 +1493,37 @@ namespace TaksiSluzba.Controllers
                 else
                     serializer.Serialize(writer, adminlist);
             }
+        }
+
+        private Enums.StatusVoznje GetTip(string p)
+        {
+            Enums.StatusVoznje t = Enums.StatusVoznje.Formirana;
+            switch (p)
+            {
+                case "Kreirana":
+                    t = Enums.StatusVoznje.Kreirana;
+                    break;
+                case "Prihvacena":
+                    t = Enums.StatusVoznje.Prihvacena;
+                    break;
+                case "Obradjena":
+                    t = Enums.StatusVoznje.Obradjena;
+                    break;
+                case "Otkazana":
+                    t = Enums.StatusVoznje.Otkazana;
+                    break;
+                case "Neuspesna":
+                    t = Enums.StatusVoznje.Neuspesna;
+                    break;
+                case "Formirana":
+                    t = Enums.StatusVoznje.Formirana;
+                    break;
+                case "Uspesna":
+                    t = Enums.StatusVoznje.Uspesna;
+                    break;
+            }
+
+            return t;
         }
 
         private void Logoff(string Username)

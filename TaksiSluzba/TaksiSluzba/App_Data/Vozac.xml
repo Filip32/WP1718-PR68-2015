@@ -174,91 +174,6 @@
     </Automobil>
   </Vozac>
   <Vozac>
-    <Id>5</Id>
-    <KorisnickoIme>vozac1</KorisnickoIme>
-    <Lozinka>vozac1</Lozinka>
-    <Ime>Mirko</Ime>
-    <Prezime>Isidorovic</Prezime>
-    <Pol>Musko</Pol>
-    <JMBG>1209993800043</JMBG>
-    <Telefon>065/3442211</Telefon>
-    <Email>mirko@gmail.com</Email>
-    <Uloga>Vozac</Uloga>
-    <Slobodan>false</Slobodan>
-    <Blokiran>false</Blokiran>
-    <Voznje>
-      <Voznja>
-        <Id>0vozac1</Id>
-        <VremePorudjbine>2018-06-22T23:58:37.7198092+02:00</VremePorudjbine>
-        <PolaznaTacka>
-          <XKordinata>19.845088516015046</XKordinata>
-          <YKordinata>45.24476251001866</YKordinata>
-          <Adresa>
-            <Ulica_broj>Bulevar Cara Lazara 9</Ulica_broj>
-            <Mesto>Novi Sad 21102</Mesto>
-          </Adresa>
-        </PolaznaTacka>
-        <TipVozila>Putnicko_Vozilo</TipVozila>
-        <Dispecer>admin1</Dispecer>
-        <Vozac>vozac1</Vozac>
-        <Komentar>
-          <Opis>nemaaa</Opis>
-          <DatumObjave>2018-06-23T00:00:49.2183005+02:00</DatumObjave>
-          <Korisnik>vozac1</Korisnik>
-          <Voznja>0vozac1</Voznja>
-          <OcenaVoznje>0</OcenaVoznje>
-        </Komentar>
-        <StatusVoznje>Neuspesna</StatusVoznje>
-      </Voznja>
-      <Voznja>
-        <Id>4musterija1</Id>
-        <VremePorudjbine>2018-06-23T00:29:23.3445987+02:00</VremePorudjbine>
-        <PolaznaTacka>
-          <XKordinata>20.14282673740789</XKordinata>
-          <YKordinata>46.25873605890331</YKordinata>
-          <Adresa>
-            <Ulica_broj>Kossuth Lajos sugárút</Ulica_broj>
-            <Mesto>Szeged 6720</Mesto>
-          </Adresa>
-        </PolaznaTacka>
-        <TipVozila>Putnicko_Vozilo</TipVozila>
-        <Musterija>musterija1</Musterija>
-        <Vozac>vozac1</Vozac>
-        <StatusVoznje>Prihvacena</StatusVoznje>
-      </Voznja>
-      <Voznja>
-        <Id>3musterija1</Id>
-        <VremePorudjbine>2018-06-23T00:25:34.398069+02:00</VremePorudjbine>
-        <PolaznaTacka>
-          <XKordinata>19.85032150580307</XKordinata>
-          <YKordinata>45.246039114075586</YKordinata>
-          <Adresa>
-            <Ulica_broj>Dr Sime Milosevica</Ulica_broj>
-            <Mesto>Novi Sad 21101</Mesto>
-          </Adresa>
-        </PolaznaTacka>
-        <TipVozila>Putnicko_Vozilo</TipVozila>
-        <Musterija>musterija1</Musterija>
-        <Vozac>vozac1</Vozac>
-        <StatusVoznje>Prihvacena</StatusVoznje>
-      </Voznja>
-    </Voznje>
-    <Lokacija>
-      <XKordinata>19.85327162263454</XKordinata>
-      <YKordinata>45.25609189129813</YKordinata>
-      <Adresa>
-        <Ulica_broj>Dunavska</Ulica_broj>
-        <Mesto>Novi Sad 21000</Mesto>
-      </Adresa>
-    </Lokacija>
-    <Automobil>
-      <GodisteAutomobila>2015</GodisteAutomobila>
-      <RegistarskaTablica>NS453-KK</RegistarskaTablica>
-      <BrTaksija>5_vozac1</BrTaksija>
-      <TipVozila>Putnicko_Vozilo</TipVozila>
-    </Automobil>
-  </Vozac>
-  <Vozac>
     <Id>8</Id>
     <KorisnickoIme>vozac4</KorisnickoIme>
     <Lozinka>vozac4</Lozinka>
@@ -366,6 +281,109 @@
     </Automobil>
   </Vozac>
   <Vozac>
+    <Id>5</Id>
+    <KorisnickoIme>vozac1</KorisnickoIme>
+    <Lozinka>vozac1</Lozinka>
+    <Ime>Mirko</Ime>
+    <Prezime>Isidorovic</Prezime>
+    <Pol>Musko</Pol>
+    <JMBG>1209993800043</JMBG>
+    <Telefon>065/3442211</Telefon>
+    <Email>mirko@gmail.com</Email>
+    <Uloga>Vozac</Uloga>
+    <Slobodan>true</Slobodan>
+    <Blokiran>false</Blokiran>
+    <Voznje>
+      <Voznja>
+        <Id>0vozac1</Id>
+        <VremePorudjbine>2018-06-22T23:58:37.7198092+02:00</VremePorudjbine>
+        <PolaznaTacka>
+          <XKordinata>19.845088516015046</XKordinata>
+          <YKordinata>45.24476251001866</YKordinata>
+          <Adresa>
+            <Ulica_broj>Bulevar Cara Lazara 9</Ulica_broj>
+            <Mesto>Novi Sad 21102</Mesto>
+          </Adresa>
+        </PolaznaTacka>
+        <TipVozila>Putnicko_Vozilo</TipVozila>
+        <Dispecer>admin1</Dispecer>
+        <Vozac>vozac1</Vozac>
+        <Komentar>
+          <Opis>nemaaa</Opis>
+          <DatumObjave>2018-06-23T00:00:49.2183005+02:00</DatumObjave>
+          <Korisnik>vozac1</Korisnik>
+          <Voznja>0vozac1</Voznja>
+          <OcenaVoznje>0</OcenaVoznje>
+        </Komentar>
+        <StatusVoznje>Neuspesna</StatusVoznje>
+      </Voznja>
+      <Voznja>
+        <Id>4musterija1</Id>
+        <VremePorudjbine>2018-06-23T00:29:23.3445987+02:00</VremePorudjbine>
+        <PolaznaTacka>
+          <XKordinata>20.14282673740789</XKordinata>
+          <YKordinata>46.25873605890331</YKordinata>
+          <Adresa>
+            <Ulica_broj>Kossuth Lajos sugárút</Ulica_broj>
+            <Mesto>Szeged 6720</Mesto>
+          </Adresa>
+        </PolaznaTacka>
+        <TipVozila>Putnicko_Vozilo</TipVozila>
+        <Musterija>musterija1</Musterija>
+        <Odrediste>
+          <XKordinata>19.849503432053535</XKordinata>
+          <YKordinata>45.24615619762679</YKordinata>
+          <Adresa>
+            <Ulica_broj>Dr Sime Milosevica</Ulica_broj>
+            <Mesto>Novi Sad 21101</Mesto>
+          </Adresa>
+        </Odrediste>
+        <Vozac>vozac1</Vozac>
+        <Iznos>5000</Iznos>
+        <StatusVoznje>Uspesna</StatusVoznje>
+      </Voznja>
+      <Voznja>
+        <Id>3musterija1</Id>
+        <VremePorudjbine>2018-06-23T00:25:34.398069+02:00</VremePorudjbine>
+        <PolaznaTacka>
+          <XKordinata>19.85032150580307</XKordinata>
+          <YKordinata>45.246039114075586</YKordinata>
+          <Adresa>
+            <Ulica_broj>Dr Sime Milosevica</Ulica_broj>
+            <Mesto>Novi Sad 21101</Mesto>
+          </Adresa>
+        </PolaznaTacka>
+        <TipVozila>Putnicko_Vozilo</TipVozila>
+        <Musterija>musterija1</Musterija>
+        <Odrediste>
+          <XKordinata>19.85093036724945</XKordinata>
+          <YKordinata>45.24596168772368</YKordinata>
+          <Adresa>
+            <Ulica_broj>Vladimira Perica Valtera</Ulica_broj>
+            <Mesto>Novi Sad 21101</Mesto>
+          </Adresa>
+        </Odrediste>
+        <Vozac>vozac1</Vozac>
+        <Iznos>1111</Iznos>
+        <StatusVoznje>Uspesna</StatusVoznje>
+      </Voznja>
+    </Voznje>
+    <Lokacija>
+      <XKordinata>19.85327162263454</XKordinata>
+      <YKordinata>45.25609189129813</YKordinata>
+      <Adresa>
+        <Ulica_broj>Dunavska</Ulica_broj>
+        <Mesto>Novi Sad 21000</Mesto>
+      </Adresa>
+    </Lokacija>
+    <Automobil>
+      <GodisteAutomobila>2015</GodisteAutomobila>
+      <RegistarskaTablica>NS453-KK</RegistarskaTablica>
+      <BrTaksija>5_vozac1</BrTaksija>
+      <TipVozila>Putnicko_Vozilo</TipVozila>
+    </Automobil>
+  </Vozac>
+  <Vozac>
     <Id>9</Id>
     <KorisnickoIme>vozac5</KorisnickoIme>
     <Lozinka>vozac5</Lozinka>
@@ -376,7 +394,7 @@
     <Telefon>065/5554344</Telefon>
     <Email>jojkic@gmail.com</Email>
     <Uloga>Vozac</Uloga>
-    <Slobodan>false</Slobodan>
+    <Slobodan>true</Slobodan>
     <Blokiran>false</Blokiran>
     <Voznje>
       <Voznja>
@@ -408,8 +426,24 @@
         </PolaznaTacka>
         <TipVozila>Putnicko_Vozilo</TipVozila>
         <Musterija>musterija2</Musterija>
+        <Odrediste>
+          <XKordinata>19.849540982979736</XKordinata>
+          <YKordinata>45.2460731060992</YKordinata>
+          <Adresa>
+            <Ulica_broj>Dr Sime Milosevica</Ulica_broj>
+            <Mesto>Novi Sad 21101</Mesto>
+          </Adresa>
+        </Odrediste>
         <Vozac>vozac5</Vozac>
-        <StatusVoznje>Prihvacena</StatusVoznje>
+        <Iznos>500</Iznos>
+        <Komentar>
+          <Opis>dfdf</Opis>
+          <DatumObjave>2018-06-23T22:07:59.1996244+02:00</DatumObjave>
+          <Korisnik>musterija2</Korisnik>
+          <Voznja>2musterija2</Voznja>
+          <OcenaVoznje>5</OcenaVoznje>
+        </Komentar>
+        <StatusVoznje>Uspesna</StatusVoznje>
       </Voznja>
     </Voznje>
     <Lokacija>

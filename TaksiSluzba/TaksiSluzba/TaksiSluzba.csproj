@@ -195,6 +195,7 @@
     <Compile Include="Models\Lokacija.cs" />
     <Compile Include="Models\Vozac.cs" />
     <Compile Include="Models\Voznja.cs" />
+    <Compile Include="Models\ZaPretrage.cs" />
     <Compile Include="Models\ZavrsitiVoznju.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

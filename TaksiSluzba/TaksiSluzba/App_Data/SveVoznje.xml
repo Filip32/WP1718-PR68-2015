@@ -225,6 +225,56 @@
     <StatusVoznje>Prihvacena</StatusVoznje>
   </Voznja>
   <Voznja>
+    <Id>4musterija1</Id>
+    <VremePorudjbine>2018-06-23T00:29:23.3445987+02:00</VremePorudjbine>
+    <PolaznaTacka>
+      <XKordinata>20.14282673740789</XKordinata>
+      <YKordinata>46.25873605890331</YKordinata>
+      <Adresa>
+        <Ulica_broj>Kossuth Lajos sugárút</Ulica_broj>
+        <Mesto>Szeged 6720</Mesto>
+      </Adresa>
+    </PolaznaTacka>
+    <TipVozila>Putnicko_Vozilo</TipVozila>
+    <Musterija>musterija1</Musterija>
+    <Odrediste>
+      <XKordinata>19.849503432053535</XKordinata>
+      <YKordinata>45.24615619762679</YKordinata>
+      <Adresa>
+        <Ulica_broj>Dr Sime Milosevica</Ulica_broj>
+        <Mesto>Novi Sad 21101</Mesto>
+      </Adresa>
+    </Odrediste>
+    <Vozac>vozac1</Vozac>
+    <Iznos>5000</Iznos>
+    <StatusVoznje>Uspesna</StatusVoznje>
+  </Voznja>
+  <Voznja>
+    <Id>3musterija1</Id>
+    <VremePorudjbine>2018-06-23T00:25:34.398069+02:00</VremePorudjbine>
+    <PolaznaTacka>
+      <XKordinata>19.85032150580307</XKordinata>
+      <YKordinata>45.246039114075586</YKordinata>
+      <Adresa>
+        <Ulica_broj>Dr Sime Milosevica</Ulica_broj>
+        <Mesto>Novi Sad 21101</Mesto>
+      </Adresa>
+    </PolaznaTacka>
+    <TipVozila>Putnicko_Vozilo</TipVozila>
+    <Musterija>musterija1</Musterija>
+    <Odrediste>
+      <XKordinata>19.85093036724945</XKordinata>
+      <YKordinata>45.24596168772368</YKordinata>
+      <Adresa>
+        <Ulica_broj>Vladimira Perica Valtera</Ulica_broj>
+        <Mesto>Novi Sad 21101</Mesto>
+      </Adresa>
+    </Odrediste>
+    <Vozac>vozac1</Vozac>
+    <Iznos>1111</Iznos>
+    <StatusVoznje>Uspesna</StatusVoznje>
+  </Voznja>
+  <Voznja>
     <Id>2musterija2</Id>
     <VremePorudjbine>2018-06-23T01:03:16.5773098+02:00</VremePorudjbine>
     <PolaznaTacka>
@@ -237,7 +287,23 @@
     </PolaznaTacka>
     <TipVozila>Putnicko_Vozilo</TipVozila>
     <Musterija>musterija2</Musterija>
+    <Odrediste>
+      <XKordinata>19.849540982979736</XKordinata>
+      <YKordinata>45.2460731060992</YKordinata>
+      <Adresa>
+        <Ulica_broj>Dr Sime Milosevica</Ulica_broj>
+        <Mesto>Novi Sad 21101</Mesto>
+      </Adresa>
+    </Odrediste>
     <Vozac>vozac5</Vozac>
-    <StatusVoznje>Prihvacena</StatusVoznje>
+    <Iznos>500</Iznos>
+    <Komentar>
+      <Opis>dfdf</Opis>
+      <DatumObjave>2018-06-23T22:07:59.1996244+02:00</DatumObjave>
+      <Korisnik>musterija2</Korisnik>
+      <Voznja>2musterija2</Voznja>
+      <OcenaVoznje>5</OcenaVoznje>
+    </Komentar>
+    <StatusVoznje>Uspesna</StatusVoznje>
   </Voznja>
 </ArrayOfVoznja>
