@@ -41,6 +41,11 @@ namespace TaksiSluzba.Controllers
         [HttpGet,Route("api/main/loginuser")]
         public IHttpActionResult LoginUser([FromUri] LoginUserClass user)
         {
+            if (user.Password == "" || user.Username == "")
+            {
+                return Ok("Došlo je do greške. Probajte ponovo.");
+            }
+
             foreach(string key in ulokovani.Keys)
             if (ulokovani[key] == user.Username)
             {
@@ -83,7 +88,13 @@ namespace TaksiSluzba.Controllers
 
         [Route("api/main/adduser")]
         public IHttpActionResult AddUser(Korisnik korisnik)
-        { 
+        {
+            if (korisnik.Email == "" || korisnik.Ime == "" || korisnik.JMBG == "" || korisnik.KorisnickoIme == ""
+                || korisnik.Lozinka == "" || korisnik.Prezime == "" || korisnik.Telefon == "")
+            {
+                return Ok("Došlo je do greške. Probajte ponovo.");
+            }
+
             if (korisniklist.Exists(i => i.KorisnickoIme == korisnik.KorisnickoIme) ||
                vozaclist.Exists(i => i.KorisnickoIme == korisnik.KorisnickoIme) ||
                adminlist.Exists(i => i.KorisnickoIme == korisnik.KorisnickoIme))
@@ -102,6 +113,12 @@ namespace TaksiSluzba.Controllers
         [Route("api/main/adddriver")]
         public IHttpActionResult AddDriver(Vozac vozac)
         {
+            if (vozac.Email == "" || vozac.Ime == "" || vozac.JMBG == "" || vozac.KorisnickoIme == ""
+               || vozac.Lozinka == "" || vozac.Prezime == "" || vozac.Telefon == "" || vozac.Automobil.RegistarskaTablica == "")
+            {
+                return Ok("Došlo je do greške. Probajte ponovo.");
+            }
+
             if (vozaclist.Exists(i => i.KorisnickoIme == vozac.KorisnickoIme))
             {
                 return Ok("Greška! Korisničko ime već postoji.");
@@ -126,6 +143,12 @@ namespace TaksiSluzba.Controllers
         [Route("api/main/updateprofile")]
         public IHttpActionResult UpdateProfile(Vozac osoba)
         {
+            if (osoba.Email == "" || osoba.Ime == "" || osoba.JMBG == "" || osoba.KorisnickoIme == ""
+              || osoba.Lozinka == "" || osoba.Prezime == "" || osoba.Telefon == "")
+            {
+                return Ok("Došlo je do greške. Probajte ponovo.");
+            }
+
             if (adminlist.Exists(i => i.KorisnickoIme == osoba.KorisnickoIme && i.Id != osoba.Id))
             {
                 return Ok("Korisničko ime već postoji u sistemu.");
@@ -484,6 +507,11 @@ namespace TaksiSluzba.Controllers
         [Route("api/main/adddriveto")]
         public IHttpActionResult AddDrive(Voznja voznja)
         {
+            if (voznja.PolaznaTacka == null)
+            {
+                return Ok("Došlo je do greške. Probajte ponovo.");
+            }
+
             if (voznja.Vozac != null)
             {
                 Vozac v = vozaclist.Find(i => i.Id == voznja.Vozac);
@@ -616,6 +644,11 @@ namespace TaksiSluzba.Controllers
         [HttpPut,Route("api/main/musterijaizmenavoznje")]
         public IHttpActionResult IzmenaVoznjeMusterija([FromBody]IzmenaVoznje izmenaVoznje)
         {
+            if (izmenaVoznje.Id == null || izmenaVoznje.IdVoznje == null)
+            {
+                return Ok("Došlo je do greške. Probajte ponovo.");
+            }
+
             Korisnik k = korisniklist.Find(i => i.Id == izmenaVoznje.Id);
             Voznja voznja = k.Voznje.Find(i => i.Id == izmenaVoznje.IdVoznje);
             if (izmenaVoznje.Lokacija != null)
@@ -696,6 +729,11 @@ namespace TaksiSluzba.Controllers
         [HttpPut, Route("api/main/dispecerizmenavoznje")]
         public IHttpActionResult IzmenaVoznjeDispecer([FromBody]IzmenaVoznjeDispecer izmenaVoznje)
         {
+            if (izmenaVoznje.IdDispecera == null || izmenaVoznje.IdVoznje == null)
+            {
+                return Ok("Došlo je do greške. Probajte ponovo.");
+            }
+
             Korisnik dispecer = adminlist.Find(i => i.Id == izmenaVoznje.IdDispecera);
             Vozac vozac = vozaclist.Find(i => i.Id == izmenaVoznje.IdVozaca);
             Voznja voznja = slobodneVoznje.Find(i => i.Id == izmenaVoznje.IdVoznje);
@@ -743,6 +781,11 @@ namespace TaksiSluzba.Controllers
         [HttpPut, Route("api/main/vozacizmenavoznje")]
         public IHttpActionResult IzmenaVoznjeVozac([FromBody]ZavrsitiVoznju izmenaVoznje)
         {
+            if (izmenaVoznje.IdVozaca == null || izmenaVoznje.IdVoznje == null)
+            {
+                return Ok("Došlo je do greške. Probajte ponovo.");
+            }
+
             Vozac vozac = vozaclist.Find(i => i.Id == izmenaVoznje.IdVozaca);
             Voznja voznja = vozac.Voznje.Find(i => i.Id == izmenaVoznje.IdVoznje);
             Korisnik musterija = new Korisnik();

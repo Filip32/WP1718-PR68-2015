@@ -605,7 +605,7 @@
                     $.post("/api/main/updateprofile", sand, function (login_user, status) {
                         if (status == "success") {
                             var table = "";
-                            if (login_user == "Korisničko ime već postoji u sistemu.") {
+                            if (login_user == "Korisničko ime već postoji u sistemu." || login_user == "Došlo je do greške. Probajte ponovo.") {
                                 login_user = JSON.parse(localStorage.getItem("loginuser"));
                                 table += "<div id=\"erorrr\">" + login_user + "</div><br /><p style=\"font-size:large; font-weight:bold\">Lista vožnji<p><div>";
 
@@ -1194,7 +1194,15 @@
                     type: "PUT",
                     data: l,
                     success: function (login_user) {
-                        var table = "<div id=\"erorrr\"></div><p style=\"font-size:large; font-weight:bold\">Lista vožnji<p><div>";
+                        var table = "";
+                        if (login_user == "Došlo je do greške. Probajte ponovo.") {
+                            table += "<p style=\"color:red\" id=\"erorrr\">Došlo je do greške. Refrešujte tabelu.</p>";
+                            login_user = JSON.parse(localStorage.getItem("loginuser"));
+                        } else
+                        {
+                            table += "<div id=\"erorrr\"></div>";
+                        }
+                        table += "<p style=\"font-size:large; font-weight:bold\">Lista vožnji<p><div>";
                         table += "<input type=\"submit\" id=\"reset\" value=\"Reset tabele\" /><br /><br />";
                         table += "<table border=\"1\" id=\"maintable\"><tr><th>Polazna tačka</th><th>Odredište</th><th>Mušterija</th><th>Vozač</th><th>Dispečer</th><th>Datum i vreme</th><th>Cena</th><th>Ocena</th><th>Status vožnje</th><th>&nbsp;</th><th>&nbsp;</th></tr>";
                         for (t in login_user.Voznje) {
@@ -1374,6 +1382,10 @@
                         success: function (data) {
                             var login_user = data;
                             var table = "";
+                            if (login_user == "Došlo je do greške. Probajte ponovo.") {
+                                table += "<p style=\"color:red\">Došlo je do greške. Refrešujte tabelu.</p>";
+                                login_user = JSON.parse(localStorage.getItem("loginuser"));
+                            }
                             if (login_user == "No")
                             {
                                 table += "<p style=\"color:red\">Došlo je do greške. Refrešujte tabelu.</p>";
@@ -1681,6 +1693,11 @@
                     success: function (data) {
                         var login_user = data;
                         var table = "";
+                        if (login_user == "Došlo je do greške. Probajte ponovo.") {
+                            table += "<div style=\"color:red\" id=\"erorrr\">Došlo je do greške. Refrešujte tabelu.</div><br />";
+                            login_user = JSON.parse(localStorage.getItem("loginuser"));
+                        }
+
                         if (login_user == "No") {
                             table += "<div id=\"erorrr\">Došlo je do greške. Refrešujte tabelu.</div><br />";
                             login_user = JSON.parse(localStorage.getItem("loginuser"));
