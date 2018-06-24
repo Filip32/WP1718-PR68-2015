@@ -11,8 +11,8 @@
     <Telefon>063/3212546</Telefon>
     <Email>akrstic@gmail.com</Email>
     <Uloga>Dispecer</Uloga>
-    <Slobodan>true</Slobodan>
-    <Blokiran>false</Blokiran>
+	<Slobodan>true</Slobodan>
+	<Blokiran>false</Blokiran>
     <Voznje />
   </Korisnik>
   <Korisnik>
@@ -26,116 +26,8 @@
     <Telefon>066/1112445</Telefon>
     <Email>filipovicfilip@gmail.com</Email>
     <Uloga>Dispecer</Uloga>
-    <Slobodan>true</Slobodan>
-    <Blokiran>false</Blokiran>
-    <Voznje>
-      <Voznja>
-        <Id>1vozac3</Id>
-        <VremePorudjbine>2018-06-22T23:52:10.817288+02:00</VremePorudjbine>
-        <PolaznaTacka>
-          <XKordinata>19.848858843824278</XKordinata>
-          <YKordinata>45.248660590559126</YKordinata>
-          <Adresa>
-            <Ulica_broj>Strazilovska 33</Ulica_broj>
-            <Mesto>Novi Sad 21101</Mesto>
-          </Adresa>
-        </PolaznaTacka>
-        <TipVozila>Putnicko_Vozilo</TipVozila>
-        <Odrediste>
-          <XKordinata>19.84973141981979</XKordinata>
-          <YKordinata>45.24579550397789</YKordinata>
-          <Adresa>
-            <Ulica_broj>Dr Sime Milosevica</Ulica_broj>
-            <Mesto>Novi Sad 21101</Mesto>
-          </Adresa>
-        </Odrediste>
-        <Dispecer>admin1</Dispecer>
-        <Vozac>vozac3</Vozac>
-        <Iznos>200</Iznos>
-        <StatusVoznje>Uspesna</StatusVoznje>
-      </Voznja>
-      <Voznja>
-        <Id>0musterija1</Id>
-        <VremePorudjbine>2018-06-22T23:50:35.1711492+02:00</VremePorudjbine>
-        <PolaznaTacka>
-          <XKordinata>19.849605355996093</XKordinata>
-          <YKordinata>45.24599945668902</YKordinata>
-          <Adresa>
-            <Ulica_broj>Dr Sime Milosevica</Ulica_broj>
-            <Mesto>Novi Sad 21101</Mesto>
-          </Adresa>
-        </PolaznaTacka>
-        <TipVozila>Putnicko_Vozilo</TipVozila>
-        <Musterija>musterija1</Musterija>
-        <Odrediste>
-          <XKordinata>19.85363403393647</XKordinata>
-          <YKordinata>45.24700221353453</YKordinata>
-          <Adresa>
-            <Ulica_broj>Dr Zorana Djindjica</Ulica_broj>
-            <Mesto>Novi Sad 21101</Mesto>
-          </Adresa>
-        </Odrediste>
-        <Dispecer>admin1</Dispecer>
-        <Vozac>vozac3</Vozac>
-        <Iznos>500</Iznos>
-        <Komentar>
-          <Opis>falalalalala</Opis>
-          <DatumObjave>2018-06-22T23:53:06.3673199+02:00</DatumObjave>
-          <Korisnik>musterija1</Korisnik>
-          <Voznja>0musterija1</Voznja>
-          <OcenaVoznje>3</OcenaVoznje>
-        </Komentar>
-        <StatusVoznje>Uspesna</StatusVoznje>
-      </Voznja>
-      <Voznja>
-        <Id>0vozac1</Id>
-        <VremePorudjbine>2018-06-22T23:58:37.7198092+02:00</VremePorudjbine>
-        <PolaznaTacka>
-          <XKordinata>19.845088516015046</XKordinata>
-          <YKordinata>45.24476251001866</YKordinata>
-          <Adresa>
-            <Ulica_broj>Bulevar Cara Lazara 9</Ulica_broj>
-            <Mesto>Novi Sad 21102</Mesto>
-          </Adresa>
-        </PolaznaTacka>
-        <TipVozila>Putnicko_Vozilo</TipVozila>
-        <Dispecer>admin1</Dispecer>
-        <Vozac>vozac1</Vozac>
-        <Komentar>
-          <Opis>nemaaa</Opis>
-          <DatumObjave>2018-06-23T00:00:49.2183005+02:00</DatumObjave>
-          <Korisnik>vozac1</Korisnik>
-          <Voznja>0vozac1</Voznja>
-          <OcenaVoznje>0</OcenaVoznje>
-        </Komentar>
-        <StatusVoznje>Neuspesna</StatusVoznje>
-      </Voznja>
-      <Voznja>
-        <Id>2musterija1</Id>
-        <VremePorudjbine>2018-06-22T23:59:43.4457133+02:00</VremePorudjbine>
-        <PolaznaTacka>
-          <XKordinata>19.805552082602482</XKordinata>
-          <YKordinata>45.25119622686125</YKordinata>
-          <Adresa>
-            <Ulica_broj>Bulevar Slobodana Jovanovica</Ulica_broj>
-            <Mesto>Novi Sad 21137</Mesto>
-          </Adresa>
-        </PolaznaTacka>
-        <TipVozila>Putnicko_Vozilo</TipVozila>
-        <Musterija>musterija1</Musterija>
-        <Odrediste>
-          <XKordinata>19.79420633260723</XKordinata>
-          <YKordinata>45.24914263856542</YKordinata>
-          <Adresa>
-            <Ulica_broj>Bulevar Jovana Ducica</Ulica_broj>
-            <Mesto>Novi Sad 21137</Mesto>
-          </Adresa>
-        </Odrediste>
-        <Dispecer>admin1</Dispecer>
-        <Vozac>vozac2</Vozac>
-        <Iznos>4000</Iznos>
-        <StatusVoznje>Uspesna</StatusVoznje>
-      </Voznja>
-    </Voznje>
+	<Slobodan>true</Slobodan>
+	<Blokiran>false</Blokiran>
+    <Voznje />
   </Korisnik>
 </ArrayOfKorisnik>

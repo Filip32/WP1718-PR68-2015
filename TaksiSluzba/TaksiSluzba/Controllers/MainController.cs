@@ -1459,19 +1459,215 @@ namespace TaksiSluzba.Controllers
         [Route("api/main/podatumuoddo")]
         public IHttpActionResult OdDoDatum(ZaPretrage pretrage)
         {
-            return Ok();
+            Korisnik k = new Korisnik();
+            DateTime startTime = DateTime.ParseExact(pretrage.Stavka1, "yyyy-MM-ddTHH:mm",System.Globalization.CultureInfo.InvariantCulture);
+            DateTime endTime = DateTime.ParseExact(pretrage.Stavka2, "yyyy-MM-ddTHH:mm",System.Globalization.CultureInfo.InvariantCulture);
+            if (korisniklist.Exists(i => i.Id == pretrage.IdKorisnika))
+            {
+                k = korisniklist.Find(i => i.Id == pretrage.IdKorisnika);
+            }
+            else if (adminlist.Exists(i => i.Id == pretrage.IdKorisnika))
+            {
+                k = adminlist.Find(i => i.Id == pretrage.IdKorisnika);
+            }
+            else if (vozaclist.Exists(i => i.Id == pretrage.IdKorisnika))
+            {
+                k = vozaclist.Find(i => i.Id == pretrage.IdKorisnika);
+            }
+            List<Voznja> toSend = new List<Voznja>();
+
+            if (pretrage.Pretraga[0].Id == null)
+            {
+                foreach (Voznja v in k.Voznje)
+                {
+                    toSend.Add(v);
+                }
+
+                if (pretrage.Dodatni)
+                {
+                    if (k.Uloga == Enums.Uloga.Dispecer)
+                    {
+                        toSend = new List<Voznja>();
+                        foreach (Voznja v in sveVoznje)
+                        {
+                            toSend.Add(v);
+                        }
+                    }
+                    else if (k.Uloga == Enums.Uloga.Vozac)
+                    {
+                        foreach (Voznja v in slobodneVoznje)
+                        {
+                            toSend.Add(v);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                foreach (Voznja v in pretrage.Pretraga)
+                {
+                    toSend.Add(v);
+                }
+            }
+            List<Voznja> toSend2 = new List<Voznja>();
+
+            foreach (Voznja v in toSend)
+            {
+                if (DateTime.Compare(startTime, v.VremePorudjbine) <= 0 && DateTime.Compare(endTime, v.VremePorudjbine) >= 0)
+                {
+                    toSend2.Add(v);
+                }
+            }
+
+            return Ok(toSend2);
         }
 
         [Route("api/main/poocenioddo")]
         public IHttpActionResult OdDoOcena(ZaPretrage pretrage)
         {
-            return Ok();
+            Korisnik k = new Korisnik();
+            if (korisniklist.Exists(i => i.Id == pretrage.IdKorisnika))
+            {
+                k = korisniklist.Find(i => i.Id == pretrage.IdKorisnika);
+            }
+            else if (adminlist.Exists(i => i.Id == pretrage.IdKorisnika))
+            {
+                k = adminlist.Find(i => i.Id == pretrage.IdKorisnika);
+            }
+            else if (vozaclist.Exists(i => i.Id == pretrage.IdKorisnika))
+            {
+                k = vozaclist.Find(i => i.Id == pretrage.IdKorisnika);
+            }
+            List<Voznja> toSend = new List<Voznja>();
+
+            if (pretrage.Pretraga[0].Id == null)
+            {
+                foreach (Voznja v in k.Voznje)
+                {
+                    toSend.Add(v);
+                }
+
+                if (pretrage.Dodatni)
+                {
+                    if (k.Uloga == Enums.Uloga.Dispecer)
+                    {
+                        toSend = new List<Voznja>();
+                        foreach (Voznja v in sveVoznje)
+                        {
+                            toSend.Add(v);
+                        }
+                    }
+                    else if (k.Uloga == Enums.Uloga.Vozac)
+                    {
+                        foreach (Voznja v in slobodneVoznje)
+                        {
+                            toSend.Add(v);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                foreach (Voznja v in pretrage.Pretraga)
+                {
+                    toSend.Add(v);
+                }
+            }
+
+            List<Voznja> toSend2 = new List<Voznja>();
+
+            foreach (Voznja v in toSend)
+            {
+                if (v.Komentar != null)
+                {
+                    if (v.Komentar.OcenaVoznje != null)
+                    {
+                        if (Int32.Parse(pretrage.Stavka1) <= Int32.Parse(v.Komentar.OcenaVoznje) && Int32.Parse(pretrage.Stavka2) >= Int32.Parse(v.Komentar.OcenaVoznje))
+                        {
+                            toSend2.Add(v);
+                        }
+                    }
+                    else {
+                        if (Int32.Parse(pretrage.Stavka1) == 0)
+                            toSend2.Add(v);
+                      }
+                }
+                else
+                {
+                    if (Int32.Parse(pretrage.Stavka1) == 0)
+                        toSend2.Add(v);
+                }
+            }
+
+            return Ok(toSend2);
         }
 
         [Route("api/main/pocenioddo")]
         public IHttpActionResult OdDoCena(ZaPretrage pretrage)
         {
-            return Ok();
+            Korisnik k = new Korisnik();
+            if (korisniklist.Exists(i => i.Id == pretrage.IdKorisnika))
+            {
+                k = korisniklist.Find(i => i.Id == pretrage.IdKorisnika);
+            }
+            else if (adminlist.Exists(i => i.Id == pretrage.IdKorisnika))
+            {
+                k = adminlist.Find(i => i.Id == pretrage.IdKorisnika);
+            }
+            else if (vozaclist.Exists(i => i.Id == pretrage.IdKorisnika))
+            {
+                k = vozaclist.Find(i => i.Id == pretrage.IdKorisnika);
+            }
+            List<Voznja> toSend = new List<Voznja>();
+
+            if (pretrage.Pretraga[0].Id == null)
+            {
+                foreach (Voznja v in k.Voznje)
+                {
+                    toSend.Add(v);
+                }
+
+                if (pretrage.Dodatni)
+                {
+                    if (k.Uloga == Enums.Uloga.Dispecer)
+                    {
+                        toSend = new List<Voznja>();
+                        foreach (Voznja v in sveVoznje)
+                        {
+                            toSend.Add(v);
+                        }
+                    }
+                    else if (k.Uloga == Enums.Uloga.Vozac)
+                    {
+                        foreach (Voznja v in slobodneVoznje)
+                        {
+                            toSend.Add(v);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                foreach (Voznja v in pretrage.Pretraga)
+                {
+                    toSend.Add(v);
+                }
+            }
+
+            List<Voznja> toSend2 = new List<Voznja>();
+
+            foreach (Voznja v in toSend)
+            {
+                if (v.Iznos != null)
+                {
+                    if (Int32.Parse(pretrage.Stavka1) <= Int32.Parse(v.Iznos) && Int32.Parse(pretrage.Stavka2) >= Int32.Parse(v.Iznos))
+                    {
+                        toSend2.Add(v);
+                    }
+                }
+            }
+
+            return Ok(toSend2);
         }
 
         private void WriteToXMl(Enums.Uloga uloga)

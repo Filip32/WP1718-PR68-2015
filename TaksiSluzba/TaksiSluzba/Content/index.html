@@ -90,7 +90,7 @@
                                 localStorage.setItem("manu", t);
                                 $("#mainmanu").html(t);
 
-                                var table = "<p style=\"font-size:large; font-weight:bold\">Lista vožnji<p><div>";
+                                var table = "<div id=\"erorrr\"></div><p style=\"font-size:large; font-weight:bold\">Lista vožnji<p><div>";
                                 table += "<input type=\"submit\" id=\"reset\" value=\"Reset tabele\" /><br /><br />";
                                 table += "<table border=\"1\" id=\"maintable\"><tr><th>Polazna tačka</th><th>Odredište</th><th>Mušterija</th><th>Vozač</th><th>Dispečer</th><th>Datum i vreme</th><th>Cena</th><th>Ocena</th><th>Status vožnje</th><th>&nbsp;</th><th>&nbsp;</th></tr>";
                                 for (t in data.Voznje) {
@@ -994,7 +994,7 @@
                                     table += "<pstyle=\"color:red\">Došlo je do greške. Refrešovati tabelu.</p>";
                                     login_user = JSON.parse(localStorage.getItem("loginuser"));
                                 }
-                                table += "<p style=\"font-size:large; font-weight:bold\">Lista vožnji</p><div>";
+                                table += "<div id=\"erorrr\"></div><p style=\"font-size:large; font-weight:bold\">Lista vožnji</p><div>";
                                 table += "<input type=\"submit\" id=\"reset\" value=\"Reset tabele\" /><br /><br />";
                                 table += "<table border=\"1\" id=\"maintable\"><tr><th>Polazna tačka</th><th>Odredište</th><th>Mušterija</th><th>Vozač</th><th>Dispečer</th><th>Datum i vreme</th><th>Cena</th><th>Ocena</th><th>Status vožnje</th><th>&nbsp;</th><th>&nbsp;</th></tr>";
                                 for (t in login_user.Voznje) {
@@ -1166,6 +1166,11 @@
                         return;
                     } else
                     {
+                        if (isNaN(parseInt($("#cenavoznje").val())))
+                        {
+                            $("#errror").html("Cena mora biti broj.").css("color", "red");
+                            return;
+                        }
                         l =
                             {
                                 IdVoznje: $("#idvoznje").attr("name"),
@@ -1189,7 +1194,7 @@
                     type: "PUT",
                     data: l,
                     success: function (login_user) {
-                        var table = "<p style=\"font-size:large; font-weight:bold\">Lista vožnji<p><div>";
+                        var table = "<div id=\"erorrr\"></div><p style=\"font-size:large; font-weight:bold\">Lista vožnji<p><div>";
                         table += "<input type=\"submit\" id=\"reset\" value=\"Reset tabele\" /><br /><br />";
                         table += "<table border=\"1\" id=\"maintable\"><tr><th>Polazna tačka</th><th>Odredište</th><th>Mušterija</th><th>Vozač</th><th>Dispečer</th><th>Datum i vreme</th><th>Cena</th><th>Ocena</th><th>Status vožnje</th><th>&nbsp;</th><th>&nbsp;</th></tr>";
                         for (t in login_user.Voznje) {
@@ -1374,7 +1379,7 @@
                                 table += "<p style=\"color:red\">Došlo je do greške. Refrešujte tabelu.</p>";
                                 login_user = JSON.parse(localStorage.getItem("loginuser"));
                             }
-                            table += "<p style=\"font-size:large; font-weight:bold\">Lista vožnji<p><div>";
+                            table += "<div id=\"erorrr\"></div><p style=\"font-size:large; font-weight:bold\">Lista vožnji<p><div>";
                             table += "<input type=\"submit\" id=\"reset\" value=\"Reset tabele\" /><br /><br />";
                             table += "<table border=\"1\" id=\"maintable\"><tr><th>Polazna tačka</th><th>Odredište</th><th>Mušterija</th><th>Vozač</th><th>Dispečer</th><th>Datum i vreme</th><th>Cena</th><th>Ocena</th><th>Status vožnje</th><th>&nbsp;</th><th>&nbsp;</th></tr>";
                             for (t in login_user.Voznje) {
@@ -1558,7 +1563,7 @@
                                 localStorage.removeItem("loginuser");
                                 localStorage.setItem("loginuser", JSON.stringify(login_user));
 
-                                var table = "<p style=\"font-size:large; font-weight:bold\">Lista vožnji<p><div>";
+                                var table = "<div id=\"erorrr\"></div><p style=\"font-size:large; font-weight:bold\">Lista vožnji<p><div>";
                                 table += "<input type=\"submit\" id=\"reset\" value=\"Reset tabele\" /><br /><br />";
                                 table += "<table border=\"1\" id=\"maintable\"><tr><th>Polazna tačka</th><th>Odredište</th><th>Mušterija</th><th>Vozač</th><th>Dispečer</th><th>Datum i vreme</th><th>Cena</th><th>Ocena</th><th>Status vožnje</th><th>&nbsp;</th><th>&nbsp;</th></tr>";
                                 for (t in login_user.Voznje) {
@@ -1684,7 +1689,7 @@
                         {
                             table += "<div id=\"erorrr\"></div><br />";
                         }
-                        table += "<p style=\"font-size:large; font-weight:bold\">Lista vožnji<p><div>";
+                        table += "<div id=\"erorrr\"></div><p style=\"font-size:large; font-weight:bold\">Lista vožnji<p><div>";
                         table += "<input type=\"submit\" id=\"reset\" value=\"Reset tabele\" /><br /><br />";
                         table += "<table border=\"1\" id=\"maintable\"><tr><th>Polazna tačka</th><th>Odredište</th><th>Mušterija</th><th>Vozač</th><th>Dispečer</th><th>Datum i vreme</th><th>Cena</th><th>Ocena</th><th>Status vožnje</th><th>&nbsp;</th><th>&nbsp;</th></tr>";
                         for (t in login_user.Voznje) {
@@ -2344,6 +2349,10 @@
                 if (localStorage.getItem("sveVoznje") != null || localStorage.getItem("slobodneVoznje") != null) {
                     t = true;
                 }
+                if ($("#imemus").val().trim() == "" && $("#prezimemus").val().trim() == "") {
+                    $("#erorrr").html("Pretraga po mušteriji: makar jedna vrednost mora biti unesena.").css("color", "red");
+                    return;
+                }
                 var data =
                     {
                         IdKorisnika: login_user.Id,
@@ -2354,6 +2363,7 @@
                     }
                 $.post("/api/main/poimenuprzmusterije", data, function (data, status) {
                     if (status == "success") {
+                        $("#erorrr").html("");
                         var table = "<tr><th>Polazna tačka</th><th>Odredište</th><th>Mušterija</th><th>Vozač</th><th>Dispečer</th><th>Datum i vreme</th><th>Cena</th><th>Ocena</th><th>Status vožnje</th><th>&nbsp;</th><th>&nbsp;</th></tr>";
                         for (t in data) {
                             table += "<tr><td>" + data[t].PolaznaTacka.Adresa.Ulica_broj + ", " + data[t].PolaznaTacka.Adresa.Mesto + "</td><td>";
@@ -2425,6 +2435,11 @@
                 if (localStorage.getItem("sveVoznje") != null || localStorage.getItem("slobodneVoznje") != null) {
                     t = true;
                 }
+                if ($("#imevoz").val().trim() == "" && $("#prezimevoz").val().trim() == "")
+                {
+                    $("#erorrr").html("Pretraga po vozaču: makar jedna vrednost mora biti unesena.").css("color", "red");
+                    return;
+                }
                 var data =
                     {
                         IdKorisnika: login_user.Id,
@@ -2435,6 +2450,7 @@
                     }
                 $.post("/api/main/poimenuprzvozac", data, function (data, status) {
                     if (status == "success") {
+                        $("#erorrr").html("");
                         var table = "<tr><th>Polazna tačka</th><th>Odredište</th><th>Mušterija</th><th>Vozač</th><th>Dispečer</th><th>Datum i vreme</th><th>Cena</th><th>Ocena</th><th>Status vožnje</th><th>&nbsp;</th><th>&nbsp;</th></tr>";
                         for (t in data) {
                             table += "<tr><td>" + data[t].PolaznaTacka.Adresa.Ulica_broj + ", " + data[t].PolaznaTacka.Adresa.Mesto + "</td><td>";
@@ -2506,6 +2522,10 @@
                 if (localStorage.getItem("sveVoznje") != null || localStorage.getItem("slobodneVoznje") != null) {
                     t = true;
                 }
+                if ($("#oddatum").val() == "" || $("#dodatum").val() == "") {
+                    $("#erorrr").html("Pretraga po datumu: obe vrednosti moraju biti popunjene.").css("color", "red");
+                    return;
+                }
                 var data =
                     {
                         IdKorisnika: login_user.Id,
@@ -2516,6 +2536,7 @@
                     }
                 $.post("/api/main/podatumuoddo", data, function (data, status) {
                     if (status == "success") {
+                        $("#erorrr").html("");
                         var table = "<tr><th>Polazna tačka</th><th>Odredište</th><th>Mušterija</th><th>Vozač</th><th>Dispečer</th><th>Datum i vreme</th><th>Cena</th><th>Ocena</th><th>Status vožnje</th><th>&nbsp;</th><th>&nbsp;</th></tr>";
                         for (t in data) {
                             table += "<tr><td>" + data[t].PolaznaTacka.Adresa.Ulica_broj + ", " + data[t].PolaznaTacka.Adresa.Mesto + "</td><td>";
@@ -2587,6 +2608,14 @@
                 if (localStorage.getItem("sveVoznje") != null || localStorage.getItem("slobodneVoznje") != null) {
                     t = true;
                 }
+                if (isNaN(parseInt($("#ocenaod").val())) || isNaN(parseInt($("#ocenado").val()))) {
+                    $("#erorrr").html("Pretraga po oceni: obe vrednosti moraju biti popunjene i brojevi.").css("color", "red");
+                    return;
+                }
+                if (parseInt($("#ocenaod").val()) > parseInt($("#ocenado").val())) {
+                    $("#erorrr").html("Pretraga po oceni: prva vrednost(od) mora biti niža ili jednaka kao druga vrednost(do).").css("color", "red");
+                    return;
+                }
                 var data =
                     {
                         IdKorisnika: login_user.Id,
@@ -2597,6 +2626,7 @@
                     }
                 $.post("/api/main/poocenioddo", data, function (data, status) {
                     if (status == "success") {
+                        $("#erorrr").html("");
                         var table = "<tr><th>Polazna tačka</th><th>Odredište</th><th>Mušterija</th><th>Vozač</th><th>Dispečer</th><th>Datum i vreme</th><th>Cena</th><th>Ocena</th><th>Status vožnje</th><th>&nbsp;</th><th>&nbsp;</th></tr>";
                         for (t in data) {
                             table += "<tr><td>" + data[t].PolaznaTacka.Adresa.Ulica_broj + ", " + data[t].PolaznaTacka.Adresa.Mesto + "</td><td>";
@@ -2668,6 +2698,17 @@
                 if (localStorage.getItem("sveVoznje") != null || localStorage.getItem("slobodneVoznje") != null) {
                     t = true;
                 }
+
+                if (isNaN(parseInt($("#odcena").val())) || isNaN(parseInt($("#docena").val()))) {
+                    $("#erorrr").html("Pretraga po ceni: obe vrednosti moraju biti popunjene i brojevi.").css("color", "red");
+                    return;
+                }
+                if (parseInt($("#odcena").val()) > parseInt($("#docena").val()))
+                {
+                    $("#erorrr").html("Pretraga po ceni: prva vrednost(od) mora biti niža ili jednaka kao druga vrednost(do).").css("color","red");
+                    return;
+                }
+
                 var data =
                     {
                         IdKorisnika: login_user.Id,
@@ -2678,6 +2719,7 @@
                     }
                 $.post("/api/main/pocenioddo", data, function (data, status) {
                     if (status == "success") {
+                        $("#erorrr").html("");
                         var table = "<tr><th>Polazna tačka</th><th>Odredište</th><th>Mušterija</th><th>Vozač</th><th>Dispečer</th><th>Datum i vreme</th><th>Cena</th><th>Ocena</th><th>Status vožnje</th><th>&nbsp;</th><th>&nbsp;</th></tr>";
                         for (t in data) {
                             table += "<tr><td>" + data[t].PolaznaTacka.Adresa.Ulica_broj + ", " + data[t].PolaznaTacka.Adresa.Mesto + "</td><td>";

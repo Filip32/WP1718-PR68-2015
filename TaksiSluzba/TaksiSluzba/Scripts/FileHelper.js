@@ -44,7 +44,7 @@ pocetnastr += "<input type=\"submit\" id=\"po_datumu\" value=\"Sortiranje po dat
 pocetnastr += "<input type=\"submit\" id=\"po_oceni\" value=\"Sortiranje po oceni\" /><br />";
 pocetnastr += "<br />";
 pocetnastr += "Pretraga po datumu:<br />";
-pocetnastr += "Od:&nbsp; <input type=\"datetime-local\" value=\"2018-06-29T10:00\" id=\"oddatum\">&nbsp;&nbsp;&nbsp; Do:&nbsp;<input type=\"datetime-local\" value=\"2018-06-29T11:00\" id=\"dodatum\">&nbsp;&nbsp;<input type=\"submit\" id=\"po_datumu_oddo\" value=\"Pretraži\" /><br />";
+pocetnastr += "Od:&nbsp; <input type=\"datetime-local\" id=\"oddatum\">&nbsp;&nbsp;&nbsp; Do:&nbsp;<input type=\"datetime-local\" id=\"dodatum\">&nbsp;&nbsp;<input type=\"submit\" id=\"po_datumu_oddo\" value=\"Pretraži\" /><br />";
 pocetnastr += "<br />";
 pocetnastr += "Pretraga po oceni:<br />";
 pocetnastr += "Od: &nbsp;<select id=\"ocenaod\"><option value=\"0\">0</option><option value=\"1\">1</option><option value=\"2\">2</option><option value=\"3\">3</option><option value=\"4\">4</option><option value=\"5\">5</option><select>&nbsp;&nbsp;&nbsp; Do:&nbsp;<select id=\"ocenado\"><option value=\"0\">0</option><option value=\"1\">1</option><option value=\"2\">2</option><option value=\"3\">3</option><option value=\"4\">4</option><option value=\"5\">5</option><select>&nbsp;&nbsp;<input type=\"submit\" id=\"po_oceni_oddo\" value=\"Pretraži\" /><br />";
