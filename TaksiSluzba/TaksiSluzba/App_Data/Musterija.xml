@@ -12,7 +12,7 @@
     <Email>petrisa@gmail.com</Email>
     <Uloga>Musterija</Uloga>
     <Slobodan>true</Slobodan>
-	<Blokiran>false</Blokiran>
+    <Blokiran>false</Blokiran>
     <Voznje />
   </Korisnik>
   <Korisnik>
@@ -27,7 +27,79 @@
     <Email>petrovic.petar@gmail.com</Email>
     <Uloga>Musterija</Uloga>
     <Slobodan>true</Slobodan>
-	<Blokiran>false</Blokiran>
-    <Voznje />
+    <Blokiran>false</Blokiran>
+    <Voznje>
+      <Voznja>
+        <Id>2musterija1</Id>
+        <VremePorudjbine>2018-06-25T23:19:52.0974633+02:00</VremePorudjbine>
+        <PolaznaTacka>
+          <XKordinata>19.79785789211687</XKordinata>
+          <YKordinata>45.24819097279118</YKordinata>
+          <Adresa>
+            <Ulica_broj>Miloja Ciplica 57</Ulica_broj>
+            <Mesto>Novi Sad 21137</Mesto>
+          </Adresa>
+        </PolaznaTacka>
+        <TipVozila>Putnicko_Vozilo</TipVozila>
+        <Musterija>musterija1</Musterija>
+        <Komentar>
+          <Opis>Ne treba.</Opis>
+          <DatumObjave>2018-06-25T23:24:39.046745+02:00</DatumObjave>
+          <Korisnik>musterija1</Korisnik>
+          <Voznja>2musterija1</Voznja>
+          <OcenaVoznje>1</OcenaVoznje>
+        </Komentar>
+        <StatusVoznje>Otkazana</StatusVoznje>
+      </Voznja>
+      <Voznja>
+        <Id>1musterija1</Id>
+        <VremePorudjbine>2018-06-25T23:19:35.4444791+02:00</VremePorudjbine>
+        <PolaznaTacka>
+          <XKordinata>19.85415035917182</XKordinata>
+          <YKordinata>45.246407359914485</YKordinata>
+          <Adresa>
+            <Ulica_broj>Dr Zorana Djindjica</Ulica_broj>
+            <Mesto>Novi Sad 21101</Mesto>
+          </Adresa>
+        </PolaznaTacka>
+        <TipVozila>Putnicko_Vozilo</TipVozila>
+        <Musterija>musterija1</Musterija>
+        <Dispecer>admin1</Dispecer>
+        <Vozac>vozac4</Vozac>
+        <StatusVoznje>Obradjena</StatusVoznje>
+      </Voznja>
+      <Voznja>
+        <Id>0musterija1</Id>
+        <VremePorudjbine>2018-06-25T23:19:26.1431268+02:00</VremePorudjbine>
+        <PolaznaTacka>
+          <XKordinata>19.84471171077399</XKordinata>
+          <YKordinata>45.24471010046</YKordinata>
+          <Adresa>
+            <Ulica_broj>Bulevar Cara Lazara 11</Ulica_broj>
+            <Mesto>Novi Sad 21102</Mesto>
+          </Adresa>
+        </PolaznaTacka>
+        <TipVozila>Putnicko_Vozilo</TipVozila>
+        <Musterija>musterija1</Musterija>
+        <Odrediste>
+          <XKordinata>19.643066007138962</XKordinata>
+          <YKordinata>45.57019037805546</YKordinata>
+          <Adresa>
+            <Ulica_broj>Gustava Krkleca</Ulica_broj>
+            <Mesto>Vrbas Municipality 21460</Mesto>
+          </Adresa>
+        </Odrediste>
+        <Vozac>vozac1</Vozac>
+        <Iznos>4500</Iznos>
+        <Komentar>
+          <Opis>JEEEJ</Opis>
+          <DatumObjave>2018-06-25T23:41:20.8033781+02:00</DatumObjave>
+          <Korisnik>musterija1</Korisnik>
+          <Voznja>0musterija1</Voznja>
+          <OcenaVoznje>5</OcenaVoznje>
+        </Komentar>
+        <StatusVoznje>Uspesna</StatusVoznje>
+      </Voznja>
+    </Voznje>
   </Korisnik>
 </ArrayOfKorisnik>

@@ -794,19 +794,18 @@ namespace TaksiSluzba.Controllers
             if (voznja.Musterija != null)
             {
                 musterija = korisniklist.Find(i => i.KorisnickoIme == voznja.Musterija);
-                korisniklist.RemoveAll(x => x.Id == musterija.Id);
-                //musterija.Voznje.Remove(voznja);
+                korisniklist.Remove(musterija);
                 musterija.Voznje.RemoveAll(x => x.Id == voznja.Id);
             }
 
             if (voznja.Dispecer != null)
             {
                 admin = adminlist.Find(i => i.KorisnickoIme == voznja.Dispecer);
-                adminlist.RemoveAll(x => x.Id == admin.Id);
+                adminlist.Remove(admin);
                 admin.Voznje.RemoveAll(x => x.Id == voznja.Id);
             }
 
-            vozaclist.RemoveAll(x => x.Id == vozac.Id);
+            vozaclist.Remove(vozac);
             vozac.Voznje.RemoveAll(x => x.Id == voznja.Id);
             sveVoznje.RemoveAll(x => x.Id == voznja.Id);
 
@@ -860,7 +859,7 @@ namespace TaksiSluzba.Controllers
             {
                 return Ok("No");
             }
-            slobodneVoznje.Remove(voznja);
+            slobodneVoznje.RemoveAll(x => x.Id == voznja.Id);
             WriteToXMSlobodneVoznje();
 
             Korisnik korisnik = korisniklist.Find(i => i.KorisnickoIme == voznja.Musterija);
@@ -896,12 +895,14 @@ namespace TaksiSluzba.Controllers
             if (adminlist.Exists(i => i.Id == detalji.IdVozaca)) {
                 Korisnik k = adminlist.Find(i => i.Id == detalji.IdVozaca);
                 voznja = k.Voznje.Find(i => i.Id == detalji.IdVoznje);
+                if (voznja == null) voznja = sveVoznje.Find(i => i.Id == detalji.IdVoznje);
             } else if (korisniklist.Exists(i => i.Id == detalji.IdVozaca)) {
                 Korisnik k = korisniklist.Find(i => i.Id == detalji.IdVozaca);
                 voznja = k.Voznje.Find(i => i.Id == detalji.IdVoznje);
             } else if (vozaclist.Exists(i => i.Id == detalji.IdVozaca)) {
                 Korisnik k = vozaclist.Find(i => i.Id == detalji.IdVozaca);
                 voznja = k.Voznje.Find(i => i.Id == detalji.IdVoznje);
+                if (voznja == null) voznja = slobodneVoznje.Find(i => i.Id == detalji.IdVoznje);
             }
 
             string back = "<h3>Vožnja</h3>";

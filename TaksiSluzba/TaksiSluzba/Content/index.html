@@ -858,9 +858,6 @@
 
             $(document).on("click", "[name = 'obrada_voznje']", function () {
                 var login_user = JSON.parse(localStorage.getItem("loginuser"));
-                localStorage.removeItem("sveVoznje");
-                localStorage.removeItem("slobodneVoznje");
-                localStorage.removeItem("pretraga");
                 var id = $(this).attr("id");
                 var voznja;
 
@@ -1097,6 +1094,9 @@
                         $("#screen").html(t);
                     }
                 }
+                localStorage.removeItem("sveVoznje");
+                localStorage.removeItem("slobodneVoznje");
+                localStorage.removeItem("pretraga");
             });
 
             $(document).on("change", "#zavrsivoznju", function ()
@@ -1963,7 +1963,8 @@
 
             $(document).on("click", "#sve_voznje_cekanje", function ()
             {
-                var login_user = localStorage.getItem("loginuser");
+                if (localStorage.getItem("slobodneVoznje") != null) { return; }
+                var login_user = JSON.parse(localStorage.getItem("loginuser"));
                 var data = { Id: login_user.Id };
                 $.get("/api/main/slobodnevoznjeusistemu",data, function (data, status) {
                     if (status == "success") {
