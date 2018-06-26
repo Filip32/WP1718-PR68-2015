@@ -31,13 +31,13 @@
     <Voznje>
       <Voznja>
         <Id>0vozac3</Id>
-        <VremePorudjbine>2018-06-25T23:15:54.0435183+02:00</VremePorudjbine>
+        <VremePorudjbine>2018-06-26T19:03:34.3928516+02:00</VremePorudjbine>
         <PolaznaTacka>
-          <XKordinata>19.8509035451593</XKordinata>
-          <YKordinata>45.24605233319829</YKordinata>
+          <XKordinata>19.814343290834305</XKordinata>
+          <YKordinata>45.251322525182076</YKordinata>
           <Adresa>
-            <Ulica_broj>Vladimira Perica Valtera</Ulica_broj>
-            <Mesto>Novi Sad 21101</Mesto>
+            <Ulica_broj>Zeleznicka kolonija 19a</Ulica_broj>
+            <Mesto>Novi Sad 21000</Mesto>
           </Adresa>
         </PolaznaTacka>
         <TipVozila>Putnicko_Vozilo</TipVozila>
@@ -47,13 +47,13 @@
       </Voznja>
       <Voznja>
         <Id>0vozac6</Id>
-        <VremePorudjbine>2018-06-25T23:16:22.2388496+02:00</VremePorudjbine>
+        <VremePorudjbine>2018-06-26T19:03:54.1489193+02:00</VremePorudjbine>
         <PolaznaTacka>
-          <XKordinata>19.839265440243675</XKordinata>
-          <YKordinata>45.25013500646995</YKordinata>
+          <XKordinata>19.817645943129907</XKordinata>
+          <YKordinata>45.23844862969557</YKordinata>
           <Adresa>
-            <Ulica_broj>Laze Kostica 10</Ulica_broj>
-            <Mesto>Novi Sad 21101</Mesto>
+            <Ulica_broj>Cirila i Metodija 52</Ulica_broj>
+            <Mesto>Novi Sad 21102</Mesto>
           </Adresa>
         </PolaznaTacka>
         <TipVozila>Putnicko_Vozilo</TipVozila>
@@ -62,60 +62,62 @@
         <StatusVoznje>Formirana</StatusVoznje>
       </Voznja>
       <Voznja>
-        <Id>0vozac2</Id>
-        <VremePorudjbine>2018-06-25T23:16:38.230684+02:00</VremePorudjbine>
+        <Id>0vozac1</Id>
+        <VremePorudjbine>2018-06-26T19:03:04.9941788+02:00</VremePorudjbine>
         <PolaznaTacka>
-          <XKordinata>19.836672871203618</XKordinata>
-          <YKordinata>45.2480836453492</YKordinata>
+          <XKordinata>19.848068394925416</XKordinata>
+          <YKordinata>45.24978740403907</YKordinata>
           <Adresa>
-            <Ulica_broj>Danila Kisa 17</Ulica_broj>
-            <Mesto>Novi Sad 21102</Mesto>
+            <Ulica_broj>Strazilovska</Ulica_broj>
+            <Mesto>Novi Sad 21101</Mesto>
           </Adresa>
         </PolaznaTacka>
         <TipVozila>Putnicko_Vozilo</TipVozila>
+        <Odrediste>
+          <XKordinata>19.842132404254794</XKordinata>
+          <YKordinata>45.24403820601887</YKordinata>
+          <Adresa>
+            <Ulica_broj>Bulevar Cara Lazara</Ulica_broj>
+            <Mesto>Novi Sad 21102</Mesto>
+          </Adresa>
+        </Odrediste>
         <Dispecer>admin1</Dispecer>
-        <Vozac>vozac2</Vozac>
-        <StatusVoznje>Formirana</StatusVoznje>
+        <Vozac>vozac1</Vozac>
+        <Iznos>800</Iznos>
+        <StatusVoznje>Uspesna</StatusVoznje>
       </Voznja>
       <Voznja>
-        <Id>1musterija1</Id>
-        <VremePorudjbine>2018-06-25T23:19:35.4444791+02:00</VremePorudjbine>
+        <Id>0musterija1</Id>
+        <VremePorudjbine>2018-06-26T19:00:21.6208508+02:00</VremePorudjbine>
         <PolaznaTacka>
-          <XKordinata>19.85415035917182</XKordinata>
-          <YKordinata>45.246407359914485</YKordinata>
+          <XKordinata>19.84908634855172</XKordinata>
+          <YKordinata>45.24686624754199</YKordinata>
           <Adresa>
-            <Ulica_broj>Dr Zorana Djindjica</Ulica_broj>
+            <Ulica_broj>Dr Sime Milosevica</Ulica_broj>
             <Mesto>Novi Sad 21101</Mesto>
           </Adresa>
         </PolaznaTacka>
         <TipVozila>Putnicko_Vozilo</TipVozila>
         <Musterija>musterija1</Musterija>
-        <Dispecer>admin1</Dispecer>
-        <Vozac>vozac4</Vozac>
-        <StatusVoznje>Obradjena</StatusVoznje>
-      </Voznja>
-      <Voznja>
-        <Id>0vozac1</Id>
-        <VremePorudjbine>2018-06-25T23:16:08.3026712+02:00</VremePorudjbine>
-        <PolaznaTacka>
-          <XKordinata>19.839761020850958</XKordinata>
-          <YKordinata>45.246794071981725</YKordinata>
+        <Odrediste>
+          <XKordinata>19.843384764279882</XKordinata>
+          <YKordinata>45.24288302045176</YKordinata>
           <Adresa>
-            <Ulica_broj>Bulevar oslobodjenja 94</Ulica_broj>
-            <Mesto>Novi Sad 21101</Mesto>
+            <Ulica_broj>Dr Ivana Ribara 7</Ulica_broj>
+            <Mesto>Novi Sad 21102</Mesto>
           </Adresa>
-        </PolaznaTacka>
-        <TipVozila>Putnicko_Vozilo</TipVozila>
+        </Odrediste>
         <Dispecer>admin1</Dispecer>
-        <Vozac>vozac1</Vozac>
+        <Vozac>vozac2</Vozac>
+        <Iznos>500</Iznos>
         <Komentar>
-          <Opis>Nije uspela.</Opis>
-          <DatumObjave>2018-06-25T23:38:14.8676654+02:00</DatumObjave>
-          <Korisnik>vozac1</Korisnik>
-          <Voznja>0vozac1</Voznja>
-          <OcenaVoznje>0</OcenaVoznje>
+          <Opis>JEEEEEEJ</Opis>
+          <DatumObjave>2018-06-26T19:52:36.6517521+02:00</DatumObjave>
+          <Korisnik>musterija1</Korisnik>
+          <Voznja>0musterija1</Voznja>
+          <OcenaVoznje>5</OcenaVoznje>
         </Komentar>
-        <StatusVoznje>Neuspesna</StatusVoznje>
+        <StatusVoznje>Uspesna</StatusVoznje>
       </Voznja>
     </Voznje>
   </Korisnik>

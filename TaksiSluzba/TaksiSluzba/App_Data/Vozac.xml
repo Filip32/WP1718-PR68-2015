@@ -4,57 +4,29 @@
     <Id>9</Id>
     <KorisnickoIme>vozac5</KorisnickoIme>
     <Lozinka>vozac5</Lozinka>
-    <Ime>Tijana</Ime>
-    <Prezime>Jojkic</Prezime>
+    <Ime>Angela</Ime>
+    <Prezime>Filipovic</Prezime>
     <Pol>Zensko</Pol>
-    <JMBG>1304996800134</JMBG>
-    <Telefon>065/5554344</Telefon>
-    <Email>jojkic@gmail.com</Email>
+    <JMBG>0611975800565</JMBG>
+    <Telefon>064/2334443</Telefon>
+    <Email>angela@gmail.com</Email>
     <Uloga>Vozac</Uloga>
     <Slobodan>true</Slobodan>
     <Blokiran>false</Blokiran>
     <Voznje />
     <Lokacija>
-      <XKordinata>19.853521381157847</XKordinata>
-      <YKordinata>45.267679029402444</YKordinata>
+      <XKordinata>19.841590475034696</XKordinata>
+      <YKordinata>45.25579524567692</YKordinata>
       <Adresa>
-        <Ulica_broj>Bajci Zilinskog 4</Ulica_broj>
-        <Mesto>Novi Sad 21000</Mesto>
-      </Adresa>
-    </Lokacija>
-    <Automobil>
-      <GodisteAutomobila>2014</GodisteAutomobila>
-      <RegistarskaTablica>NS564-JI</RegistarskaTablica>
-      <BrTaksija>9_vozac5</BrTaksija>
-      <TipVozila>Putnicko_Vozilo</TipVozila>
-    </Automobil>
-  </Vozac>
-  <Vozac>
-    <Id>11</Id>
-    <KorisnickoIme>vozac7</KorisnickoIme>
-    <Lozinka>vozac7</Lozinka>
-    <Ime>Katarina</Ime>
-    <Prezime>Kataji</Prezime>
-    <Pol>Zensko</Pol>
-    <JMBG>2304992800456</JMBG>
-    <Telefon>065/3233442</Telefon>
-    <Email>kataji@gmail.com</Email>
-    <Uloga>Vozac</Uloga>
-    <Slobodan>true</Slobodan>
-    <Blokiran>false</Blokiran>
-    <Voznje />
-    <Lokacija>
-      <XKordinata>19.83848976834237</XKordinata>
-      <YKordinata>45.25654581801942</YKordinata>
-      <Adresa>
-        <Ulica_broj>Stevana Sremca 12</Ulica_broj>
+        <Ulica_broj>Uspenska 18</Ulica_broj>
         <Mesto>Novi Sad 21101</Mesto>
       </Adresa>
     </Lokacija>
     <Automobil>
-      <GodisteAutomobila>2018</GodisteAutomobila>
-      <RegistarskaTablica>NS564-OP</RegistarskaTablica>
-      <BrTaksija>11_vozac7</BrTaksija>
+      <Vozac>vozac5</Vozac>
+      <GodisteAutomobila>2014</GodisteAutomobila>
+      <RegistarskaTablica>NS453-HH</RegistarskaTablica>
+      <BrTaksija>9_vozac5</BrTaksija>
       <TipVozila>Putnicko_Vozilo</TipVozila>
     </Automobil>
   </Vozac>
@@ -62,25 +34,25 @@
     <Id>7</Id>
     <KorisnickoIme>vozac3</KorisnickoIme>
     <Lozinka>vozac3</Lozinka>
-    <Ime>Marko</Ime>
-    <Prezime>Katic</Prezime>
+    <Ime>Dimitrije</Ime>
+    <Prezime>Aleksic</Prezime>
     <Pol>Musko</Pol>
-    <JMBG>1901996800032</JMBG>
-    <Telefon>061/1239993</Telefon>
-    <Email>katicm@gmail.com</Email>
+    <JMBG>1903995800032</JMBG>
+    <Telefon>065/3434322</Telefon>
+    <Email>dimitrije@gmai.com</Email>
     <Uloga>Vozac</Uloga>
     <Slobodan>false</Slobodan>
     <Blokiran>false</Blokiran>
     <Voznje>
       <Voznja>
         <Id>0vozac3</Id>
-        <VremePorudjbine>2018-06-25T23:15:54.0435183+02:00</VremePorudjbine>
+        <VremePorudjbine>2018-06-26T19:03:34.3928516+02:00</VremePorudjbine>
         <PolaznaTacka>
-          <XKordinata>19.8509035451593</XKordinata>
-          <YKordinata>45.24605233319829</YKordinata>
+          <XKordinata>19.814343290834305</XKordinata>
+          <YKordinata>45.251322525182076</YKordinata>
           <Adresa>
-            <Ulica_broj>Vladimira Perica Valtera</Ulica_broj>
-            <Mesto>Novi Sad 21101</Mesto>
+            <Ulica_broj>Zeleznicka kolonija 19a</Ulica_broj>
+            <Mesto>Novi Sad 21000</Mesto>
           </Adresa>
         </PolaznaTacka>
         <TipVozila>Putnicko_Vozilo</TipVozila>
@@ -90,16 +62,17 @@
       </Voznja>
     </Voznje>
     <Lokacija>
-      <XKordinata>19.844670784887366</XKordinata>
-      <YKordinata>45.25184502823495</YKordinata>
+      <XKordinata>19.82509718884504</XKordinata>
+      <YKordinata>45.24531379703038</YKordinata>
       <Adresa>
-        <Ulica_broj>Vase Stajica 4</Ulica_broj>
-        <Mesto>Novi Sad 21101</Mesto>
+        <Ulica_broj>Cara Dusana 30</Ulica_broj>
+        <Mesto>Novi Sad 21102</Mesto>
       </Adresa>
     </Lokacija>
     <Automobil>
+      <Vozac>vozac3</Vozac>
       <GodisteAutomobila>2014</GodisteAutomobila>
-      <RegistarskaTablica>NS654-TI</RegistarskaTablica>
+      <RegistarskaTablica>NS444-HH</RegistarskaTablica>
       <BrTaksija>7_vozac3</BrTaksija>
       <TipVozila>Putnicko_Vozilo</TipVozila>
     </Automobil>
@@ -108,25 +81,25 @@
     <Id>10</Id>
     <KorisnickoIme>vozac6</KorisnickoIme>
     <Lozinka>vozac6</Lozinka>
-    <Ime>Sinisa</Ime>
-    <Prezime>Simonovic</Prezime>
+    <Ime>Kristijan</Ime>
+    <Prezime>Milosevic</Prezime>
     <Pol>Musko</Pol>
-    <JMBG>1009993800023</JMBG>
-    <Telefon>065/4442332</Telefon>
-    <Email>sinisa@gmail.com</Email>
+    <JMBG>1908995800023</JMBG>
+    <Telefon>065/2322333</Telefon>
+    <Email>kristijan@gmail.com</Email>
     <Uloga>Vozac</Uloga>
     <Slobodan>false</Slobodan>
     <Blokiran>false</Blokiran>
     <Voznje>
       <Voznja>
         <Id>0vozac6</Id>
-        <VremePorudjbine>2018-06-25T23:16:22.2388496+02:00</VremePorudjbine>
+        <VremePorudjbine>2018-06-26T19:03:54.1489193+02:00</VremePorudjbine>
         <PolaznaTacka>
-          <XKordinata>19.839265440243675</XKordinata>
-          <YKordinata>45.25013500646995</YKordinata>
+          <XKordinata>19.817645943129907</XKordinata>
+          <YKordinata>45.23844862969557</YKordinata>
           <Adresa>
-            <Ulica_broj>Laze Kostica 10</Ulica_broj>
-            <Mesto>Novi Sad 21101</Mesto>
+            <Ulica_broj>Cirila i Metodija 52</Ulica_broj>
+            <Mesto>Novi Sad 21102</Mesto>
           </Adresa>
         </PolaznaTacka>
         <TipVozila>Putnicko_Vozilo</TipVozila>
@@ -136,63 +109,18 @@
       </Voznja>
     </Voznje>
     <Lokacija>
-      <XKordinata>19.83735085147642</XKordinata>
-      <YKordinata>45.24437842176965</YKordinata>
+      <XKordinata>19.83756155238477</XKordinata>
+      <YKordinata>45.247736320156065</YKordinata>
       <Adresa>
-        <Ulica_broj>Vojvodjanska 26</Ulica_broj>
+        <Ulica_broj>Brace Ribnikar 15</Ulica_broj>
         <Mesto>Novi Sad 21102</Mesto>
       </Adresa>
     </Lokacija>
     <Automobil>
-      <GodisteAutomobila>2005</GodisteAutomobila>
-      <RegistarskaTablica>NS564-RT</RegistarskaTablica>
+      <Vozac>vozac6</Vozac>
+      <GodisteAutomobila>2012</GodisteAutomobila>
+      <RegistarskaTablica>NS444-TY</RegistarskaTablica>
       <BrTaksija>10_vozac6</BrTaksija>
-      <TipVozila>Putnicko_Vozilo</TipVozila>
-    </Automobil>
-  </Vozac>
-  <Vozac>
-    <Id>6</Id>
-    <KorisnickoIme>vozac2</KorisnickoIme>
-    <Lozinka>vozac2</Lozinka>
-    <Ime>Petar</Ime>
-    <Prezime>Kralj</Prezime>
-    <Pol>Musko</Pol>
-    <JMBG>1404981800034</JMBG>
-    <Telefon>064/4331122</Telefon>
-    <Email>kralj@gmail.com</Email>
-    <Uloga>Vozac</Uloga>
-    <Slobodan>false</Slobodan>
-    <Blokiran>false</Blokiran>
-    <Voznje>
-      <Voznja>
-        <Id>0vozac2</Id>
-        <VremePorudjbine>2018-06-25T23:16:38.230684+02:00</VremePorudjbine>
-        <PolaznaTacka>
-          <XKordinata>19.836672871203618</XKordinata>
-          <YKordinata>45.2480836453492</YKordinata>
-          <Adresa>
-            <Ulica_broj>Danila Kisa 17</Ulica_broj>
-            <Mesto>Novi Sad 21102</Mesto>
-          </Adresa>
-        </PolaznaTacka>
-        <TipVozila>Putnicko_Vozilo</TipVozila>
-        <Dispecer>admin1</Dispecer>
-        <Vozac>vozac2</Vozac>
-        <StatusVoznje>Formirana</StatusVoznje>
-      </Voznja>
-    </Voznje>
-    <Lokacija>
-      <XKordinata>19.855029940944924</XKordinata>
-      <YKordinata>45.25895522816012</YKordinata>
-      <Adresa>
-        <Ulica_broj>Beogradski Kej 25</Ulica_broj>
-        <Mesto>Novi Sad 21101</Mesto>
-      </Adresa>
-    </Lokacija>
-    <Automobil>
-      <GodisteAutomobila>2017</GodisteAutomobila>
-      <RegistarskaTablica>NS435-WE</RegistarskaTablica>
-      <BrTaksija>6_vozac2</BrTaksija>
       <TipVozila>Putnicko_Vozilo</TipVozila>
     </Automobil>
   </Vozac>
@@ -200,45 +128,45 @@
     <Id>8</Id>
     <KorisnickoIme>vozac4</KorisnickoIme>
     <Lozinka>vozac4</Lozinka>
-    <Ime>Isidora</Ime>
-    <Prezime>Maksimovic</Prezime>
-    <Pol>Zensko</Pol>
-    <JMBG>1412995800432</JMBG>
-    <Telefon>065/4445453</Telefon>
-    <Email>isi@gmail.com</Email>
+    <Ime>Ilija</Ime>
+    <Prezime>Papec</Prezime>
+    <Pol>Musko</Pol>
+    <JMBG>2304991800032</JMBG>
+    <Telefon>065/2323244</Telefon>
+    <Email>ilija@gmail.com</Email>
     <Uloga>Vozac</Uloga>
     <Slobodan>false</Slobodan>
     <Blokiran>false</Blokiran>
     <Voznje>
       <Voznja>
-        <Id>1musterija1</Id>
-        <VremePorudjbine>2018-06-25T23:19:35.4444791+02:00</VremePorudjbine>
+        <Id>2musterija1</Id>
+        <VremePorudjbine>2018-06-26T19:01:02.8780257+02:00</VremePorudjbine>
         <PolaznaTacka>
-          <XKordinata>19.85415035917182</XKordinata>
-          <YKordinata>45.246407359914485</YKordinata>
+          <XKordinata>19.84354959665667</XKordinata>
+          <YKordinata>45.248971868564496</YKordinata>
           <Adresa>
-            <Ulica_broj>Dr Zorana Djindjica</Ulica_broj>
+            <Ulica_broj>Vojvodjanskih brigada 28</Ulica_broj>
             <Mesto>Novi Sad 21101</Mesto>
           </Adresa>
         </PolaznaTacka>
         <TipVozila>Putnicko_Vozilo</TipVozila>
         <Musterija>musterija1</Musterija>
-        <Dispecer>admin1</Dispecer>
         <Vozac>vozac4</Vozac>
-        <StatusVoznje>Obradjena</StatusVoznje>
+        <StatusVoznje>Prihvacena</StatusVoznje>
       </Voznja>
     </Voznje>
     <Lokacija>
-      <XKordinata>19.72028271774992</XKordinata>
-      <YKordinata>45.21001865998315</YKordinata>
+      <XKordinata>19.840986324307245</XKordinata>
+      <YKordinata>45.24684991259676</YKordinata>
       <Adresa>
-        <Ulica_broj>Дунавска</Ulica_broj>
-        <Mesto>Beocin Municipality 21299</Mesto>
+        <Ulica_broj>Dimitrija Tucovica</Ulica_broj>
+        <Mesto>Novi Sad 21101</Mesto>
       </Adresa>
     </Lokacija>
     <Automobil>
-      <GodisteAutomobila>2006</GodisteAutomobila>
-      <RegistarskaTablica>BG456-UY</RegistarskaTablica>
+      <Vozac>vozac4</Vozac>
+      <GodisteAutomobila>2000</GodisteAutomobila>
+      <RegistarskaTablica>NS123-BG</RegistarskaTablica>
       <BrTaksija>8_vozac4</BrTaksija>
       <TipVozila>Putnicko_Vozilo</TipVozila>
     </Automobil>
@@ -247,65 +175,97 @@
     <Id>5</Id>
     <KorisnickoIme>vozac1</KorisnickoIme>
     <Lozinka>vozac1</Lozinka>
-    <Ime>Mirko</Ime>
-    <Prezime>Isidorovic</Prezime>
-    <Pol>Musko</Pol>
-    <JMBG>1209993800043</JMBG>
-    <Telefon>065/3442211</Telefon>
-    <Email>mirko@gmail.com</Email>
+    <Ime>Katarina</Ime>
+    <Prezime>Maksimovic</Prezime>
+    <Pol>Zensko</Pol>
+    <JMBG>1904995800133</JMBG>
+    <Telefon>061/1123211</Telefon>
+    <Email>kaca@gmail.com</Email>
     <Uloga>Vozac</Uloga>
     <Slobodan>true</Slobodan>
     <Blokiran>false</Blokiran>
     <Voznje>
       <Voznja>
         <Id>0vozac1</Id>
-        <VremePorudjbine>2018-06-25T23:16:08.3026712+02:00</VremePorudjbine>
+        <VremePorudjbine>2018-06-26T19:03:04.9941788+02:00</VremePorudjbine>
         <PolaznaTacka>
-          <XKordinata>19.839761020850958</XKordinata>
-          <YKordinata>45.246794071981725</YKordinata>
+          <XKordinata>19.848068394925416</XKordinata>
+          <YKordinata>45.24978740403907</YKordinata>
           <Adresa>
-            <Ulica_broj>Bulevar oslobodjenja 94</Ulica_broj>
+            <Ulica_broj>Strazilovska</Ulica_broj>
             <Mesto>Novi Sad 21101</Mesto>
           </Adresa>
         </PolaznaTacka>
         <TipVozila>Putnicko_Vozilo</TipVozila>
+        <Odrediste>
+          <XKordinata>19.842132404254794</XKordinata>
+          <YKordinata>45.24403820601887</YKordinata>
+          <Adresa>
+            <Ulica_broj>Bulevar Cara Lazara</Ulica_broj>
+            <Mesto>Novi Sad 21102</Mesto>
+          </Adresa>
+        </Odrediste>
         <Dispecer>admin1</Dispecer>
         <Vozac>vozac1</Vozac>
-        <Komentar>
-          <Opis>Nije uspela.</Opis>
-          <DatumObjave>2018-06-25T23:38:14.8676654+02:00</DatumObjave>
-          <Korisnik>vozac1</Korisnik>
-          <Voznja>0vozac1</Voznja>
-          <OcenaVoznje>0</OcenaVoznje>
-        </Komentar>
-        <StatusVoznje>Neuspesna</StatusVoznje>
+        <Iznos>800</Iznos>
+        <StatusVoznje>Uspesna</StatusVoznje>
       </Voznja>
+    </Voznje>
+    <Lokacija>
+      <XKordinata>19.84797488608219</XKordinata>
+      <YKordinata>45.2500039607628</YKordinata>
+      <Adresa>
+        <Ulica_broj>Strazilovska 19</Ulica_broj>
+        <Mesto>Novi Sad 21101</Mesto>
+      </Adresa>
+    </Lokacija>
+    <Automobil>
+      <GodisteAutomobila>2014</GodisteAutomobila>
+      <RegistarskaTablica>NS445-GH</RegistarskaTablica>
+      <TipVozila>Putnicko_Vozilo</TipVozila>
+    </Automobil>
+  </Vozac>
+  <Vozac>
+    <Id>6</Id>
+    <KorisnickoIme>vozac2</KorisnickoIme>
+    <Lozinka>vozac2</Lozinka>
+    <Ime>Milivoj</Ime>
+    <Prezime>Milivojevic</Prezime>
+    <Pol>Musko</Pol>
+    <JMBG>3401993800045</JMBG>
+    <Telefon>065/1223233</Telefon>
+    <Email>milivoj@gmail.com</Email>
+    <Uloga>Vozac</Uloga>
+    <Slobodan>true</Slobodan>
+    <Blokiran>false</Blokiran>
+    <Voznje>
       <Voznja>
         <Id>0musterija1</Id>
-        <VremePorudjbine>2018-06-25T23:19:26.1431268+02:00</VremePorudjbine>
+        <VremePorudjbine>2018-06-26T19:00:21.6208508+02:00</VremePorudjbine>
         <PolaznaTacka>
-          <XKordinata>19.84471171077399</XKordinata>
-          <YKordinata>45.24471010046</YKordinata>
+          <XKordinata>19.84908634855172</XKordinata>
+          <YKordinata>45.24686624754199</YKordinata>
           <Adresa>
-            <Ulica_broj>Bulevar Cara Lazara 11</Ulica_broj>
-            <Mesto>Novi Sad 21102</Mesto>
+            <Ulica_broj>Dr Sime Milosevica</Ulica_broj>
+            <Mesto>Novi Sad 21101</Mesto>
           </Adresa>
         </PolaznaTacka>
         <TipVozila>Putnicko_Vozilo</TipVozila>
         <Musterija>musterija1</Musterija>
         <Odrediste>
-          <XKordinata>19.643066007138962</XKordinata>
-          <YKordinata>45.57019037805546</YKordinata>
+          <XKordinata>19.843384764279882</XKordinata>
+          <YKordinata>45.24288302045176</YKordinata>
           <Adresa>
-            <Ulica_broj>Gustava Krkleca</Ulica_broj>
-            <Mesto>Vrbas Municipality 21460</Mesto>
+            <Ulica_broj>Dr Ivana Ribara 7</Ulica_broj>
+            <Mesto>Novi Sad 21102</Mesto>
           </Adresa>
         </Odrediste>
-        <Vozac>vozac1</Vozac>
-        <Iznos>4500</Iznos>
+        <Dispecer>admin1</Dispecer>
+        <Vozac>vozac2</Vozac>
+        <Iznos>500</Iznos>
         <Komentar>
-          <Opis>JEEEJ</Opis>
-          <DatumObjave>2018-06-25T23:41:20.8033781+02:00</DatumObjave>
+          <Opis>JEEEEEEJ</Opis>
+          <DatumObjave>2018-06-26T19:52:36.6517521+02:00</DatumObjave>
           <Korisnik>musterija1</Korisnik>
           <Voznja>0musterija1</Voznja>
           <OcenaVoznje>5</OcenaVoznje>
@@ -314,17 +274,18 @@
       </Voznja>
     </Voznje>
     <Lokacija>
-      <XKordinata>19.85327162263454</XKordinata>
-      <YKordinata>45.25609189129813</YKordinata>
+      <XKordinata>19.849296901959374</XKordinata>
+      <YKordinata>45.24463031565173</YKordinata>
       <Adresa>
-        <Ulica_broj>Dunavska</Ulica_broj>
-        <Mesto>Novi Sad 21000</Mesto>
+        <Ulica_broj>Dr Ilije Djuricica</Ulica_broj>
+        <Mesto>Novi Sad 21101</Mesto>
       </Adresa>
     </Lokacija>
     <Automobil>
-      <GodisteAutomobila>2015</GodisteAutomobila>
-      <RegistarskaTablica>NS453-KK</RegistarskaTablica>
-      <BrTaksija>5_vozac1</BrTaksija>
+      <Vozac>vozac2</Vozac>
+      <GodisteAutomobila>2018</GodisteAutomobila>
+      <RegistarskaTablica>NS433-HG</RegistarskaTablica>
+      <BrTaksija>6_vozac2</BrTaksija>
       <TipVozila>Putnicko_Vozilo</TipVozila>
     </Automobil>
   </Vozac>
