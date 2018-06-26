@@ -2540,8 +2540,8 @@
                 if (localStorage.getItem("sveVoznje") != null || localStorage.getItem("slobodneVoznje") != null) {
                     t = true;
                 }
-                if ($("#oddatum").val() == "" || $("#dodatum").val() == "") {
-                    $("#erorrr").html("Pretraga po datumu: obe vrednosti moraju biti popunjene.").css("color", "red");
+                if ($("#oddatum").val() == "" && $("#dodatum").val() == "") {
+                    $("#erorrr").html("Pretraga po datumu: makar jedna vrednost mora biti popunjene.").css("color", "red");
                     return;
                 }
                 var data =
@@ -2626,13 +2626,15 @@
                 if (localStorage.getItem("sveVoznje") != null || localStorage.getItem("slobodneVoznje") != null) {
                     t = true;
                 }
-                if (isNaN(parseInt($("#ocenaod").val())) || isNaN(parseInt($("#ocenado").val()))) {
-                    $("#erorrr").html("Pretraga po oceni: obe vrednosti moraju biti popunjene i brojevi.").css("color", "red");
+                if (isNaN(parseInt($("#ocenaod").val())) && isNaN(parseInt($("#ocenado").val()))) {
+                    $("#erorrr").html("Pretraga po oceni: makar jedna vrednost mora biti popunjene i brojevi.").css("color", "red");
                     return;
                 }
-                if (parseInt($("#ocenaod").val()) > parseInt($("#ocenado").val())) {
-                    $("#erorrr").html("Pretraga po oceni: prva vrednost(od) mora biti niža ili jednaka kao druga vrednost(do).").css("color", "red");
-                    return;
+                if (!isNaN(parseInt($("#ocenaod").val())) && !isNaN(parseInt($("#ocenado").val()))) {
+                    if (parseInt($("#ocenaod").val()) > parseInt($("#ocenado").val())) {
+                        $("#erorrr").html("Pretraga po oceni: prva vrednost(od) mora biti niža ili jednaka kao druga vrednost(do).").css("color", "red");
+                        return;
+                    }
                 }
                 var data =
                     {
@@ -2717,14 +2719,15 @@
                     t = true;
                 }
 
-                if (isNaN(parseInt($("#odcena").val())) || isNaN(parseInt($("#docena").val()))) {
+                if (isNaN(parseInt($("#odcena").val())) && isNaN(parseInt($("#docena").val()))) {
                     $("#erorrr").html("Pretraga po ceni: obe vrednosti moraju biti popunjene i brojevi.").css("color", "red");
                     return;
                 }
-                if (parseInt($("#odcena").val()) > parseInt($("#docena").val()))
-                {
-                    $("#erorrr").html("Pretraga po ceni: prva vrednost(od) mora biti niža ili jednaka kao druga vrednost(do).").css("color","red");
-                    return;
+                if (!isNaN(parseInt($("#odcena").val())) && !isNaN(parseInt($("#docena").val()))) {
+                    if (parseInt($("#odcena").val()) > parseInt($("#docena").val())) {
+                        $("#erorrr").html("Pretraga po ceni: prva vrednost(od) mora biti niža ili jednaka kao druga vrednost(do).").css("color", "red");
+                        return;
+                    }
                 }
 
                 var data =

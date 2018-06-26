@@ -1504,8 +1504,14 @@ namespace TaksiSluzba.Controllers
         public IHttpActionResult OdDoDatum(ZaPretrage pretrage)
         {
             Korisnik k = new Korisnik();
-            DateTime startTime = DateTime.ParseExact(pretrage.Stavka1, "yyyy-MM-ddTHH:mm",System.Globalization.CultureInfo.InvariantCulture);
-            DateTime endTime = DateTime.ParseExact(pretrage.Stavka2, "yyyy-MM-ddTHH:mm",System.Globalization.CultureInfo.InvariantCulture);
+            DateTime startTime = DateTime.Now;
+            DateTime endTime = DateTime.Now;
+
+            if (pretrage.Stavka1 != null)
+                 startTime = DateTime.ParseExact(pretrage.Stavka1, "yyyy-MM-ddTHH:mm",System.Globalization.CultureInfo.InvariantCulture);
+            if(pretrage.Stavka2 != null)
+                endTime = DateTime.ParseExact(pretrage.Stavka2, "yyyy-MM-ddTHH:mm",System.Globalization.CultureInfo.InvariantCulture);
+
             if (korisniklist.Exists(i => i.Id == pretrage.IdKorisnika))
             {
                 k = korisniklist.Find(i => i.Id == pretrage.IdKorisnika);
@@ -1555,11 +1561,34 @@ namespace TaksiSluzba.Controllers
             }
             List<Voznja> toSend2 = new List<Voznja>();
 
-            foreach (Voznja v in toSend)
+            if (pretrage.Stavka1 != null && pretrage.Stavka2 != null)
             {
-                if (DateTime.Compare(startTime, v.VremePorudjbine) <= 0 && DateTime.Compare(endTime, v.VremePorudjbine) >= 0)
+                foreach (Voznja v in toSend)
                 {
-                    toSend2.Add(v);
+                    if (DateTime.Compare(startTime, v.VremePorudjbine) <= 0 && DateTime.Compare(endTime, v.VremePorudjbine) >= 0)
+                    {
+                        toSend2.Add(v);
+                    }
+                }
+            }
+            else if (pretrage.Stavka1 != null)
+            {
+                foreach (Voznja v in toSend)
+                {
+                    if (DateTime.Compare(startTime, v.VremePorudjbine) <= 0)
+                    {
+                        toSend2.Add(v);
+                    }
+                }
+            }
+            else if (pretrage.Stavka2 != null)
+            {
+                foreach (Voznja v in toSend)
+                {
+                    if (DateTime.Compare(endTime, v.VremePorudjbine) >= 0)
+                    {
+                        toSend2.Add(v);
+                    }
                 }
             }
 
@@ -1620,28 +1649,29 @@ namespace TaksiSluzba.Controllers
 
             List<Voznja> toSend2 = new List<Voznja>();
 
-            foreach (Voznja v in toSend)
-            {
-                if (v.Komentar != null)
+                foreach (Voznja v in toSend)
                 {
-                    if (v.Komentar.OcenaVoznje != null)
+                    if (v.Komentar != null)
                     {
-                        if (Int32.Parse(pretrage.Stavka1) <= Int32.Parse(v.Komentar.OcenaVoznje) && Int32.Parse(pretrage.Stavka2) >= Int32.Parse(v.Komentar.OcenaVoznje))
+                        if (v.Komentar.OcenaVoznje != null)
                         {
-                            toSend2.Add(v);
+                            if (Int32.Parse(pretrage.Stavka1) <= Int32.Parse(v.Komentar.OcenaVoznje) && Int32.Parse(pretrage.Stavka2) >= Int32.Parse(v.Komentar.OcenaVoznje))
+                            {
+                                toSend2.Add(v);
+                            }
+                        }
+                        else
+                        {
+                            if (Int32.Parse(pretrage.Stavka1) == 0)
+                                toSend2.Add(v);
                         }
                     }
-                    else {
+                    else
+                    {
                         if (Int32.Parse(pretrage.Stavka1) == 0)
                             toSend2.Add(v);
-                      }
+                    }
                 }
-                else
-                {
-                    if (Int32.Parse(pretrage.Stavka1) == 0)
-                        toSend2.Add(v);
-                }
-            }
 
             return Ok(toSend2);
         }
@@ -1700,13 +1730,42 @@ namespace TaksiSluzba.Controllers
 
             List<Voznja> toSend2 = new List<Voznja>();
 
-            foreach (Voznja v in toSend)
+            if (pretrage.Stavka1 != null && pretrage.Stavka2 != null)
             {
-                if (v.Iznos != null)
+                foreach (Voznja v in toSend)
                 {
-                    if (Int32.Parse(pretrage.Stavka1) <= Int32.Parse(v.Iznos) && Int32.Parse(pretrage.Stavka2) >= Int32.Parse(v.Iznos))
+                    if (v.Iznos != null)
                     {
-                        toSend2.Add(v);
+                        if (Int32.Parse(pretrage.Stavka1) <= Int32.Parse(v.Iznos) && Int32.Parse(pretrage.Stavka2) >= Int32.Parse(v.Iznos))
+                        {
+                            toSend2.Add(v);
+                        }
+                    }
+                }
+            }
+            else if (pretrage.Stavka1 != null)
+            {
+                foreach (Voznja v in toSend)
+                {
+                    if (v.Iznos != null)
+                    {
+                        if (Int32.Parse(pretrage.Stavka1) <= Int32.Parse(v.Iznos))
+                        {
+                            toSend2.Add(v);
+                        }
+                    }
+                }
+            }
+            else if (pretrage.Stavka2 != null)
+            {
+                foreach (Voznja v in toSend)
+                {
+                    if (v.Iznos != null)
+                    {
+                        if (Int32.Parse(pretrage.Stavka2) >= Int32.Parse(v.Iznos))
+                        {
+                            toSend2.Add(v);
+                        }
                     }
                 }
             }
