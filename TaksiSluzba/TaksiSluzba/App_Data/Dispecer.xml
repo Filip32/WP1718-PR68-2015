@@ -30,22 +30,6 @@
     <Blokiran>false</Blokiran>
     <Voznje>
       <Voznja>
-        <Id>0vozac3</Id>
-        <VremePorudjbine>2018-06-26T19:03:34.3928516+02:00</VremePorudjbine>
-        <PolaznaTacka>
-          <XKordinata>19.814343290834305</XKordinata>
-          <YKordinata>45.251322525182076</YKordinata>
-          <Adresa>
-            <Ulica_broj>Zeleznicka kolonija 19a</Ulica_broj>
-            <Mesto>Novi Sad 21000</Mesto>
-          </Adresa>
-        </PolaznaTacka>
-        <TipVozila>Putnicko_Vozilo</TipVozila>
-        <Dispecer>admin1</Dispecer>
-        <Vozac>vozac3</Vozac>
-        <StatusVoznje>Formirana</StatusVoznje>
-      </Voznja>
-      <Voznja>
         <Id>0vozac6</Id>
         <VremePorudjbine>2018-06-26T19:03:54.1489193+02:00</VremePorudjbine>
         <PolaznaTacka>
@@ -117,6 +101,54 @@
           <Voznja>0musterija1</Voznja>
           <OcenaVoznje>5</OcenaVoznje>
         </Komentar>
+        <StatusVoznje>Uspesna</StatusVoznje>
+      </Voznja>
+      <Voznja>
+        <Id>1vozac1</Id>
+        <VremePorudjbine>2018-06-27T20:14:37.0530508+02:00</VremePorudjbine>
+        <PolaznaTacka>
+          <XKordinata>19.84673038383554</XKordinata>
+          <YKordinata>45.247037176699536</YKordinata>
+          <Adresa>
+            <Ulica_broj>Radnicka</Ulica_broj>
+            <Mesto>Novi Sad 21101</Mesto>
+          </Adresa>
+        </PolaznaTacka>
+        <TipVozila>Putnicko_Vozilo</TipVozila>
+        <Dispecer>admin1</Dispecer>
+        <Vozac>vozac1</Vozac>
+        <Komentar>
+          <Opis>Nije dosao.</Opis>
+          <DatumObjave>2018-06-27T20:15:28.7745488+02:00</DatumObjave>
+          <Korisnik>vozac1</Korisnik>
+          <Voznja>1vozac1</Voznja>
+          <OcenaVoznje>0</OcenaVoznje>
+        </Komentar>
+        <StatusVoznje>Neuspesna</StatusVoznje>
+      </Voznja>
+      <Voznja>
+        <Id>0vozac3</Id>
+        <VremePorudjbine>2018-06-26T19:03:34.3928516+02:00</VremePorudjbine>
+        <PolaznaTacka>
+          <XKordinata>19.814343290834305</XKordinata>
+          <YKordinata>45.251322525182076</YKordinata>
+          <Adresa>
+            <Ulica_broj>Zeleznicka kolonija 19a</Ulica_broj>
+            <Mesto>Novi Sad 21000</Mesto>
+          </Adresa>
+        </PolaznaTacka>
+        <TipVozila>Putnicko_Vozilo</TipVozila>
+        <Odrediste>
+          <XKordinata>19.847521789113216</XKordinata>
+          <YKordinata>45.239007961748</YKordinata>
+          <Adresa>
+            <Ulica_broj>Fruskogorska</Ulica_broj>
+            <Mesto>Novi Sad 21000</Mesto>
+          </Adresa>
+        </Odrediste>
+        <Dispecer>admin1</Dispecer>
+        <Vozac>vozac3</Vozac>
+        <Iznos>300</Iznos>
         <StatusVoznje>Uspesna</StatusVoznje>
       </Voznja>
     </Voznje>

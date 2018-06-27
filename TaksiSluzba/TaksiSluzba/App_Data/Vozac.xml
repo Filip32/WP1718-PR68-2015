@@ -31,53 +31,6 @@
     </Automobil>
   </Vozac>
   <Vozac>
-    <Id>7</Id>
-    <KorisnickoIme>vozac3</KorisnickoIme>
-    <Lozinka>vozac3</Lozinka>
-    <Ime>Dimitrije</Ime>
-    <Prezime>Aleksic</Prezime>
-    <Pol>Musko</Pol>
-    <JMBG>1903995800032</JMBG>
-    <Telefon>065/3434322</Telefon>
-    <Email>dimitrije@gmai.com</Email>
-    <Uloga>Vozac</Uloga>
-    <Slobodan>false</Slobodan>
-    <Blokiran>false</Blokiran>
-    <Voznje>
-      <Voznja>
-        <Id>0vozac3</Id>
-        <VremePorudjbine>2018-06-26T19:03:34.3928516+02:00</VremePorudjbine>
-        <PolaznaTacka>
-          <XKordinata>19.814343290834305</XKordinata>
-          <YKordinata>45.251322525182076</YKordinata>
-          <Adresa>
-            <Ulica_broj>Zeleznicka kolonija 19a</Ulica_broj>
-            <Mesto>Novi Sad 21000</Mesto>
-          </Adresa>
-        </PolaznaTacka>
-        <TipVozila>Putnicko_Vozilo</TipVozila>
-        <Dispecer>admin1</Dispecer>
-        <Vozac>vozac3</Vozac>
-        <StatusVoznje>Formirana</StatusVoznje>
-      </Voznja>
-    </Voznje>
-    <Lokacija>
-      <XKordinata>19.82509718884504</XKordinata>
-      <YKordinata>45.24531379703038</YKordinata>
-      <Adresa>
-        <Ulica_broj>Cara Dusana 30</Ulica_broj>
-        <Mesto>Novi Sad 21102</Mesto>
-      </Adresa>
-    </Lokacija>
-    <Automobil>
-      <Vozac>vozac3</Vozac>
-      <GodisteAutomobila>2014</GodisteAutomobila>
-      <RegistarskaTablica>NS444-HH</RegistarskaTablica>
-      <BrTaksija>7_vozac3</BrTaksija>
-      <TipVozila>Putnicko_Vozilo</TipVozila>
-    </Automobil>
-  </Vozac>
-  <Vozac>
     <Id>10</Id>
     <KorisnickoIme>vozac6</KorisnickoIme>
     <Lozinka>vozac6</Lozinka>
@@ -172,60 +125,6 @@
     </Automobil>
   </Vozac>
   <Vozac>
-    <Id>5</Id>
-    <KorisnickoIme>vozac1</KorisnickoIme>
-    <Lozinka>vozac1</Lozinka>
-    <Ime>Katarina</Ime>
-    <Prezime>Maksimovic</Prezime>
-    <Pol>Zensko</Pol>
-    <JMBG>1904995800133</JMBG>
-    <Telefon>061/1123211</Telefon>
-    <Email>kaca@gmail.com</Email>
-    <Uloga>Vozac</Uloga>
-    <Slobodan>true</Slobodan>
-    <Blokiran>false</Blokiran>
-    <Voznje>
-      <Voznja>
-        <Id>0vozac1</Id>
-        <VremePorudjbine>2018-06-26T19:03:04.9941788+02:00</VremePorudjbine>
-        <PolaznaTacka>
-          <XKordinata>19.848068394925416</XKordinata>
-          <YKordinata>45.24978740403907</YKordinata>
-          <Adresa>
-            <Ulica_broj>Strazilovska</Ulica_broj>
-            <Mesto>Novi Sad 21101</Mesto>
-          </Adresa>
-        </PolaznaTacka>
-        <TipVozila>Putnicko_Vozilo</TipVozila>
-        <Odrediste>
-          <XKordinata>19.842132404254794</XKordinata>
-          <YKordinata>45.24403820601887</YKordinata>
-          <Adresa>
-            <Ulica_broj>Bulevar Cara Lazara</Ulica_broj>
-            <Mesto>Novi Sad 21102</Mesto>
-          </Adresa>
-        </Odrediste>
-        <Dispecer>admin1</Dispecer>
-        <Vozac>vozac1</Vozac>
-        <Iznos>800</Iznos>
-        <StatusVoznje>Uspesna</StatusVoznje>
-      </Voznja>
-    </Voznje>
-    <Lokacija>
-      <XKordinata>19.84797488608219</XKordinata>
-      <YKordinata>45.2500039607628</YKordinata>
-      <Adresa>
-        <Ulica_broj>Strazilovska 19</Ulica_broj>
-        <Mesto>Novi Sad 21101</Mesto>
-      </Adresa>
-    </Lokacija>
-    <Automobil>
-      <GodisteAutomobila>2014</GodisteAutomobila>
-      <RegistarskaTablica>NS445-GH</RegistarskaTablica>
-      <TipVozila>Putnicko_Vozilo</TipVozila>
-    </Automobil>
-  </Vozac>
-  <Vozac>
     <Id>6</Id>
     <KorisnickoIme>vozac2</KorisnickoIme>
     <Lozinka>vozac2</Lozinka>
@@ -286,6 +185,139 @@
       <GodisteAutomobila>2018</GodisteAutomobila>
       <RegistarskaTablica>NS433-HG</RegistarskaTablica>
       <BrTaksija>6_vozac2</BrTaksija>
+      <TipVozila>Putnicko_Vozilo</TipVozila>
+    </Automobil>
+  </Vozac>
+  <Vozac>
+    <Id>5</Id>
+    <KorisnickoIme>vozac1</KorisnickoIme>
+    <Lozinka>vozac1</Lozinka>
+    <Ime>Katarina</Ime>
+    <Prezime>Maksimovic</Prezime>
+    <Pol>Zensko</Pol>
+    <JMBG>1904995800133</JMBG>
+    <Telefon>061/1123211</Telefon>
+    <Email>kaca@gmail.com</Email>
+    <Uloga>Vozac</Uloga>
+    <Slobodan>true</Slobodan>
+    <Blokiran>false</Blokiran>
+    <Voznje>
+      <Voznja>
+        <Id>0vozac1</Id>
+        <VremePorudjbine>2018-06-26T19:03:04.9941788+02:00</VremePorudjbine>
+        <PolaznaTacka>
+          <XKordinata>19.848068394925416</XKordinata>
+          <YKordinata>45.24978740403907</YKordinata>
+          <Adresa>
+            <Ulica_broj>Strazilovska</Ulica_broj>
+            <Mesto>Novi Sad 21101</Mesto>
+          </Adresa>
+        </PolaznaTacka>
+        <TipVozila>Putnicko_Vozilo</TipVozila>
+        <Odrediste>
+          <XKordinata>19.842132404254794</XKordinata>
+          <YKordinata>45.24403820601887</YKordinata>
+          <Adresa>
+            <Ulica_broj>Bulevar Cara Lazara</Ulica_broj>
+            <Mesto>Novi Sad 21102</Mesto>
+          </Adresa>
+        </Odrediste>
+        <Dispecer>admin1</Dispecer>
+        <Vozac>vozac1</Vozac>
+        <Iznos>800</Iznos>
+        <StatusVoznje>Uspesna</StatusVoznje>
+      </Voznja>
+      <Voznja>
+        <Id>1vozac1</Id>
+        <VremePorudjbine>2018-06-27T20:14:37.0530508+02:00</VremePorudjbine>
+        <PolaznaTacka>
+          <XKordinata>19.84673038383554</XKordinata>
+          <YKordinata>45.247037176699536</YKordinata>
+          <Adresa>
+            <Ulica_broj>Radnicka</Ulica_broj>
+            <Mesto>Novi Sad 21101</Mesto>
+          </Adresa>
+        </PolaznaTacka>
+        <TipVozila>Putnicko_Vozilo</TipVozila>
+        <Dispecer>admin1</Dispecer>
+        <Vozac>vozac1</Vozac>
+        <Komentar>
+          <Opis>Nije dosao.</Opis>
+          <DatumObjave>2018-06-27T20:15:28.7745488+02:00</DatumObjave>
+          <Korisnik>vozac1</Korisnik>
+          <Voznja>1vozac1</Voznja>
+          <OcenaVoznje>0</OcenaVoznje>
+        </Komentar>
+        <StatusVoznje>Neuspesna</StatusVoznje>
+      </Voznja>
+    </Voznje>
+    <Lokacija>
+      <XKordinata>19.84797488608219</XKordinata>
+      <YKordinata>45.2500039607628</YKordinata>
+      <Adresa>
+        <Ulica_broj>Strazilovska 19</Ulica_broj>
+        <Mesto>Novi Sad 21101</Mesto>
+      </Adresa>
+    </Lokacija>
+    <Automobil>
+      <GodisteAutomobila>2014</GodisteAutomobila>
+      <RegistarskaTablica>NS445-GH</RegistarskaTablica>
+      <TipVozila>Putnicko_Vozilo</TipVozila>
+    </Automobil>
+  </Vozac>
+  <Vozac>
+    <Id>7</Id>
+    <KorisnickoIme>vozac3</KorisnickoIme>
+    <Lozinka>vozac3</Lozinka>
+    <Ime>Dimitrije</Ime>
+    <Prezime>Aleksic</Prezime>
+    <Pol>Musko</Pol>
+    <JMBG>1903995800032</JMBG>
+    <Telefon>065/3434322</Telefon>
+    <Email>dimitrije@gmai.com</Email>
+    <Uloga>Vozac</Uloga>
+    <Slobodan>true</Slobodan>
+    <Blokiran>false</Blokiran>
+    <Voznje>
+      <Voznja>
+        <Id>0vozac3</Id>
+        <VremePorudjbine>2018-06-26T19:03:34.3928516+02:00</VremePorudjbine>
+        <PolaznaTacka>
+          <XKordinata>19.814343290834305</XKordinata>
+          <YKordinata>45.251322525182076</YKordinata>
+          <Adresa>
+            <Ulica_broj>Zeleznicka kolonija 19a</Ulica_broj>
+            <Mesto>Novi Sad 21000</Mesto>
+          </Adresa>
+        </PolaznaTacka>
+        <TipVozila>Putnicko_Vozilo</TipVozila>
+        <Odrediste>
+          <XKordinata>19.847521789113216</XKordinata>
+          <YKordinata>45.239007961748</YKordinata>
+          <Adresa>
+            <Ulica_broj>Fruskogorska</Ulica_broj>
+            <Mesto>Novi Sad 21000</Mesto>
+          </Adresa>
+        </Odrediste>
+        <Dispecer>admin1</Dispecer>
+        <Vozac>vozac3</Vozac>
+        <Iznos>300</Iznos>
+        <StatusVoznje>Uspesna</StatusVoznje>
+      </Voznja>
+    </Voznje>
+    <Lokacija>
+      <XKordinata>19.82509718884504</XKordinata>
+      <YKordinata>45.24531379703038</YKordinata>
+      <Adresa>
+        <Ulica_broj>Cara Dusana 30</Ulica_broj>
+        <Mesto>Novi Sad 21102</Mesto>
+      </Adresa>
+    </Lokacija>
+    <Automobil>
+      <Vozac>vozac3</Vozac>
+      <GodisteAutomobila>2014</GodisteAutomobila>
+      <RegistarskaTablica>NS444-HH</RegistarskaTablica>
+      <BrTaksija>7_vozac3</BrTaksija>
       <TipVozila>Putnicko_Vozilo</TipVozila>
     </Automobil>
   </Vozac>
